@@ -37,4 +37,4 @@ if __name__ == '__main__':
     print path_to_dataset
     path_to_dataset = os.path.dirname(path_to_dataset)
     print path_to_dataset
-    print "karel"
+    print "karel a mele nohama"
