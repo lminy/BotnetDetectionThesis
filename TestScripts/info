@@ -1,0 +1,75 @@
+Testing 2 types of scripts:
+        ------- Conn4TupleInfo 2 --------------------
+        Number of all 4_tuples: 6957
+        Number of normal 4-tuples: 6908
+        Number of malware 4-tuples: 49
+        All gathered flows: 179365
+
+        ------- Conn4TupleInfo - array of Number of all 4_tuples: 6957
+        Number of all 4_tuples: 6957
+        Number of normal 4-tuples: 6908
+        Number of malware 4-tuples: 49
+        All gathered flows: 179365
+---------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-------------------------
+TODO 2017/08/15
+- check x509 it they have unique uids. We dont need arr there.
+
+
+
+
+-------------------------------------------
+----------- Statistic ---------------------
+-------------------------------------------
+Error: More labels in one 4-tuples
+Watch out baby, same amount of labels
+Normal: 1
+Malware: 1
+Connection 4-tuples:
+Number of all 4_tuples: 54256
+Number of normal 4-tuples: 46383
+Number of malware 4-tuples: 7873
+Flows
+All gathered flows: 1669577
+Normal flows: 46383
+Malware flows: 7873
+----------------------------------------
+
+
+
+----------------------------------
+----- CROSSVALIDATION ------------
+----------------------------------
+[ 0.989173    0.98387468  0.98594794  0.98502649  0.9831836   0.98571429
+  0.98294931  0.9859447   0.98387097  0.98317585]
+0.984886082261
+----------------------------------
+----- FINAL RESULTS --------------
+----------------------------------
+false positive: 40
+true positive: 1488
+false negative: 100
+true negative: 9224
+----------------------------------------------
+library detection: 0.98709915223
+good detect: 10712 0.98709915223
+bad detect: 140 0.01290084777
+All connection: 10852
+
+
+

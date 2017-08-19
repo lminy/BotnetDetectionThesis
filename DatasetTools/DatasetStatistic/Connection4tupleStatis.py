@@ -105,14 +105,29 @@ class Connection4tupleStatis:
     """
     --------- computing methods ---------------
     """
-    def compute_classic_features(self, flow):
+    def compute_classic_features(self, conn_line):
         # Split the goodonesIPs on elements.
-        split = flow.split('	')
+        split = conn_line.split('	')
         try:
-            self.uid_flow_dict[split[1]] += 1
-            print "Error: more same conn uids in compute_ssl_features function !!!!!"
+            if self.uid_flow_dict[split[1]]:
+                print "---------- Error: more same conn uids: ----------------"
+                print "Old conn line:"
+                print self.uid_flow_dict[split[1]]
+                print "New conn line:"
+                print conn_line
+                print ""
+                # old_conn_split = self.uid_flow_dict[split[1]].split('	')
+                # new_conn_split = conn_line.split('	')
+                #
+                # if len(old_conn_split) != len(new_conn_split):
+                #     print "Error: length of 2 same conn lines with same uid is not same !"
+                # for i in range(0, len(old_conn_split)):
+                #     if old_conn_split[i] != new_conn_split[i]:
+                #         print "Conn Error: items in conn lines with same uid are not same !"
+                #         print "     < ssl uid:", split[1]
         except:
-            self.uid_flow_dict[split[1]] = 1
+            self.uid_flow_dict[split[1]] = conn_line
+
         # Add state of connection to dict.
         self.add_state_of_connection(split[11])
         # split[9]-orig_bytes, split[10]-resp_bytes
@@ -703,7 +718,7 @@ class Connection4tupleStatis:
             return "NORMAL"
 
     def is_malware(self):
-        if self.malware_label > self.normal_label:
+        if self.malware_label >= self.normal_label:
             return True
 
     def is_uid_in_dict(self, key):
