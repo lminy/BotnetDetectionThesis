@@ -19,4 +19,6 @@ import numpy as np
 # shelve_dict.close()
 
 
+# karel jede.
+
 arr_numpy = np.array()
