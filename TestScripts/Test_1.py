@@ -1,24 +1,19 @@
-import pandas
-import shelve
-import numpy as np
+import os
 
 
-# result = {0: 1.1181753789488595, 1: 0.5566080288678394, 2: 0.4718269778030734, 3: 0.48716683119447185, 4: 1.0, 5: 0.1395076201641266, 6: 0.20941558441558442}
-# df = pandas.DataFrame(result, index=[0])
-# pandas_dict = pandas.DataFrame(dict(), index=[0])
+def main():
+    # Go through all dataset and label conn logs.
+    dataset_path = '/media/frenky/Fery/Frenky/Skola/StratosphereHTTPSDetector/Dataset/Dataset2/unpack_logs/'
+    dir_n = 0
+    for dir in os.listdir(dataset_path):
+        print "#" + str(dir_n) + " " + dir
+        dir_n += 1
+
+        bro_path = dataset_path + dir + '/bro/'
+        for log in os.listdir(bro_path):
+            if '_label' in log:
+                print "Error: there is still conn_label.log."
 
 
-# shelve_dict = shelve.open('/home/frenky/PycharmProjects/HTTPSDetector/TestScripts/shelve_file')
-#
-# shelve_dict['ahoj'] = 1
-# shelve_dict['ahoj2'] = 2
-# shelve_dict['ahoj3'] = 3
-#
-# print shelve_dict
-#
-# shelve_dict.close()
-
-
-# karel jede.
-
-arr_numpy = np.array()
+if __name__ == '__main__':
+    main()

@@ -29,7 +29,7 @@ def load_x509_file(path_to_dataset):
     return is_proxy
 
 def main():
-    dataset_path = '/media/frenky/Fery/Frenky/Skola/StratosphereHTTPSDetector/Dataset/Dataset_2_malware/'
+    dataset_path = '/media/frenky/Fery/Frenky/Skola/StratosphereHTTPSDetector/Dataset/Dataset_2_malware/no_proxy'
 
     for sub_dir in os.listdir(dataset_path):
         is_proxy = load_x509_file(dataset_path + sub_dir)
