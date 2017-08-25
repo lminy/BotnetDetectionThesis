@@ -9,7 +9,7 @@ def main():
     # Start to count the time.
     t0 = time()
 
-    datasetInforamtion_dict = dict()
+
 
     # Load path to dataset from config file.
     # [0] is path to dataset.
@@ -24,15 +24,16 @@ def main():
         print "--------------------------------------------------------"
         print "-------- #" + str(index) + " " + sub_set
         print "--------------------------------------------------------"
-        dataset_info = extract_features.extraction_manager(path_to_dataset + sub_set + '/bro/')
-        datasetInforamtion_dict[path_to_dataset + sub_set] = dataset_info
+        extract_features.extraction_manager(path_to_dataset + sub_set + '/bro/')
         index += 1
 
+    # Add certificate to connections that does not contain any certificate.
+    extract_features.add_cert_to_non_cert_conn()
 
     # Compute features and save them.
     extract_features.create_dataset()
     extract_features.print_statistic()
-    extract_features.save_dataset_information(datasetInforamtion_dict)
+    extract_features.save_dataset_information()
 
     print "<<< All dataset successfully finished in aproximate time: %f" % ((time() - t0)/60.0) + " min."
 

@@ -1,6 +1,8 @@
 import os
-from Connection4tuple import Connection4tuple
+from ConnectionFeatures import ConnectionFeatures
 from DataetInformation import DatasetInformation
+from CertificateFeatures import CertificateFeatures
+
 
 class ExtractFeatures(object):
 
@@ -10,9 +12,8 @@ class ExtractFeatures(object):
         self.x509_dict = dict()
         self.control_ssl_uids_dict = dict()
 
-        self.conn_dict_arr = []
-        self.conn_dict_index = 0
         self.number_conn_lines = 0
+        self.conn_dict = dict()
 
         self.err_conn_uids = 0
         self.err_more_same_X509 = 0
@@ -21,6 +22,10 @@ class ExtractFeatures(object):
         self.ssl_lines = 0
         self.not_founded_x509_lines = 0
         self.founded_x509_lines = 0
+
+        self.certificate_dict = dict()
+
+        self.dataset_inforamtion_dict = dict()
 
     def extraction_manager(self, dataset_path_to_logs):
         # Loads all conn logs in bro folder.
@@ -38,34 +43,20 @@ class ExtractFeatures(object):
         print "Founded x509 lines:", self.founded_x509_lines
 
         dataset_info = DatasetInformation(self.ssl_lines, self.not_founded_x509_lines, self.err_not_added_x509, self.founded_x509_lines)
+        self.dataset_inforamtion_dict[dataset_path_to_logs] = dataset_info
 
         self.ssl_lines = 0
         self.not_founded_x509_lines = 0
         self.founded_x509_lines = 0
         self.err_not_added_x509 = 0
 
-        print "Deleting..."
-        # for i in range(0, len(self.conn_dict_arr)):
-        #     self.conn_dict_arr[i].clear()
-
-        del self.conn_dict_arr[:]
-        print "Deleting middle..."
-        del self.conn_dict_arr
-        print "Deleting done..."
-
-        return dataset_info
-
     """
     ---------------------- Conn logs. -------------------------
     """
     def conn_logs(self, dataset_path_to_logs):
         print " << Read all conn logs:"
-        self.conn_dict_arr = []
         print "Reading conn logs:"
         self.number_conn_lines = 0
-        conn_dict = dict()
-        self.conn_dict_arr.append(conn_dict)
-        self.conn_dict_index = 0
         all_conn_logs = get_such_logs(dataset_path_to_logs, ['conn', '_label'])
         for conn_log in all_conn_logs:
             self.read_conn_log(dataset_path_to_logs + conn_log)
@@ -84,16 +75,11 @@ class ExtractFeatures(object):
                     if 'Background' in label or 'No_Label' in label:
                         continue
 
-                    self.number_conn_lines += 1
-
-                    if self.number_conn_lines >= 5000000:
-                        print "New dict is created."
-                        new_conn_dict = dict()
-                        self.conn_dict_arr.append(new_conn_dict)
-                        self.conn_dict_index += 1
-                        self.number_conn_lines = 0
-
-                    self.conn_dict_arr[self.conn_dict_index][conn_uid] = line
+                    try:
+                        if self.conn_dict[conn_uid]:
+                            print "Error: more same conn line !"
+                    except:
+                        self.conn_dict[conn_uid] = line
 
             f.close()
         except IOError:
@@ -127,6 +113,7 @@ class ExtractFeatures(object):
                 print "     << Started unix time file was read in:", sub_folder
             f.close()
         except IOError:
+            # It means that this dataset has right time format.
             pass
 
         try:
@@ -144,16 +131,14 @@ class ExtractFeatures(object):
                     new_line = str(time_new)
                     for i in range(1, len(x509_split)):
                         new_line += '	' + x509_split[i]
-
                     x509_uid = x509_split[1]
                     try:
                         if self.x509_dict[x509_uid]:
                             self.err_more_same_X509 += 1
-                            print "Error: [read_x509_log] more uids in x509!!!", x509_uid,\
-                                " and path is: " + dataset_path_to_logs + x509_log
+                            # print "Error: [read_x509_log] more uids in x509!!!", x509_uid,\
+                            #     " and path is: " + dataset_path_to_logs + x509_log
                     except:
                         self.x509_dict[x509_uid] = new_line
-
             f.close()
         except IOError:
             print "Error: The x509 file: " + dataset_path_to_logs + x509_log + " does not exist."
@@ -163,6 +148,7 @@ class ExtractFeatures(object):
     """
     def ssl_logs(self, dataset_path_to_logs):
         print "<< Read all ssl logs::"
+        self.control_ssl_uids_dict = dict()
         all_ssl_logs = get_such_logs(dataset_path_to_logs, ['ssl'])
         for ssl_log in all_ssl_logs:
             self.create_4_tuples(dataset_path_to_logs + ssl_log)
@@ -197,20 +183,11 @@ class ExtractFeatures(object):
                     self.control_ssl_uids_dict[ssl_uid] = ssl_line
 
                 # find flow in conn.log by this ssl uid.
-                is_found = 0
-                for conn_dict in self.conn_dict_arr:
-                    try:
-                        conn_log = conn_dict[ssl_uid]
-                        is_found += 1
-                    except:
-                        pass
-
-                if is_found > 1:
-                    print "Info: There are more conn line with same ID."
-                    self.err_conn_uids += 1
-
-                if is_found == 0:
-                    # Thus conn line is background
+                try:
+                    conn_log = self.conn_dict[ssl_uid]
+                except:
+                    # conn_dict contains only normal or malware conn lines. Here there are read all ssl lines and
+                    # some ssl lines shows to background conn_line that are not contained in conn_dict.
                     continue
 
                 conn_split = conn_log.split('	')
@@ -231,7 +208,7 @@ class ExtractFeatures(object):
                 try:
                     self.connection_4_tuples[connection_index].add_ssl_flow(conn_log, label)
                 except:
-                    self.connection_4_tuples[connection_index] = Connection4tuple(connection_index)
+                    self.connection_4_tuples[connection_index] = ConnectionFeatures(connection_index)
                     self.connection_4_tuples[connection_index].add_ssl_flow(conn_log, label)
 
                 self.ssl_lines += 1
@@ -243,38 +220,10 @@ class ExtractFeatures(object):
 
         ssl_file.close()
 
-        self.control_ssl_uids_dict = dict()
-
-    '''
-     Just checking function, that each x509uid from ssl log is found in x509 file.
-     '''
-    def split_ssl(self, ssl_line, tuple_index, label):
-        split = ssl_line.split('	')
-        if '-' == split[14] or '(object)' == split[14]:
-            self.err_not_added_x509 += 1
-            return []
-        # self.put_server_name_to_dict(split[1], split[9], tuple_index, split[14], label)
-        return [self.get_x509_lines(split[14].split(','))]
-
-    '''
-    This function returns x509 line which ssl log has inside his line as list of uid.
-    '''
-    def get_x509_lines(self, x509_uids_list):
-        x509_line = None
-        uid_x509 = x509_uids_list[0]
-        try:
-            if self.x509_dict[uid_x509]:
-                # x509_dict is array. So [0] is the reason.
-                x509_line = self.x509_dict[uid_x509]
-                self.founded_x509_lines += 1
-        except:
-            self.not_founded_x509_lines += 1
-            # print "Error: [get_x509_lines] In ProcessLogs.py x509 does not have this x509uid:", x509_uids_list[0]
-        return x509_line
-
     '''
     Methods for adding not ssl flow from conn.log to connection-4tuple
     '''
+
     def conn_logs_2(self, dataset_path_to_logs):
         print " << Read all conn logs again:"
         all_conn_logs = get_such_logs(dataset_path_to_logs, ['conn', '_label'])
@@ -309,8 +258,61 @@ class ExtractFeatures(object):
                             self.connection_4_tuples[connection_index].add_not_ssl_flow(line, label)
                 except:
                     # Connections which are normal or botnet but they don't have ssl 4-tuple object.
-                    continue
+                    pass
         f.close()
+
+    """
+    ------------------------------------------------
+    --------------- Methods ------------------------
+    ------------------------------------------------
+    """
+
+    '''
+    Just checking function, that each x509uid from ssl log is found in x509 file.
+    '''
+    def split_ssl(self, ssl_line, tuple_index, label):
+        split = ssl_line.split('	')
+        if '-' == split[14] or '(object)' == split[14]:
+            self.err_not_added_x509 += 1
+            return []
+        self.put_server_name_to_dict(split[1], split[9], tuple_index, split[14], label)
+        return self.get_x509_lines(split[14].split(','))
+
+    '''
+    This function returns x509 line which ssl log has inside his line as list of uid.
+    '''
+    def get_x509_lines(self, x509_uids_list):
+        x509_line = None
+        uid_x509 = x509_uids_list[0]
+        try:
+            if self.x509_dict[uid_x509]:
+                x509_line = self.x509_dict[uid_x509]
+                self.founded_x509_lines += 1
+        except:
+            self.not_founded_x509_lines += 1
+            return []
+            # print "Error: [get_x509_lines] In ProcessLogs.py x509 does not have this x509uid:", x509_uids_list[0]
+        return [x509_line]
+
+    # certificate dict
+    def put_server_name_to_dict(self, ssl_uid, server_name, tuple_index, x509_uids_list, label):
+        splited_x509_uids = x509_uids_list.split(',')
+        uid_x509 = splited_x509_uids[0]
+        try:
+            if self.x509_dict[uid_x509]:
+                x509_line = self.x509_dict[uid_x509]
+                x509_split = x509_line.split('	')
+                cert_serial = x509_split[3]
+                try:
+                    if self.certificate_dict[cert_serial]:
+                        self.certificate_dict[cert_serial].add_server_name(server_name, label)
+                        self.certificate_dict[cert_serial].add_x509_line(x509_line)
+                except:
+                    self.certificate_dict[cert_serial] = CertificateFeatures(cert_serial, x509_line)
+                    self.certificate_dict[cert_serial].add_server_name(server_name, label)
+                    self.certificate_dict[cert_serial].add_x509_line(x509_line)
+        except:
+            print "Error: [put_server_name] In ProcessLogs.py x509 does not have this x509uid:", uid_x509
 
 
 def get_such_logs(path_to_logs, part_name_list):

@@ -1,3 +1,5 @@
+from datetime import datetime
+import pytz
 from ExtractFeatures import ExtractFeatures
 
 
@@ -5,6 +7,30 @@ class ComputeFeatures(ExtractFeatures):
 
     def __init__(self):
         super(ComputeFeatures, self).__init__()
+        self.file_time_name = str(datetime.strftime(datetime.now(pytz.utc), "%Y-%m-%d_%H-%M"))
+
+    def add_cert_to_non_cert_conn(self):
+        for key in self.connection_4_tuples.keys():
+
+            """
+            implementig feature: connection which have no certificate, but have at least one SNI,
+            look, if in certificate_objects_dict is such servername with certificate
+            """
+            break_v = 0
+            if self.connection_4_tuples[key].get_amount_diff_certificates() == 0:
+
+                server_names = self.connection_4_tuples[key].get_SNI_list()
+                if len(server_names) != 0:
+                    for cert_serial in self.certificate_dict.keys():
+                        for server_name in server_names:
+                            x509_line = self.certificate_dict[cert_serial].contain_server_name(server_name)
+                            if x509_line != 0:
+                                self.connection_4_tuples[key].add_ssl_log_2(x509_line)
+                                print "This Certificate was added after process:", "cert_serial:", cert_serial, "server_name=",server_name, "4-tuple=", key, "label:", self.connection_4_tuples[key].get_label_of_connection()
+                                break_v = 1
+                                break
+                        if break_v == 1:
+                            break
 
     def create_dataset(self):
         print "----------------------------------------"
@@ -13,7 +39,8 @@ class ComputeFeatures(ExtractFeatures):
         all_flows = 0
         space = '	'
         # with open("ExtractedData\\" + "conn_result.txt", 'w') as f:
-        with open("/home/frenky/PycharmProjects/HTTPSDetector/FeatureExtraction/ExtractedData/" + "conn_result_2017_08_16_1.txt", 'w') as f:
+        with open("/home/frenky/PycharmProjects/HTTPSDetector/FeatureExtraction/ExtractedData/" +
+                          "conn_result_" + self.file_time_name +".txt", 'w') as f:
             for key in self.connection_4_tuples.keys():
                 f.write(str(key) + space +
                         str(self.connection_4_tuples[key].get_number_of_flows()) + space +
@@ -52,20 +79,18 @@ class ComputeFeatures(ExtractFeatures):
 
         f.close()
 
-
-    def save_dataset_information(self, dataset_info_dict):
+    def save_dataset_information(self):
         print "----------------------------------------"
         print "Saving data ..."
         space = '	'
         # with open("ExtractedData\\" + "conn_result.txt", 'w') as f:
-        with open("/home/frenky/PycharmProjects/HTTPSDetector/FeatureExtraction/ExtractedData/" + "dataset_info_2017_08_16.txt", 'w') as f:
-            for key in dataset_info_dict.keys():
+        with open("/home/frenky/PycharmProjects/HTTPSDetector/FeatureExtraction/ExtractedData/" + "dataset_info_" + self.file_time_name+".txt", 'w') as f:
+            for key in self.dataset_inforamtion_dict.keys():
                 f.write(str(key) + space +
-                        str(dataset_info_dict[key].ssl_lines) + space +
-                        str(dataset_info_dict[key].not_founded_x509_lines) + space +
-                        str(dataset_info_dict[key].founded_x509_lines) + space +
-                        str(dataset_info_dict[key].err_not_added_x509) +
-
+                        str(self.dataset_inforamtion_dict[key].ssl_lines) + space +
+                        str(self.dataset_inforamtion_dict[key].not_founded_x509_lines) + space +
+                        str(self.dataset_inforamtion_dict[key].founded_x509_lines) + space +
+                        str(self.dataset_inforamtion_dict[key].err_not_added_x509) +
                         "\n")
         f.close()
 

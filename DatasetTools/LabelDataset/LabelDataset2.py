@@ -6,7 +6,7 @@ import os
 
 def load_ips():
     ips_list = []
-    with open('./NormalIPs.txt') as f:
+    with open('./NormalIPs') as f:
         for line in f:
             if line[0] == '#':
                 continue
@@ -86,7 +86,7 @@ def main():
     normal_ips_list = load_ips()
 
     # Go through all dataset and label conn logs.
-    dataset_path = '/media/frenky/Fery/Frenky/Skola/StratosphereHTTPSDetector/Dataset/Dataset2/unpack_logs/'
+    dataset_path = '/media/frenky/Fery/Frenky/Skola/StratosphereHTTPSDetector/Dataset/Dataset_2_normal/unpack_logs/'
     dir_n = 0
     for dir in os.listdir(dataset_path):
         print "#" + str(dir_n) + " " + dir
@@ -97,7 +97,7 @@ def main():
         for conn_file in conn_list:
             conn_contain = label_conn(bro_path + conn_file, normal_ips_list, malware_ips_list=[])
 
-            new_conn_name = bro_path + conn_file.replace('.log','') + '_label.log'
+            new_conn_name = bro_path + conn_file.replace('.log', '') + '_label.log'
             write_conn(new_conn_name, conn_contain)
 
 

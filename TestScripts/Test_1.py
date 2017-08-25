@@ -1,9 +1,13 @@
 import os
-
+import time
+from datetime import datetime
+import pytz
+import numpy as np
+from sklearn.utils import shuffle
 
 def main():
     # Go through all dataset and label conn logs.
-    dataset_path = '/media/frenky/Fery/Frenky/Skola/StratosphereHTTPSDetector/Dataset/Dataset2/unpack_logs/'
+    dataset_path = '/media/frenky/Fery/Frenky/Skola/StratosphereHTTPSDetector/Dataset/Dataset_2_normal/unpack_logs/'
     dir_n = 0
     for dir in os.listdir(dataset_path):
         print "#" + str(dir_n) + " " + dir
@@ -16,4 +20,15 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+
+    # arr = np.arange(1000)
+    # print arr
+    # np.random.shuffle(arr)
+    # print arr
+
+    X = [1,2,3,4,5]
+    y = ['auto', 'kun', 'lopata', 'vidle', 'lovec']
+
+    X, y = shuffle(X, y, random_state=43)
+    print X
+    print y

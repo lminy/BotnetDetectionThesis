@@ -2,10 +2,37 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="863a3f3e-9b5f-4fb9-ad81-8bd6e5b5a9b0" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DatasetTools/LabelDataset/LabelDatasetByOne.py" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/DatasetTools/LabelDataset/NormalIPs.txt" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DatasetTools/DatasetStatistic/AnalyzeX509Validity.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FeatureExtraction/BroExtraction/CertificateFeatures.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FeatureExtraction/BroExtraction/ConnectionFeatures.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/MachineLearning/Algorithms/NeuralNetwork.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/MachineLearning/PrepareData/2017_08_25/dataset_info_2017-08-25_09-26.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/MachineLearning/PrepareData/AnalyzeConnResult.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/MachineLearning/PrepareData/DivideDataTogether.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/MachineLearning/data_model/AnalyzeDataModel.py" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DatasetTools/DatasetStatistic/Conn4TupleInfo_2.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/FeatureExtraction/ExtractedData/conn_result.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/FeatureExtraction/ExtractedData/dataset_info_2017_08_16.txt" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/FeatureExtraction/ExtractedData/conn_result_2017_08_16_1.txt" afterPath="$PROJECT_DIR$/MachineLearning/PrepareData/2017_08_25/conn_result_2017-08-25_09-26.txt" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/MachineLearning/PrepareData/conn_result.txt" afterPath="$PROJECT_DIR$/MachineLearning/PrepareData/2017_08_16/conn_result.txt" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/MachineLearning/PrepareData/conn_result_2017_08_16_1.txt" afterPath="$PROJECT_DIR$/MachineLearning/PrepareData/2017_08_16/conn_result_2017_08_16_1.txt" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/MachineLearning/data_model/X_test.txt" afterPath="$PROJECT_DIR$/MachineLearning/data_model/2017_08_16/X_test.txt" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/MachineLearning/data_model/X_train.txt" afterPath="$PROJECT_DIR$/MachineLearning/data_model/2017_08_16/X_train.txt" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/MachineLearning/data_model/y_test.txt" afterPath="$PROJECT_DIR$/MachineLearning/data_model/2017_08_16/y_test.txt" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/MachineLearning/data_model/y_train.txt" afterPath="$PROJECT_DIR$/MachineLearning/data_model/2017_08_16/y_train.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DatasetTools/ToolScripts/CheckProxy.py" afterPath="$PROJECT_DIR$/DatasetTools/ToolScripts/CheckProxy.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DatasetTools/DatasetStatistic/AnalyzeX509.py" afterPath="$PROJECT_DIR$/DatasetTools/DatasetStatistic/AnalyzeX509.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DatasetTools/DatasetStatistic/Conn4TupleInfo.py" afterPath="$PROJECT_DIR$/DatasetTools/DatasetStatistic/Conn4TupleInfo.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DatasetTools/LabelDataset/LabelDataset2.py" afterPath="$PROJECT_DIR$/DatasetTools/LabelDataset/LabelDataset2.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FeatureExtraction/BroExtraction/ComputeFeatures.py" afterPath="$PROJECT_DIR$/FeatureExtraction/BroExtraction/ComputeFeatures.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FeatureExtraction/BroExtraction/Connection4tuple.py" afterPath="$PROJECT_DIR$/FeatureExtraction/BroExtraction/Connection4tuple.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FeatureExtraction/BroExtraction/ExtractFeatures.py" afterPath="$PROJECT_DIR$/FeatureExtraction/BroExtraction/ExtractFeatures.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FeatureExtraction/BroExtraction/MainBro.py" afterPath="$PROJECT_DIR$/FeatureExtraction/BroExtraction/MainBro.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FeatureExtraction/BroExtraction/_config.cfg" afterPath="$PROJECT_DIR$/FeatureExtraction/BroExtraction/_config.cfg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MachineLearning/Algorithms/RandomForest.py" afterPath="$PROJECT_DIR$/MachineLearning/Algorithms/RandomForest.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MachineLearning/Algorithms/SVM.py" afterPath="$PROJECT_DIR$/MachineLearning/Algorithms/SVM.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MachineLearning/Algorithms/XGBoost.py" afterPath="$PROJECT_DIR$/MachineLearning/Algorithms/XGBoost.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MachineLearning/PrepareData/DivideData.py" afterPath="$PROJECT_DIR$/MachineLearning/PrepareData/DivideData.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TestScripts/Test_1.py" afterPath="$PROJECT_DIR$/TestScripts/Test_1.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -17,92 +44,68 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Conn4TupleInfo.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/DatasetTools/DatasetStatistic/Conn4TupleInfo.py">
+      <file leaf-file-name="DivideData.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/MachineLearning/PrepareData/DivideData.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4122">
-              <caret line="230" column="59" lean-forward="false" selection-start-line="230" selection-start-column="59" selection-end-line="230" selection-end-column="59" />
+            <state relative-caret-position="378">
+              <caret line="21" column="17" lean-forward="false" selection-start-line="21" selection-start-column="4" selection-end-line="21" selection-end-column="17" />
+              <folding>
+                <element signature="e#218#270#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="NeuralNetwork.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/MachineLearning/Algorithms/NeuralNetwork.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="477">
+              <caret line="28" column="3" lean-forward="true" selection-start-line="28" selection-start-column="3" selection-end-line="28" selection-end-column="3" />
+              <folding>
+                <element signature="e#1#19#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AnalyzeConnResult.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/MachineLearning/PrepareData/AnalyzeConnResult.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="646">
+              <caret line="64" column="30" lean-forward="true" selection-start-line="64" selection-start-column="30" selection-end-line="64" selection-end-column="30" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DeleteFile.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/DatasetTools/ToolScripts/DeleteFile.py">
+      <file leaf-file-name="RandomForest.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/MachineLearning/Algorithms/RandomForest.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="486">
-              <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+            <state relative-caret-position="288">
+              <caret line="18" column="96" lean-forward="true" selection-start-line="18" selection-start-column="96" selection-end-line="18" selection-end-column="96" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AnalyzeX509.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/DatasetTools/DatasetStatistic/AnalyzeX509.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5742">
-              <caret line="321" column="0" lean-forward="false" selection-start-line="321" selection-start-column="0" selection-end-line="321" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CheckProxy.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/DatasetTools/ToolScripts/CheckProxy.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="558">
-              <caret line="31" column="112" lean-forward="false" selection-start-line="31" selection-start-column="112" selection-end-line="31" selection-end-column="112" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LabelDataset2.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/DatasetTools/LabelDataset/LabelDataset2.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="369">
-              <caret line="83" column="0" lean-forward="true" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LabelDatasetByOne.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/DatasetTools/LabelDataset/LabelDatasetByOne.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="621">
-              <caret line="93" column="108" lean-forward="false" selection-start-line="93" selection-start-column="108" selection-end-line="93" selection-end-column="108" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MalwareIPs" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/DatasetTools/LabelDataset/MalwareIPs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="36">
-              <caret line="2" column="0" lean-forward="true" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Test_1.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/TestScripts/Test_1.py">
+      <file leaf-file-name="DetectionMethods.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/MachineLearning/Algorithms/DetectionMethods.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="324">
-              <caret line="18" column="10" lean-forward="true" selection-start-line="18" selection-start-column="10" selection-end-line="18" selection-end-column="10" />
+              <caret line="22" column="7" lean-forward="false" selection-start-line="22" selection-start-column="7" selection-end-line="22" selection-end-column="7" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ExtractFeatures.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/FeatureExtraction/BroExtraction/ExtractFeatures.py">
+      <file leaf-file-name="Test_1.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/TestScripts/Test_1.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1422">
-              <caret line="81" column="47" lean-forward="false" selection-start-line="81" selection-start-column="47" selection-end-line="81" selection-end-column="47" />
-              <folding />
+            <state relative-caret-position="162">
+              <caret line="9" column="116" lean-forward="true" selection-start-line="9" selection-start-column="116" selection-end-line="9" selection-end-column="116" />
+              <folding>
+                <element signature="e#0#9#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -118,36 +121,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>print</find>
-      <find>conn</find>
-      <find>#</find>
-      <find>Error</find>
-      <find>Error: more same conn uids in compu</find>
-      <find>Error: more same conn uids in compute_ssl_features functi</find>
-      <find>conn_dict</find>
-      <find>conn_dict_arr</find>
-      <find>n_line</find>
-      <find>There is no conn line with ssl ID.</find>
-      <find>unhit</find>
-      <find>elf.read_conn_log(dataset_path_to_logs + x5</find>
-      <find>elf.is_CN_in_SAN(valid_x509_l</find>
-      <find>lf.is_CN_in_SAN(valid_x5</find>
-      <find>compute_x509_features</find>
-      <find>lf.connection_4_tuples[connection_index].add</find>
-      <find>lf.is_CN_in_SAN(valid_x509_line</find>
-      <find>r: [get_x509_lines] In ProcessLogs.py x509 does not have this x509u</find>
-      <find>turn tls / float(total</find>
-      <find>x509 is empty</find>
-      <find>return tls / float(total)</find>
-      <find>r: [get_x509_lines] In ProcessLogs.py x509 does not have this x50</find>
-      <find>urn len(self.x509_list) / float(len(self.s</find>
-      <find>ssl_logs_list</find>
-      <find>x509_dict</find>
       <find>MAlw</find>
       <find>err_not_added_x509</find>
       <find>or i in range(0, len(data[0]</find>
       <find>conn_tuple.conn_tuple</find>
       <find>save_file2</find>
+      <find>flow_which_has_duration_number</find>
+      <find>conn_dict</find>
+      <find>conn_dict_arr</find>
+      <find>more uids</find>
+      <find>add_ssl_log_2</find>
+      <find>uid_flow_dict</find>
+      <find>certificate_key_length_dict</find>
+      <find>version_</find>
+      <find>version_of_ssl_dict</find>
+      <find>certificate_valid_length</find>
+      <find>not_valid_ce</find>
+      <find>cert_percent_validity</find>
+      <find>certificate_path</find>
+      <find>ssl_with_SNI</find>
+      <find>self_signed_cert</find>
+      <find>is_SNI_in_san_dns</find>
+      <find>SNI_equal_DstIP</find>
+      <find>is_CN_in_SAN_list</find>
+      <find>get_SNI_list</find>
+      <find>SNI_list</find>
+      <find>get_amount_diff_certificates</find>
+      <find>certificate_serial_dict</find>
+      <find>Connection4tuple</find>
+      <find>number_san_domains</find>
+      <find>not_valid_certificate_number</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -157,16 +160,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Datasets/LabelDataset/NormalIPs" />
-        <option value="$PROJECT_DIR$/Datasets/DatasetStatistic/__init__.py" />
-        <option value="$PROJECT_DIR$/Datasets/__init__.py" />
-        <option value="$PROJECT_DIR$/Datasets/DatasetStatistic/output.txt" />
-        <option value="$PROJECT_DIR$/Datasets/DatasetStatistic/Conn4TupleInfo.py" />
-        <option value="$PROJECT_DIR$/Datasets/DatasetStatistic/Connection4tuple.py" />
-        <option value="$PROJECT_DIR$/Datasets/DatasetStatistic/Connection4tupleStatis.py" />
-        <option value="$PROJECT_DIR$/Datasets/LabelDataset/LabelReadme" />
-        <option value="$PROJECT_DIR$/Datasets/ToolScripts/UnpackDataset2.py" />
-        <option value="$PROJECT_DIR$/Datasets/ToolScripts/MoveLogsToBro.py" />
         <option value="$PROJECT_DIR$/Datasets/LabelDataset/LabelDataset2.py" />
         <option value="$PROJECT_DIR$/FeatureExtraction/Main.py" />
         <option value="$PROJECT_DIR$/FeatureExtraction/BroExtraction/configure.cfg" />
@@ -182,40 +175,50 @@
         <option value="$PROJECT_DIR$/FeatureExtraction/BroExtraction/ConfigureManager.py" />
         <option value="$PROJECT_DIR$/FeatureExtraction/BroExtraction/Extraction.py" />
         <option value="$PROJECT_DIR$/DatasetTools/DatasetStatistic/Connection4tupleStatis.py" />
-        <option value="$PROJECT_DIR$/FeatureExtraction/BroExtraction/Connection4tuple.py" />
         <option value="$PROJECT_DIR$/FeatureExtraction/ExtractedData/conn_result.txt" />
         <option value="$PROJECT_DIR$/MachineLearning/Algorithms/Get_normalize_data.py" />
         <option value="$PROJECT_DIR$/MachineLearning/Algorithms/DetectionMethods.py" />
-        <option value="$PROJECT_DIR$/MachineLearning/Algorithms/RandomForest.py" />
-        <option value="$PROJECT_DIR$/MachineLearning/Algorithms/SVM.py" />
         <option value="$PROJECT_DIR$/FeatureExtraction/BroExtraction/DataetInformation.py" />
-        <option value="$PROJECT_DIR$/FeatureExtraction/BroExtraction/MainBro.py" />
-        <option value="$PROJECT_DIR$/FeatureExtraction/BroExtraction/ExtractFeatures.py" />
-        <option value="$PROJECT_DIR$/MachineLearning/PrepareData/DivideData.py" />
         <option value="$PROJECT_DIR$/TestScripts/info" />
-        <option value="$PROJECT_DIR$/MachineLearning/Algorithms/XGBoost.py" />
         <option value="$PROJECT_DIR$/DatasetTools/DatasetStatistic/Conn4TupleInfo_pandas.py" />
         <option value="$PROJECT_DIR$/DatasetTools/DatasetStatistic/Conn4TupleInfo_numpy.py" />
-        <option value="$PROJECT_DIR$/FeatureExtraction/BroExtraction/_config.cfg" />
-        <option value="$PROJECT_DIR$/FeatureExtraction/BroExtraction/ComputeFeatures.py" />
         <option value="$PROJECT_DIR$/DatasetTools/DownloadDataset/DownloadDataset.py" />
         <option value="$PROJECT_DIR$/DatasetTools/DatasetStatistic/Conn4TupleInfo_2.py" />
         <option value="$PROJECT_DIR$/DatasetTools/LabelDataset/GetAllSrcIP.py" />
-        <option value="$PROJECT_DIR$/DatasetTools/DatasetStatistic/Conn4TupleInfo.py" />
         <option value="$PROJECT_DIR$/DatasetTools/ToolScripts/DeleteFile.py" />
-        <option value="$PROJECT_DIR$/DatasetTools/DatasetStatistic/AnalyzeX509.py" />
         <option value="$PROJECT_DIR$/DatasetTools/ToolScripts/CheckProxy.py" />
         <option value="$PROJECT_DIR$/DatasetTools/LabelDataset/MalwareIPs" />
         <option value="$PROJECT_DIR$/DatasetTools/LabelDataset/LabelDatasetByOne.py" />
+        <option value="$PROJECT_DIR$/DatasetTools/LabelDataset/NormalIPs" />
+        <option value="$PROJECT_DIR$/DatasetTools/LabelDataset/LabelDataset2.py" />
+        <option value="$PROJECT_DIR$/DatasetTools/DatasetStatistic/AnalyzeX509Validity.py" />
+        <option value="$PROJECT_DIR$/DatasetTools/DatasetStatistic/AnalyzeX509.py" />
+        <option value="$PROJECT_DIR$/DatasetTools/DatasetStatistic/Conn4TupleInfo.py" />
+        <option value="$PROJECT_DIR$/FeatureExtraction/BroExtraction/Connection4tuple.py" />
+        <option value="$PROJECT_DIR$/FeatureExtraction/BroExtraction/CertificateFeatures.py" />
+        <option value="$PROJECT_DIR$/FeatureExtraction/BroExtraction/MainBro.py" />
+        <option value="$PROJECT_DIR$/FeatureExtraction/BroExtraction/ComputeFeatures.py" />
+        <option value="$PROJECT_DIR$/FeatureExtraction/BroExtraction/_config.cfg" />
+        <option value="$PROJECT_DIR$/FeatureExtraction/BroExtraction/ExtractFeatures.py" />
+        <option value="$PROJECT_DIR$/FeatureExtraction/BroExtraction/ConnectionFeatures.py" />
+        <option value="$PROJECT_DIR$/MachineLearning/PrepareData/AnalyzeConnResult.py" />
+        <option value="$PROJECT_DIR$/MachineLearning/PrepareData/DivideDataTogether.py" />
+        <option value="$PROJECT_DIR$/MachineLearning/data_model/AnalyzeDataModel.py" />
+        <option value="$PROJECT_DIR$/MachineLearning/Algorithms/XGBoost.py" />
         <option value="$PROJECT_DIR$/TestScripts/Test_1.py" />
+        <option value="$PROJECT_DIR$/MachineLearning/Algorithms/SVM.py" />
+        <option value="$PROJECT_DIR$/MachineLearning/Algorithms/RandomForest.py" />
+        <option value="$PROJECT_DIR$/MachineLearning/PrepareData/DivideData.py" />
+        <option value="$PROJECT_DIR$/MachineLearning/Algorithms/NN.py" />
+        <option value="$PROJECT_DIR$/MachineLearning/Algorithms/NeuralNetwork.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="292" />
-    <option name="y" value="-4" />
-    <option name="width" value="1398" />
-    <option name="height" value="1020" />
+    <option name="x" value="65" />
+    <option name="y" value="80" />
+    <option name="width" value="1394" />
+    <option name="height" value="1004" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -234,7 +237,28 @@
     </navigator>
     <panes>
       <pane id="Scratches" />
-      <pane id="Scope" />
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <expand>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="HTTPSDetector" type="cbb8eebc:String" user="HTTPSDetector" />
+            </path>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="HTTPSDetector" type="cbb8eebc:String" user="HTTPSDetector" />
+              <item name="DatasetTools" type="cbb8eebc:String" user="DatasetTools" />
+            </path>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="HTTPSDetector" type="cbb8eebc:String" user="HTTPSDetector" />
+              <item name="DatasetTools" type="cbb8eebc:String" user="DatasetTools" />
+              <item name="DatasetStatistic" type="cbb8eebc:String" user="DatasetStatistic" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -245,13 +269,24 @@
             <path>
               <item name="HTTPSDetector" type="b2602c69:ProjectViewProjectNode" />
               <item name="HTTPSDetector" type="462c0819:PsiDirectoryNode" />
-              <item name="DatasetTools" type="462c0819:PsiDirectoryNode" />
+              <item name="FeatureExtraction" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="HTTPSDetector" type="b2602c69:ProjectViewProjectNode" />
               <item name="HTTPSDetector" type="462c0819:PsiDirectoryNode" />
-              <item name="DatasetTools" type="462c0819:PsiDirectoryNode" />
-              <item name="LabelDataset" type="462c0819:PsiDirectoryNode" />
+              <item name="FeatureExtraction" type="462c0819:PsiDirectoryNode" />
+              <item name="BroExtraction" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HTTPSDetector" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HTTPSDetector" type="462c0819:PsiDirectoryNode" />
+              <item name="MachineLearning" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HTTPSDetector" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HTTPSDetector" type="462c0819:PsiDirectoryNode" />
+              <item name="MachineLearning" type="462c0819:PsiDirectoryNode" />
+              <item name="PrepareData" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="HTTPSDetector" type="b2602c69:ProjectViewProjectNode" />
@@ -269,18 +304,19 @@
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/FeatureExtraction/BroExtraction" />
-      <recent name="$PROJECT_DIR$/FeatureExtraction/_Configuration" />
-      <recent name="$PROJECT_DIR$/Datasets/ToolScripts" />
-      <recent name="$PROJECT_DIR$/Datasets/LabelDataset" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/MachineLearning/PrepareData/2017_08_25" />
       <recent name="$PROJECT_DIR$/DatasetTools/DatasetStatistic" />
       <recent name="$PROJECT_DIR$/MachineLearning/PrepareData" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/FeatureExtraction" />
-      <recent name="$PROJECT_DIR$/FeatureExtraction/SuricataExtraction" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/MachineLearning/data_model/2017_08_16" />
+      <recent name="$PROJECT_DIR$/MachineLearning/PrepareData/2017_08_16" />
+      <recent name="$PROJECT_DIR$/FeatureExtraction/BroExtraction" />
+      <recent name="$PROJECT_DIR$/FeatureExtraction/_Configuration" />
+      <recent name="$PROJECT_DIR$/Datasets/ToolScripts" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -368,7 +404,14 @@
       <option name="project" value="LOCAL" />
       <updated>1503224409015</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Second test commit.">
+      <created>1503477825419</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1503477825419</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TodoView">
@@ -381,16 +424,16 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="292" y="-4" width="1617" height="1062" extended-state="6" />
+    <frame x="65" y="80" width="1617" height="1062" extended-state="6" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21223709" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15360102" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972974" sideWeight="0.49806523" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972974" sideWeight="0.5111536" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32864866" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972974" sideWeight="0.4888464" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32984293" sideWeight="0.49806523" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32984293" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972974" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24984066" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32984293" sideWeight="0.49806523" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -437,114 +480,18 @@
     <MESSAGE value="Labeling and extracting." />
     <MESSAGE value="Labeling and extracting 2." />
     <MESSAGE value="Test commit." />
-    <option name="LAST_COMMIT_MESSAGE" value="Test commit." />
+    <MESSAGE value="Second test commit." />
+    <option name="LAST_COMMIT_MESSAGE" value="Second test commit." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="6" />
+      <option name="time" value="7" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/FeatureExtraction/SuricataExtraction/__init__.py" />
-    <entry file="file://$PROJECT_DIR$/FeatureExtraction/BroExtraction/Main.py" />
-    <entry file="file://$PROJECT_DIR$/FeatureExtraction/_Configuration/__init__.py" />
-    <entry file="file://$PROJECT_DIR$/FeatureExtraction/BroExtraction/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FeatureExtraction/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FeatureExtraction/Temp.py" />
-    <entry file="file://$PROJECT_DIR$/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FeatureExtraction/_Configuration/ConfigureManager.py" />
-    <entry file="file://$PROJECT_DIR$/FeatureExtraction/BroExtraction/_ConfigureManager.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="6" column="28" lean-forward="false" selection-start-line="6" selection-start-column="28" selection-end-line="6" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DatasetTools/LabelDataset/LabelReadme">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="5" column="75" lean-forward="true" selection-start-line="5" selection-start-column="75" selection-end-line="5" selection-end-column="75" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DatasetTools/DatasetStatistic/Connection4tupleStatis.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="19" column="29" lean-forward="true" selection-start-line="19" selection-start-column="29" selection-end-line="19" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FeatureExtraction/ExtractedData/conn_result.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="298">
-          <caret line="1951" column="272" lean-forward="false" selection-start-line="1951" selection-start-column="268" selection-end-line="1951" selection-end-column="272" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MachineLearning/PrepareData/conn_result.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MachineLearning/data_model/X_test.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MachineLearning/data_model/X_train.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MachineLearning/Algorithms/Get_normalize_data.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="867">
-          <caret line="184" column="13" lean-forward="false" selection-start-line="184" selection-start-column="13" selection-end-line="184" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MachineLearning/Algorithms/RandomForest.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="85" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FeatureExtraction/ExtractedData/dataset_info_2017_08_16.txt" />
-    <entry file="file://$PROJECT_DIR$/FeatureExtraction/ExtractedData/conn_result_2017_08_16_1.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-772935">
-          <caret line="33174" column="0" lean-forward="false" selection-start-line="33174" selection-start-column="0" selection-end-line="33174" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/MachineLearning/PrepareData/dataset_info_2017_08_16.txt" />
-    <entry file="file://$PROJECT_DIR$/MachineLearning/PrepareData/conn_result_2017_08_16_1.txt">
+    <entry file="file://$PROJECT_DIR$/MachineLearning/PrepareData/2017_08_16/conn_result_2017_08_16_1.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -558,14 +505,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MachineLearning/data_model/y_test.txt">
+    <entry file="file://$PROJECT_DIR$/MachineLearning/data_model/2017_08_16/y_test.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-102566">
           <caret line="5110" column="1" lean-forward="true" selection-start-line="5110" selection-start-column="1" selection-end-line="5110" selection-end-column="1" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MachineLearning/data_model/y_train.txt">
+    <entry file="file://$PROJECT_DIR$/MachineLearning/data_model/2017_08_16/y_train.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-780482">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -593,69 +540,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/FeatureExtraction/BroExtraction/MainBro.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="684">
-          <caret line="42" column="0" lean-forward="false" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FeatureExtraction/BroExtraction/Connection4tuple.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="398" column="4" lean-forward="false" selection-start-line="398" selection-start-column="4" selection-end-line="398" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MachineLearning/Algorithms/XGBoost.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="9" column="18" lean-forward="false" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/anaconda2/lib/python2.7/site-packages/sklearn/model_selection/_split.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-619">
-          <caret line="1598" column="4" lean-forward="false" selection-start-line="1598" selection-start-column="4" selection-end-line="1598" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FeatureExtraction/BroExtraction/ComputeFeatures.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="549">
-          <caret line="97" column="69" lean-forward="false" selection-start-line="97" selection-start-column="69" selection-end-line="97" selection-end-column="69" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FeatureExtraction/BroExtraction/_config.cfg">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="1" column="72" lean-forward="false" selection-start-line="1" selection-start-column="72" selection-end-line="1" selection-end-column="72" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MachineLearning/Algorithms/DetectionMethods.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="19" column="18" lean-forward="false" selection-start-line="19" selection-start-column="18" selection-end-line="19" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MachineLearning/Algorithms/SVM.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MachineLearning/PrepareData/DivideData.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-360">
-          <caret line="19" column="13" lean-forward="false" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/TestScripts/info">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
@@ -677,13 +561,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DatasetTools/DatasetStatistic/Conn4TupleInfo_2.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="51" column="16" lean-forward="false" selection-start-line="51" selection-start-column="16" selection-end-line="57" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/DatasetTools/LabelDataset/GetAllSrcIP.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="657">
@@ -691,82 +568,293 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/FeatureExtraction/BroExtraction/ExtractFeatures.py">
+    <entry file="file://$PROJECT_DIR$/DatasetTools/LabelDataset/NormalIPs.txt" />
+    <entry file="file://$PROJECT_DIR$/DatasetTools/LabelDataset/dfgdfg" />
+    <entry file="file://$PROJECT_DIR$/DatasetTools/LabelDataset/MalwareIPs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1422">
-          <caret line="81" column="47" lean-forward="false" selection-start-line="81" selection-start-column="47" selection-end-line="81" selection-end-column="47" />
+        <state relative-caret-position="36">
+          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DatasetTools/LabelDataset/LabelDatasetByOne.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="333">
+          <caret line="78" column="51" lean-forward="true" selection-start-line="78" selection-start-column="51" selection-end-line="78" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DatasetTools/LabelDataset/NormalIPs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="20" column="13" lean-forward="true" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DatasetTools/ToolScripts/DeleteFile.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="576">
+          <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DatasetTools/ToolScripts/CheckProxy.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="630">
+          <caret line="31" column="112" lean-forward="false" selection-start-line="31" selection-start-column="112" selection-end-line="31" selection-end-column="112" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DatasetTools/LabelDataset/LabelDataset2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="387">
+          <caret line="83" column="11" lean-forward="true" selection-start-line="83" selection-start-column="11" selection-end-line="83" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DatasetTools/DatasetStatistic/Conn4TupleInfo_2.py" />
+    <entry file="file://$PROJECT_DIR$/DatasetTools/DatasetStatistic/AnalyzeX509Validity.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="522">
+          <caret line="91" column="24" lean-forward="true" selection-start-line="91" selection-start-column="24" selection-end-line="91" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DatasetTools/DatasetStatistic/Connection4tupleStatis.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="35" column="33" lean-forward="false" selection-start-line="35" selection-start-column="33" selection-end-line="35" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DatasetTools/DatasetStatistic/AnalyzeX509.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="468">
+          <caret line="74" column="33" lean-forward="true" selection-start-line="74" selection-start-column="33" selection-end-line="74" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FeatureExtraction/ExtractedData/dataset_info_2017_08_16.txt" />
+    <entry file="file://$PROJECT_DIR$/FeatureExtraction/BroExtraction/_config.cfg">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="1" column="17" lean-forward="false" selection-start-line="1" selection-start-column="17" selection-end-line="1" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FeatureExtraction/BroExtraction/CertificateFeatures.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="522">
+          <caret line="29" column="20" lean-forward="false" selection-start-line="29" selection-start-column="20" selection-end-line="29" selection-end-column="20" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/DatasetTools/DatasetStatistic/Conn4TupleInfo.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4122">
-          <caret line="230" column="59" lean-forward="false" selection-start-line="230" selection-start-column="59" selection-end-line="230" selection-end-column="59" />
+        <state relative-caret-position="0">
+          <caret line="41" column="76" lean-forward="false" selection-start-line="41" selection-start-column="76" selection-end-line="41" selection-end-column="76" />
+          <folding>
+            <element signature="e#0#10#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FeatureExtraction/BroExtraction/MainBro.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="18" column="26" lean-forward="false" selection-start-line="18" selection-start-column="26" selection-end-line="18" selection-end-column="26" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DatasetTools/ToolScripts/DeleteFile.py">
+    <entry file="file://$PROJECT_DIR$/FeatureExtraction/BroExtraction/ExtractFeatures.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="486">
-          <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+        <state relative-caret-position="-306">
+          <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#9#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MachineLearning/PrepareData/2017_08_25/conn_result_2017-08-25_09-26.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2386125">
+          <caret line="576" column="219" lean-forward="true" selection-start-line="576" selection-start-column="219" selection-end-line="576" selection-end-column="219" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DatasetTools/DatasetStatistic/AnalyzeX509.py">
+    <entry file="file://$PROJECT_DIR$/MachineLearning/PrepareData/2017_08_25/dataset_info_2017-08-25_09-26.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5742">
-          <caret line="321" column="0" lean-forward="false" selection-start-line="321" selection-start-column="0" selection-end-line="321" selection-end-column="0" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DatasetTools/ToolScripts/CheckProxy.py">
+    <entry file="file://$PROJECT_DIR$/MachineLearning/PrepareData/2017_08_16/conn_result.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="558">
-          <caret line="31" column="112" lean-forward="false" selection-start-line="31" selection-start-column="112" selection-end-line="31" selection-end-column="112" />
+        <state relative-caret-position="144">
+          <caret line="3" column="24" lean-forward="false" selection-start-line="3" selection-start-column="24" selection-end-line="3" selection-end-column="24" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DatasetTools/LabelDataset/LabelDataset2.py">
+    <entry file="file://$PROJECT_DIR$/FeatureExtraction/BroExtraction/ComputeFeatures.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="369">
-          <caret line="83" column="0" lean-forward="true" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
+        <state relative-caret-position="540">
+          <caret line="62" column="69" lean-forward="true" selection-start-line="62" selection-start-column="69" selection-end-line="62" selection-end-column="69" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DatasetTools/LabelDataset/LabelDatasetByOne.py">
+    <entry file="file://$PROJECT_DIR$/FeatureExtraction/BroExtraction/ConnectionFeatures.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="621">
-          <caret line="93" column="108" lean-forward="false" selection-start-line="93" selection-start-column="108" selection-end-line="93" selection-end-column="108" />
+        <state relative-caret-position="440">
+          <caret line="217" column="52" lean-forward="false" selection-start-line="217" selection-start-column="24" selection-end-line="217" selection-end-column="52" />
+          <folding>
+            <element signature="e#0#12#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FeatureExtraction/BroExtraction/Connection4tuple.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="222">
+          <caret line="207" column="16" lean-forward="true" selection-start-line="207" selection-start-column="16" selection-end-line="207" selection-end-column="16" />
+          <folding>
+            <element signature="e#108#120#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/anaconda2/lib/python2.7/site-packages/sklearn/model_selection/_split.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="1598" column="4" lean-forward="false" selection-start-line="1598" selection-start-column="4" selection-end-line="1598" selection-end-column="4" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DatasetTools/LabelDataset/MalwareIPs">
+    <entry file="file://$PROJECT_DIR$/MachineLearning/data_model/2017_08_25/X_test.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="2" column="0" lean-forward="true" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DatasetTools/LabelDataset/NormalIPs.txt">
+    <entry file="file://$PROJECT_DIR$/MachineLearning/PrepareData/DivideDataTogether.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="17" column="13" lean-forward="true" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+        <state relative-caret-position="18">
+          <caret line="1" column="76" lean-forward="false" selection-start-line="1" selection-start-column="76" selection-end-line="1" selection-end-column="76" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MachineLearning/data_model/AnalyzeDataModel.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="18" column="23" lean-forward="true" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MachineLearning/data_model/2017_08_25/X_train.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MachineLearning/data_model/2017_08_25/y_test.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MachineLearning/Algorithms/XGBoost.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="765">
+          <caret line="67" column="52" lean-forward="true" selection-start-line="67" selection-start-column="52" selection-end-line="67" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MachineLearning/Algorithms/SVM.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="28" column="96" lean-forward="true" selection-start-line="28" selection-start-column="96" selection-end-line="28" selection-end-column="96" />
+          <folding>
+            <element signature="e#217#242#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MachineLearning/PrepareData/DivideData.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="21" column="17" lean-forward="false" selection-start-line="21" selection-start-column="4" selection-end-line="21" selection-end-column="17" />
+          <folding>
+            <element signature="e#218#270#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MachineLearning/Algorithms/NN.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MachineLearning/Algorithms/RandomForest.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="18" column="96" lean-forward="true" selection-start-line="18" selection-start-column="96" selection-end-line="18" selection-end-column="96" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MachineLearning/Algorithms/DetectionMethods.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="22" column="7" lean-forward="false" selection-start-line="22" selection-start-column="7" selection-end-line="22" selection-end-column="7" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/TestScripts/Test_1.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="18" column="10" lean-forward="true" selection-start-line="18" selection-start-column="10" selection-end-line="18" selection-end-column="10" />
+        <state relative-caret-position="162">
+          <caret line="9" column="116" lean-forward="true" selection-start-line="9" selection-start-column="116" selection-end-line="9" selection-end-column="116" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MachineLearning/Algorithms/NeuralNetwork.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="477">
+          <caret line="28" column="3" lean-forward="true" selection-start-line="28" selection-start-column="3" selection-end-line="28" selection-end-column="3" />
+          <folding>
+            <element signature="e#1#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MachineLearning/PrepareData/AnalyzeConnResult.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="646">
+          <caret line="64" column="30" lean-forward="true" selection-start-line="64" selection-start-column="30" selection-end-line="64" selection-end-column="30" />
           <folding />
         </state>
       </provider>

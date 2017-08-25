@@ -1,3 +1,4 @@
+import sys
 import os
 from Connection4tupleStatis import Connection4tupleStatis
 
@@ -6,8 +7,10 @@ class Conn4TupleInfo:
     def __init__(self):
         self.connection_4_tuples = dict()
         self.control_ssl_uids_dict = dict()
+        self.control_x509_uids_dict = dict()
 
         self.conn_dict = dict()
+        self.x509_dict = dict()
 
     def read_ssl_log(self, path_to_label_ssl):
 
@@ -129,8 +132,11 @@ class Conn4TupleInfo:
                     x509_uid = x509_split[1]
                     try:
                         if self.x509_dict[x509_uid]:
-                            print "Error: [read_x509_log] more uids in x509!!!", x509_uid, \
-                                " and path is: " + dataset_path_to_logs + x509_log
+                                if self.x509_dict[x509_uid] == new_line:
+                                    pass
+                                else:
+                                    print "Error: [read_x509_log] more uids in x509!!!", x509_uid, \
+                                        " and path is: " + dataset_path_to_logs + x509_log
                     except:
                         self.x509_dict[x509_uid] = new_line
 
@@ -144,7 +150,6 @@ class Conn4TupleInfo:
         normal = 0
         malware = 0
 
-        n_line = 0
         try:
             with open(path_to_label_conn) as f:
                 for line in f:
@@ -169,15 +174,13 @@ class Conn4TupleInfo:
                             print "Error: more same conn line !!!!!"
                     except:
                         self.conn_dict[conn_uid] = line
-
             f.close()
-
-
-        except:
+        except IOError:
             print "Error: " + path_to_label_conn + " does not exist."
 
     def read_all_conn_logs(self, path_to_folder):
         print "Reading conn logs:"
+        self.conn_dict = dict()
         for conn_log in os.listdir(path_to_folder):
             if conn_log.endswith('.log') and 'conn' in conn_log and '_label' in conn_log:
                 # print "Cesta: " + path_to_folder + conn_log
@@ -233,8 +236,8 @@ def get_such_logs(path_to_logs, part_name_list):
     return searched_list
 
 
-def main():
-    dataset_path = '/media/frenky/Fery/Frenky/Skola/StratosphereHTTPSDetector/Dataset/Dataset/'
+def main(dataset_path):
+    # dataset_path = '/media/frenky/Fery/Frenky/Skola/StratosphereHTTPSDetector/Dataset/Dataset/'
     conn_4tuple_stat = Conn4TupleInfo()
 
     index = 1
@@ -246,9 +249,12 @@ def main():
         conn_4tuple_stat.x509_logs(dataset_path + sub_dir + '/bro/')
         conn_4tuple_stat.find_all_ssl_log(dataset_path + sub_dir + '/bro/')
         index += 1
-        break
+
 
     conn_4tuple_stat.print_statistic()
 
 if __name__ == '__main__':
-    main()
+    if len(sys.argv) == 2:
+        main(sys.argv[1])
+    else:
+        print "Put dataset path as argument."

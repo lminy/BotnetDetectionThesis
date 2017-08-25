@@ -13,7 +13,7 @@ import numpy as np
 
 
 # final_path = "Final_Experiment\\DividedData\\" + "data_model_1\\"
-final_path = "/home/frenky/PycharmProjects/HTTPSDetector/MachineLearning/data_model/"
+final_path = "/home/frenky/PycharmProjects/HTTPSDetector/MachineLearning/data_model/2017_08_25/"
 
 """
 Load Data
