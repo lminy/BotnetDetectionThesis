@@ -39,7 +39,7 @@ class ComputeFeatures(ExtractFeatures):
         all_flows = 0
         space = '	'
         # with open("ExtractedData\\" + "conn_result.txt", 'w') as f:
-        with open("/home/frenky/PycharmProjects/HTTPSDetector/FeatureExtraction/ExtractedData/" +
+        with open("/home/frenky/PycharmProjects/HTTPSDetector/FeatureExtraction/BroExtraction/ExtractedData/" +
                           "conn_result_" + self.file_time_name +".txt", 'w') as f:
             for key in self.connection_4_tuples.keys():
                 f.write(str(key) + space +
@@ -79,12 +79,47 @@ class ComputeFeatures(ExtractFeatures):
 
         f.close()
 
+
+    def compute_features(self):
+        for key in self.connection_4_tuples.keys():
+            print "---------- " + str(key) + "--------------"
+            self.connection_4_tuples[key].get_number_of_flows()
+            value = self.connection_4_tuples[key].get_average_of_duration()
+            value = self.connection_4_tuples[key].get_standard_deviation_duration()
+            value = self.connection_4_tuples[key].get_percent_of_standard_deviation_duration()
+            value = self.connection_4_tuples[key].get_total_size_of_flows_orig()
+            value = self.connection_4_tuples[key].get_total_size_of_flows_resp()
+            value = self.connection_4_tuples[key].get_ratio_of_sizes()
+            value = self.connection_4_tuples[key].get_percent_of_established_states()
+            value = self.connection_4_tuples[key].get_inbound_pckts()
+            value = self.connection_4_tuples[key].get_outbound_pckts()
+            value = self.connection_4_tuples[key].get_periodicity_average()
+            value = self.connection_4_tuples[key].get_periodicity_standart_deviation()
+            value = self.connection_4_tuples[key].get_ssl_ratio()
+            value = self.connection_4_tuples[key].get_average_public_key()
+            value = self.connection_4_tuples[key].get_tls_version_ratio()
+            value = self.connection_4_tuples[key].get_average_of_certificate_length()
+            vaule = self.connection_4_tuples[key].get_standart_deviation_cert_length()
+            value = self.connection_4_tuples[key].is_valid_certificate_during_capture()
+            value = self.connection_4_tuples[key].get_amount_diff_certificates()
+            value = self.connection_4_tuples[key].get_number_of_domains_in_certificate()
+            value = self.connection_4_tuples[key].get_certificate_ratio()
+            value = self.connection_4_tuples[key].get_number_of_certificate_path()
+            value = self.connection_4_tuples[key].x509_ssl_ratio()
+            value = self.connection_4_tuples[key].SNI_ssl_ratio()
+            value = self.connection_4_tuples[key].self_signed_ratio()
+            value = self.connection_4_tuples[key].is_SNIs_in_SNA_dns()
+            value = self.connection_4_tuples[key].get_SNI_equal_DstIP()
+            value = self.connection_4_tuples[key].is_CNs_in_SNA_dns()
+
+            # self.connection_4_tuples[key].get_label_of_connection() +
+
     def save_dataset_information(self):
         print "----------------------------------------"
         print "Saving data ..."
         space = '	'
         # with open("ExtractedData\\" + "conn_result.txt", 'w') as f:
-        with open("/home/frenky/PycharmProjects/HTTPSDetector/FeatureExtraction/ExtractedData/" + "dataset_info_" + self.file_time_name+".txt", 'w') as f:
+        with open("/home/frenky/PycharmProjects/HTTPSDetector/FeatureExtraction/BroExtraction/ExtractedData/" + "dataset_info_" + self.file_time_name+".txt", 'w') as f:
             for key in self.dataset_inforamtion_dict.keys():
                 f.write(str(key) + space +
                         str(self.dataset_inforamtion_dict[key].ssl_lines) + space +

@@ -31,12 +31,12 @@ def main():
     extract_features.add_cert_to_non_cert_conn()
 
     # Compute features and save them.
-    extract_features.create_dataset()
+    # extract_features.create_dataset()
     extract_features.print_statistic()
-    extract_features.save_dataset_information()
+    extract_features.compute_features()
+    # extract_features.save_dataset_information()
 
     print "<<< All dataset successfully finished in aproximate time: %f" % ((time() - t0)/60.0) + " min."
-
 
 
 if __name__ == '__main__':

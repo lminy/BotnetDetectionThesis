@@ -165,6 +165,7 @@ class Connection4tuple(object):
         # SNI is known
         # split[9] == server name (SNI)
         server_name = split[9]
+        print server_name
         if server_name != '-':
             self.ssl_with_SNI += 1
 
@@ -221,7 +222,7 @@ class Connection4tuple(object):
                 print "Certificate time length is broken."
 
         # certificate info
-        # if certifcate is alredy here
+        # if certifcate is not alredy here
         if not(split[3] in self.certificate_serial_dict.keys()):
             self.certificate_serial_dict[split[3]] = 1
 

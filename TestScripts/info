@@ -72,4 +72,23 @@ bad detect: 140 0.01290084777
 All connection: 10852
 
 
+----------- NEW Features ----------------------
+ - ratio of inbound and outbounds packets
+ - history of states
+ - periodicity first level (average of time distance) - or maybe some anomaly
+ - is dstPort 443 or ... ? in ssl_flow and also in not_ssl_flow!
+ - more in "is_CN_inSAN ?" I just return of it is not in there
 
+
+192.168.1.125:53798 -> 8.8.8.8:53
+
+{"timestamp":"1900-01-00T00:00:14.359952+0000",
+"flow_id":1839463626866192,
+"pcap_cnt":18,
+"event_type":"dns",
+"src_ip":"192.168.1.125",
+"src_port":53798,
+"dest_ip":"8.8.8.8",
+"dest_port":53,
+"proto":"UDP",
+"dns":{"type":"query","id":22649,"rrname":"dns.msftncsi.com","rrtype":"AAAA","tx_id":0}}

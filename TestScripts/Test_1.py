@@ -5,30 +5,47 @@ import pytz
 import numpy as np
 from sklearn.utils import shuffle
 
-def main():
-    # Go through all dataset and label conn logs.
-    dataset_path = '/media/frenky/Fery/Frenky/Skola/StratosphereHTTPSDetector/Dataset/Dataset_2_normal/unpack_logs/'
-    dir_n = 0
-    for dir in os.listdir(dataset_path):
-        print "#" + str(dir_n) + " " + dir
-        dir_n += 1
 
-        bro_path = dataset_path + dir + '/bro/'
-        for log in os.listdir(bro_path):
-            if '_label' in log:
-                print "Error: there is still conn_label.log."
 
+def read_ssl(path, ssl_dict):
+    print "----------------- ssl log -----------------"
+    with open(path) as ssl_file:
+        for line in ssl_file:
+            if line[0] == '#':
+                continue
+            split_line = line.split('	')
+            ssl_uid = split_line[1]
+            try:
+                if ssl_dict[ssl_uid]:
+                    # print "Error: more uids in ssl line..."
+                    pass
+            except:
+                print line
+                ssl_dict[ssl_uid] = line
+    ssl_file.close()
+    return ssl_dict
+
+
+def read_conn(path, ssl_dict):
+    print "----------------- conn log -----------------"
+    index = 0
+    with open(path) as f:
+        for line in f:
+            if line[0] == '#':
+                continue
+            split_conn = line.split('	')
+            conn_uid = split_conn[1]
+
+            try:
+                if ssl_dict[conn_uid]:
+                    print split_conn[21]
+                    index += 1
+            except:
+                # print "Error: can not find conn line."
+                pass
 
 if __name__ == '__main__':
-
-    # arr = np.arange(1000)
-    # print arr
-    # np.random.shuffle(arr)
-    # print arr
-
-    X = [1,2,3,4,5]
-    y = ['auto', 'kun', 'lopata', 'vidle', 'lovec']
-
-    X, y = shuffle(X, y, random_state=43)
-    print X
-    print y
+    path = '/media/frenky/Fery/Frenky/Skola/StratosphereHTTPSDetector/Dataset/test_dataset/CTU-Malware-Capture-Botnet-116-2/'
+    ssl_dict = dict()
+    read_ssl(path + 'bro/ssl.log', ssl_dict)
+    read_conn(path + 'bro/conn_label.log', ssl_dict)

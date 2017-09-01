@@ -148,7 +148,7 @@ class ConnectionFeatures(Connection4tuple):
     # 15 ------ Ratio of not ssl flows and ssl flows -------
     def get_ssl_ratio(self):
         self.check_zero_dividing(len(self.ssl_flow_list), "Original size is 0 !!!")
-        return len(self.not_ssl_flow_list) / len(self.ssl_flow_list)
+        return len(self.not_ssl_flow_list) / float(len(self.ssl_flow_list))
 
     # 16 Average Public key lenghts
     # certificate feature
@@ -174,7 +174,6 @@ class ConnectionFeatures(Connection4tuple):
             elif 'ssl' in key.lower():
                 ssl += self.version_of_ssl_dict[key]
             total += self.version_of_ssl_dict[key]
-
         if total != 0:
             return tls / float(total)
         return -1
@@ -188,7 +187,7 @@ class ConnectionFeatures(Connection4tuple):
         # self.check_zero_dividing(self.certificate_valid_number, "certificate_valid_number is 0 !!!")
         if self.certificate_valid_number != 0:
             if numpy.mean(self.temp_list) != self.certificate_valid_length / float(self.certificate_valid_number):
-                print "Error: boban"
+                print "Error: numpy mean and mean by hand are not same."
             return self.certificate_valid_length / float(self.certificate_valid_number)
         return -1
 
