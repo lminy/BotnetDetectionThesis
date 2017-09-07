@@ -45,7 +45,9 @@ def read_conn(path, ssl_dict):
                 pass
 
 if __name__ == '__main__':
-    path = '/media/frenky/Fery/Frenky/Skola/StratosphereHTTPSDetector/Dataset/test_dataset/CTU-Malware-Capture-Botnet-116-2/'
-    ssl_dict = dict()
-    read_ssl(path + 'bro/ssl.log', ssl_dict)
-    read_conn(path + 'bro/conn_label.log', ssl_dict)
+    # path = '/media/frenky/Fery/Frenky/Skola/StratosphereHTTPSDetector/Dataset/test_dataset/CTU-Malware-Capture-Botnet-116-2/'
+    # ssl_dict = dict()
+    # read_ssl(path + 'bro/ssl.log', ssl_dict)
+    # read_conn(path + 'bro/conn_label.log', ssl_dict)
+    with open('./karel', 'w') as f:
+        f.write("karel beha.")

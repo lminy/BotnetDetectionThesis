@@ -78,6 +78,7 @@ All connection: 10852
  - periodicity first level (average of time distance) - or maybe some anomaly
  - is dstPort 443 or ... ? in ssl_flow and also in not_ssl_flow!
  - more in "is_CN_inSAN ?" I just return of it is not in there
+ -
 
 
 192.168.1.125:53798 -> 8.8.8.8:53

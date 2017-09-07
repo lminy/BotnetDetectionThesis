@@ -193,6 +193,7 @@ class ExtractFeatures(object):
                 conn_split = conn_log.split('	')
                 # 2-srcIpAddress, 4-dstIpAddress, 5-dstPort, 6-Protocol
                 connection_index = conn_split[2], conn_split[4], conn_split[5], conn_split[6]
+
                 try:
                     label = conn_split[21]
                 except IndexError:
@@ -217,6 +218,20 @@ class ExtractFeatures(object):
 
                 self.connection_4_tuples[connection_index].add_ssl_log(ssl_line, valid_x509_list,
                                                                        os.path.basename(path_to_ssl_log))
+
+                # For chceking certificate path, find x509 logs in cert path.
+                ssl_split = ssl_line.split('	')
+                list_of_x509_uids = ssl_split[14].split(',')
+                x509_lines_arr = []
+                is_founded = True
+                for x509_uid in list_of_x509_uids:
+                    try:
+                        if self.x509_dict[x509_uid]:
+                            x509_lines_arr.append(self.x509_dict[x509_uid])
+                    except:
+                        is_founded = False
+                        # break makes an error here.
+                self.connection_4_tuples[connection_index].check_certificate_path(x509_lines_arr, is_founded)
 
         ssl_file.close()
 

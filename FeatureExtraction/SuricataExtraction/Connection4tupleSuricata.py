@@ -8,7 +8,7 @@ import numpy
 import socket
 
 
-class Connection4tuple(object):
+class Connection4tupleSuricata(object):
 
     def __init__(self, tuple_index):
         # basic 4-tuple
@@ -46,11 +46,6 @@ class Connection4tuple(object):
         self.self_signed_cert = 0
         self.SNI_equal_DstIP = 0
         self.SNI_list = []
-        self.subject_ssl_list = []
-        self.issuer_ssl_list = []
-        self.top_level_domain_error = 0
-        self.certificate_path_error = 0
-        self.missing_cert_in_cert_path = 0
         # X509 features
         self.certificate_key_type_dict = dict()
         self.certificate_key_length_dict = dict()
@@ -64,28 +59,8 @@ class Connection4tuple(object):
         self.cert_percent_validity = []
         self.is_CN_in_SAN_list = []
         self.is_SNI_in_san_dns = []
-        self.subject_x509_list = []
-        self.issuer_x509_list = []
-        self.san_x509_list = []
-        self.certificate_exponent = 0
+
         self.temp_list = []
-        # Copare SSL and x509 features
-        self.subject_diff = 0
-        self.issuer_diff = 0
-        self.SNI_is_in_CN = 0
-
-        # Function
-        # Read top level domain file.
-        self.top_level_domain = []
-        self.read_top_level_domain_file()
-
-    def read_top_level_domain_file(self):
-        with open('./top_level_domain') as file:
-            for line in file:
-                if line[0] == '#':
-                    continue
-                self.top_level_domain.append(line.rstrip())
-        file.close()
 
         # ssl_flow = this flow has ssl log in ssl file
     def add_ssl_flow(self, flow, label):
@@ -119,8 +94,6 @@ class Connection4tuple(object):
             self.compute_x509_features(valid_x509_list[i])
             # Feature 28: is SAN DNS part of SNI ?
             self.is_SNI_in_certificate(ssl_log, valid_x509_list[i])
-            # Compare
-            self.compare_ssl_and_x509_lines(ssl_log, valid_x509_list[i])
 
         # compute ssl log
         self.compute_ssl_features(ssl_log)
@@ -192,49 +165,34 @@ class Connection4tuple(object):
         # SNI is known
         # split[9] == server name (SNI)
         server_name = split[9]
+        print server_name
         if server_name != '-':
             self.ssl_with_SNI += 1
 
             # self.is_SNI_in_san_dns.append(self.is_SNI_in_certificates(server_name))
 
             self.SNI_list.append(server_name)
-
-            try:
-                # check if servername is ip
-                socket.inet_aton(server_name)
-                if self.SNI_equal_DstIP != -1:
+            if self.SNI_equal_DstIP != -1:
+                try:
+                    # check if servername is ip
+                    socket.inet_aton(server_name)
                     dstIP = self.tuple_index[1]
                     print "Watch out: We have SNI as ip:", server_name, "and dst ip is:", dstIP
                     if dstIP != server_name:
                         self.SNI_equal_DstIP = -1
                     else:
                         self.SNI_equal_DstIP = 1
-            except:
-                # server name is not IP.
-                # Check if server name is Top-Level-Domain
-                is_tld = False
-                for tld in self.top_level_domain:
-                    if tld.lower() in server_name:
-                        is_tld = True
-                        break
-                if is_tld is False:
-                    print "Watch out: This ssl line has server name without TOP-LEVEL-DOMAIN."
-                    print "It is: ", server_name
-                    self.top_level_domain_error += 1
+                except:
+                    # server name is not IP.
+                    pass
+        try:
+            if 'signed certificate in certificate' in split[20]:
+                self.self_signed_cert += 1
+                # if split[14] == '-':
+                #     print "Self signed certificate without x509 uids !!!! Our feature architecture is bad !!!"
+        except:
+            pass
 
-
-        # if 'signed certificate in certificate' in split[20]:
-        if 'signed certificate in certificate' in ssl_log:
-            self.self_signed_cert += 1
-            # if split[14] == '-':
-            #     print "Self signed certificate without x509 uids !!!! Our feature architecture is bad !!!"
-
-        # Find subject.
-        if split[16] != '-':
-            self.subject_ssl_list.append(split[16])
-        # Find issuer
-        if split[17] != '-':
-            self.issuer_ssl_list.append(split[17])
 
 
     """
@@ -297,17 +255,6 @@ class Connection4tuple(object):
                 domains = len(split[14].split(','))
                 self.number_san_domains += domains
                 self.number_san_domains_index += 1
-                self.san_x509_list.append(split[14])
-
-            # Certificate subject.
-            if split[4] != '-':
-                self.subject_x509_list.append(split[4])
-            # Certificate issuer.
-            if split[5] != '-':
-                self.issuer_x509_list.append(split[5])
-            # Certificate exponent.
-            if split[12] != '-':
-                self.certificate_exponent = int(split[12])
 
         # certificate is new, this connection does not contain this certificate
         else:
@@ -318,8 +265,6 @@ class Connection4tuple(object):
         #     self.certificate_key_type_dict[split[10]] += 1
         # except:
         #     self.certificate_key_type_dict[split[10]] = 1
-
-
 
 
     "------------------- Methods --------------------------------------"
@@ -440,44 +385,6 @@ class Connection4tuple(object):
                     break
             self.is_CN_in_SAN_list.append(hit_2)
 
-    def compare_ssl_and_x509_lines(self, ssl_line, x509_line):
-        ssl_split = ssl_line.split('	')
-        x509_split = x509_line.split('	')
-
-        ssl_subject = ssl_split[16]
-        x509_subject = x509_split[4]
-        if ssl_subject != x509_subject:
-            self.subject_diff += 1
-
-        ssl_issuer = ssl_split[17]
-        x509_issuer = x509_split[5]
-        if ssl_issuer != x509_issuer:
-            self.issuer_diff += 1
-
-        server_name = ssl_split[9]
-        CN = x509_split[4]
-        if server_name in CN:
-            self.SNI_is_in_CN += 1
-
-    def check_certificate_path(self, x509_lines_arr, is_founded):
-        if is_founded:
-            issuer = None
-            for x509_line in x509_lines_arr:
-                x509_split = x509_line.split('	')
-                if issuer is not None:
-                    x509_subject = x509_split[4]
-                    if x509_subject != issuer:
-                        self.certificate_path_error += 1
-                # take new issuer from this x509 line
-                x509_issuer = x509_split[5]
-                issuer = x509_issuer
-        else:
-            self.missing_cert_in_cert_path += 1
-
-    """
-    --------------------------------
-    """
-
     def get_ver_cipher_dict(self):
         return self.version_of_ssl_cipher_dict
 
@@ -551,9 +458,6 @@ class Connection4tuple(object):
 
     def get_size_of_x509_list(self):
         return len(self.x509_list)
-
-    def get_x509_list(self):
-        return self.x509_list
 
     def get_certificate_key_type_dict(self):
         return self.certificate_key_type_dict

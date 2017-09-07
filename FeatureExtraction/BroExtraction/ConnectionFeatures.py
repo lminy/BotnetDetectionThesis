@@ -283,7 +283,6 @@ class ConnectionFeatures(Connection4tuple):
             return 1
         return -1
 
-
     # 29 if SNI is IP, so dst is same ip?
     def get_SNI_equal_DstIP(self):
         return self.SNI_equal_DstIP
@@ -296,3 +295,96 @@ class ConnectionFeatures(Connection4tuple):
                     return 0
             return 1
         return -1
+
+
+    """
+    -----------------  New Features ------------------ 
+    """
+    # 31 How many ssl lines has different SNI ?
+    def ratio_of_differ_SNI_in_ssl_log(self):
+        # Delete stars.
+        for i in range(0, len(self.SNI_list)):
+            if '*' in self.SNI_list[i]:
+                self.SNI_list[i] = self.SNI_list[i].replace('*', '')
+
+        return compute_differents_in_lines(self.SNI_list)
+
+    # 32 How many ssl lines has different subject
+    def ratio_of_differ_subject_in_ssl_log(self):
+        return compute_differents_in_lines(self.subject_ssl_list)
+
+    # 33 How many ssl lines has differ issuer
+    def ratio_of_differ_issuer_in_ssl_log(self):
+        return compute_differents_in_lines(self.issuer_ssl_list)
+
+    # 34 How many cert has differ subject
+    def ratio_of_differ_subject_in_cert(self):
+        return compute_differents_in_lines(self.subject_x509_list)
+
+    # 35 How many cert has differ issuer
+    def ratio_of_differ_issuer_in_cert(self):
+        return compute_differents_in_lines(self.issuer_x509_list)
+
+    # 36 How many cert has differ san dns
+    def ratio_of_differ_sandns_in_cert(self):
+        return compute_differents_in_lines(self.san_x509_list)
+
+    # 37 Do ssl and x509 lines have same subjects?
+    def ratio_of_same_subjects(self):
+        if len(self.x509_list) == 0:
+            return -1
+        return self.subject_diff / float(len(self.x509_list))
+
+    # 38 Do ssl and x509 lines have same issuer?
+    def ratio_of_same_issuer(self):
+        if len(self.x509_list) == 0:
+            return -1
+        return self.issuer_diff / float(len(self.x509_list))
+
+    # 39 Is SNI and CN same?
+    def ratio_is_same_CN_and_SNI(self):
+        if len(self.x509_list) == 0:
+            return -1
+        return self.SNI_is_in_CN / float(len(self.x509_list))
+
+    # 40 Certificate exponent average
+    def average_certificate_exponent(self):
+        if len(self.certificate_serial_dict.keys()) == 0:
+            return -1
+        return self.certificate_exponent / float(len(self.certificate_serial_dict.keys()))
+
+    # 41 Is server name in top-level-domain ?
+    def is_SNI_in_top_level_domain(self):
+        if self.ssl_with_SNI == 0:
+            return -1
+        return self.top_level_domain_error / float(self.ssl_with_SNI)
+
+    # 42 Is certificate path right ? (issuer of first certificate is subject in second cert...)
+    def ratio_certificate_path_error(self):
+        if len(self.ssl_logs_list):
+            return -1
+        return self.certificate_path_error / float(len(self.ssl_logs_list))
+
+    # 43 Missing certificate in certificate path.
+    def ratio_missing_cert_in_cert_path(self):
+        if len(self.ssl_logs_list):
+            return -1
+        return self.missing_cert_in_cert_path / float(len(self.ssl_logs_list))
+
+
+"""
+------- Computation method ---------
+"""
+def compute_differents_in_lines(array):
+    _dict = dict()
+    for item in array:
+        try:
+            _dict[item] += 1
+        except:
+            _dict[item] = 1
+
+    if len(array) == 0:
+        return -1.0
+    if len(_dict.keys()) == 1:
+        return 0.0
+    return len(_dict.keys()) / float(len(array))
