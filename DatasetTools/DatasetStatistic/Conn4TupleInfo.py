@@ -21,6 +21,7 @@ class Conn4TupleInfo:
                     continue
 
                 ssl_split = ssl_line.split('	')
+                #print ssl_split
                 ssl_uid = ssl_split[1]
 
                 # if same ssl, continue (in some ssl.log files are more same ssl lines. It is probably bro error)
@@ -50,6 +51,7 @@ class Conn4TupleInfo:
                 # find flow in conn.log by this ssl uid.
                 try:
                     conn_log = self.conn_dict[ssl_uid]
+                    print conn_log
                 except:
                     # conn_dict contains only normal or malware conn lines. Here there are read all ssl lines and
                     # some ssl lines shows to background conn_line that are not contained in conn_dict.
@@ -241,14 +243,17 @@ def main(dataset_path):
     conn_4tuple_stat = Conn4TupleInfo()
 
     index = 1
-    for sub_dir in os.listdir(dataset_path):
-        print "--------------------------------------------------------"
-        print "-------- #" + str(index) + " " + sub_dir
-        print "--------------------------------------------------------"
-        conn_4tuple_stat.read_all_conn_logs(dataset_path + sub_dir + '/bro/')
-        conn_4tuple_stat.x509_logs(dataset_path + sub_dir + '/bro/')
-        conn_4tuple_stat.find_all_ssl_log(dataset_path + sub_dir + '/bro/')
-        index += 1
+    sub_dir=""
+    #for sub_dir in os.listdir(dataset_path):
+    print "--------------------------------------------------------"
+    print "-------- #" + str(index) + " " + sub_dir
+    print "--------------------------------------------------------"
+    conn_4tuple_stat.read_all_conn_logs(dataset_path + sub_dir + '/bro/')
+    print "LM - Conn logs :"
+    print conn_4tuple_stat.conn_dict
+    conn_4tuple_stat.x509_logs(dataset_path + sub_dir + '/bro/')
+    conn_4tuple_stat.find_all_ssl_log(dataset_path + sub_dir + '/bro/')
+    index += 1
 
 
     conn_4tuple_stat.print_statistic()
