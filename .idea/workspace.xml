@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="863a3f3e-9b5f-4fb9-ad81-8bd6e5b5a9b0" name="Default" comment="Added example config file">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="863a3f3e-9b5f-4fb9-ad81-8bd6e5b5a9b0" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/DatasetTools/LabelDataset/MakeLabel.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -32,11 +32,34 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="636">
-              <caret line="107" column="13" lean-forward="true" selection-start-line="107" selection-start-column="13" selection-end-line="107" selection-end-column="13" />
+            <state relative-caret-position="1125">
+              <caret line="75" selection-start-line="75" selection-end-line="75" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GetAllSrcIP.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/DatasetTools/LabelDataset/GetAllSrcIP.py">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file leaf-file-name="LabelDataset2.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/DatasetTools/LabelDataset/LabelDataset2.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1245">
+              <caret line="83" column="11" selection-start-line="83" selection-start-column="11" selection-end-line="83" selection-end-column="11" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MakeLabel.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/DatasetTools/LabelDataset/MakeLabel.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2010">
+              <caret line="135" column="26" lean-forward="true" selection-start-line="135" selection-start-column="26" selection-end-line="135" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -123,7 +146,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/FeatureExtraction/Temp.py" />
         <option value="$PROJECT_DIR$/__init__.py" />
         <option value="$PROJECT_DIR$/FeatureExtraction/BroExtraction/config.cfg" />
         <option value="$PROJECT_DIR$/FeatureExtraction/BroExtraction/ConfigureManager.py" />
@@ -174,6 +196,7 @@
         <option value="$PROJECT_DIR$/FeatureExtraction/BroExtraction/ComputeFeatures.py" />
         <option value="$PROJECT_DIR$/FeatureExtraction/BroExtraction/_config.cfg" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/DatasetTools/LabelDataset/MakeLabel.py" />
       </list>
     </option>
   </component>
@@ -225,6 +248,12 @@
             <path>
               <item name="HTTPSDetector" type="b2602c69:ProjectViewProjectNode" />
               <item name="HTTPSDetector" type="462c0819:PsiDirectoryNode" />
+              <item name="DatasetTools" type="462c0819:PsiDirectoryNode" />
+              <item name="LabelDataset" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HTTPSDetector" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HTTPSDetector" type="462c0819:PsiDirectoryNode" />
               <item name="FeatureExtraction" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -250,11 +279,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/DatasetTools/LabelDataset" />
       <recent name="$PROJECT_DIR$/FeatureExtraction/BroExtraction" />
       <recent name="$PROJECT_DIR$/MachineLearning/data_model/2017_08_16" />
       <recent name="$PROJECT_DIR$/MachineLearning/PrepareData/2017_08_16" />
       <recent name="$PROJECT_DIR$/FeatureExtraction/_Configuration" />
-      <recent name="$PROJECT_DIR$/Datasets/ToolScripts" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/FeatureExtraction/BroExtraction" />
@@ -276,7 +305,25 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.MakeLabel">
+    <configuration name="MakeLabel" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="HTTPSDetector" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/DatasetTools/LabelDataset" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/DatasetTools/LabelDataset/MakeLabel.py" />
+      <option name="PARAMETERS" value="/Volumes/Data/datasets/CTU-13-Dataset/CTU-Malware-Capture-Botnet-42" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
     <configuration name="Test_1" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="HTTPSDetector" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -295,8 +342,13 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
+    <list>
+      <item itemvalue="Python.Test_1" />
+      <item itemvalue="Python.MakeLabel" />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.MakeLabel" />
         <item itemvalue="Python.Test_1" />
       </list>
     </recent_temporary>
@@ -382,7 +434,14 @@
       <option name="project" value="LOCAL" />
       <updated>1531501884438</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Added example config file">
+      <created>1531502095072</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1531502095072</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TodoView">
@@ -398,16 +457,17 @@
     <frame x="0" y="22" width="1440" height="878" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22128259" />
-      <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49806523" weight="0.32972974" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22128259" />
+      <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49806523" weight="0.3290653" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5111536" side_tool="true" weight="0.32972974" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32887402" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3277592" />
       <window_info anchor="bottom" id="Version Control" order="10" sideWeight="0.4888464" weight="0.32972974" />
-      <window_info anchor="bottom" id="Python Console" order="8" sideWeight="0.49806523" weight="0.32984293" />
+      <window_info anchor="bottom" id="Python Console" order="8" sideWeight="0.49806523" weight="0.3290653" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3277849" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.24984066" />
-      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.49806523" weight="0.32972974" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.49806523" weight="0.3290653" />
       <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.39948782" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -415,7 +475,6 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.3277592" />
     </layout>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -460,12 +519,22 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="7" />
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/DatasetTools/LabelDataset/MakeLabel.py</url>
+          <line>128</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/DatasetTools/LabelDataset/MakeLabel.py</url>
+          <line>107</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="10" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/DatasetTools/LabelDataset/dfgdfg" />
-    <entry file="file://$PROJECT_DIR$/DatasetTools/LabelDataset/MalwareIPs" />
     <entry file="file://$PROJECT_DIR$/DatasetTools/LabelDataset/NormalIPs" />
     <entry file="file://$PROJECT_DIR$/DatasetTools/ToolScripts/DeleteFile.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -478,13 +547,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="630">
           <caret line="31" column="112" selection-start-line="31" selection-start-column="112" selection-end-line="31" selection-end-column="112" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DatasetTools/LabelDataset/LabelDataset2.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="387">
-          <caret line="83" column="11" lean-forward="true" selection-start-line="83" selection-start-column="11" selection-end-line="83" selection-end-column="11" />
         </state>
       </provider>
     </entry>
@@ -720,8 +782,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="636">
-          <caret line="107" column="13" lean-forward="true" selection-start-line="107" selection-start-column="13" selection-end-line="107" selection-end-column="13" />
+        <state relative-caret-position="1125">
+          <caret line="75" selection-start-line="75" selection-end-line="75" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DatasetTools/LabelDataset/GetAllSrcIP.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DatasetTools/LabelDataset/LabelDataset2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1245">
+          <caret line="83" column="11" selection-start-line="83" selection-start-column="11" selection-end-line="83" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DatasetTools/LabelDataset/MakeLabel.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2010">
+          <caret line="135" column="26" lean-forward="true" selection-start-line="135" selection-start-column="26" selection-end-line="135" selection-end-column="26" />
         </state>
       </provider>
     </entry>
