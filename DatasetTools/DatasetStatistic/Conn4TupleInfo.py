@@ -51,7 +51,7 @@ class Conn4TupleInfo:
                 # find flow in conn.log by this ssl uid.
                 try:
                     conn_log = self.conn_dict[ssl_uid]
-                    print conn_log
+                    #print conn_log
                 except:
                     # conn_dict contains only normal or malware conn lines. Here there are read all ssl lines and
                     # some ssl lines shows to background conn_line that are not contained in conn_dict.
@@ -250,7 +250,7 @@ def main(dataset_path):
     print "--------------------------------------------------------"
     conn_4tuple_stat.read_all_conn_logs(dataset_path + sub_dir + '/bro/')
     print "LM - Conn logs :"
-    print conn_4tuple_stat.conn_dict
+    #print conn_4tuple_stat.conn_dict
     conn_4tuple_stat.x509_logs(dataset_path + sub_dir + '/bro/')
     conn_4tuple_stat.find_all_ssl_log(dataset_path + sub_dir + '/bro/')
     index += 1

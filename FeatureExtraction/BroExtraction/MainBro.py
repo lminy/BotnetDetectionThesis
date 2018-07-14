@@ -1,6 +1,5 @@
 import os
 from time import time
-import _ConfigureManager
 from DataetInformation import DatasetInformation
 from ComputeFeatures import ComputeFeatures
 
@@ -13,7 +12,11 @@ def main():
 
     # Load path to dataset from config file.
     # [0] is path to dataset.
-    path_to_dataset = _ConfigureManager.read_config('./_config.cfg')[0]
+    import ConfigParser, os
+
+    config = ConfigParser.ConfigParser()
+    config.read('_config.cfg')
+    path_to_dataset = config.get('PATHS', 'path_to_dataset')
 
     # Create new instance.
     extract_features = ComputeFeatures()
@@ -21,6 +24,8 @@ def main():
     # Go throw all subset in dataset.
     index = 1
     for sub_set in os.listdir(path_to_dataset):
+        if sub_set.startswith("."):
+            continue
         print "--------------------------------------------------------"
         print "-------- #" + str(index) + " " + sub_set
         print "--------------------------------------------------------"
