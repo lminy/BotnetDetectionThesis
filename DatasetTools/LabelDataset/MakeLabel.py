@@ -137,6 +137,5 @@ if __name__ == '__main__':
     else:
         path = None
 
-
     take_label_from_binet_flow(path)
 

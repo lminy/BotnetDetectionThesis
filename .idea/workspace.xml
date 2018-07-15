@@ -2,41 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="863a3f3e-9b5f-4fb9-ad81-8bd6e5b5a9b0" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/MachineLearning/Algorithms/train.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example_config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FeatureExtraction/BroExtraction/CertificateFeatures.py" beforeDir="false" afterPath="$PROJECT_DIR$/FeatureExtraction/CertificateFeatures.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FeatureExtraction/BroExtraction/ComputeFeatures.py" beforeDir="false" afterPath="$PROJECT_DIR$/FeatureExtraction/ComputeFeatures.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FeatureExtraction/BroExtraction/Connection4tuple.py" beforeDir="false" afterPath="$PROJECT_DIR$/FeatureExtraction/Connection4tuple.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FeatureExtraction/BroExtraction/ConnectionFeatures.py" beforeDir="false" afterPath="$PROJECT_DIR$/FeatureExtraction/ConnectionFeatures.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FeatureExtraction/BroExtraction/DataetInformation.py" beforeDir="false" afterPath="$PROJECT_DIR$/FeatureExtraction/DataetInformation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FeatureExtraction/BroExtraction/ExtractFeatures.py" beforeDir="false" afterPath="$PROJECT_DIR$/FeatureExtraction/ExtractFeatures.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FeatureExtraction/BroExtraction/ExtractedData\conn_result.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FeatureExtraction/BroExtraction/MainBro.py" beforeDir="false" afterPath="$PROJECT_DIR$/FeatureExtraction/MainBro.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FeatureExtraction/BroExtraction/_ConfigureManager.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FeatureExtraction/BroExtraction/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/MachineLearning/Algorithms/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FeatureExtraction/BroExtraction/_config.cfg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FeatureExtraction/BroExtraction/_example_config.cfg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FeatureExtraction/BroExtraction/top_level_domain" beforeDir="false" afterPath="$PROJECT_DIR$/FeatureExtraction/top_level_domain" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FeatureExtraction/SuricataExtraction/Connection4tupleSuricata.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FeatureExtraction/SuricataExtraction/ExtractSuricataFeatures.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FeatureExtraction/SuricataExtraction/ReadJson.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MachineLearning/Algorithms/Get_normalize_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/MachineLearning/Algorithms/Get_normalize_data.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MachineLearning/PrepareData/2017_08_16/conn_result.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MachineLearning/PrepareData/2017_08_16/conn_result_2017_08_16_1.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MachineLearning/PrepareData/2017_08_25/conn_result_2017-08-25_09-26.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MachineLearning/PrepareData/2017_08_25/dataset_info_2017-08-25_09-26.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MachineLearning/PrepareData/AnalyzeConnResult.py" beforeDir="false" afterPath="$PROJECT_DIR$/MachineLearning/PrepareData/AnalyzeConnResult.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MachineLearning/PrepareData/DivideDataTogether.py" beforeDir="false" afterPath="$PROJECT_DIR$/MachineLearning/PrepareData/DivideDataTogether.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MachineLearning/data_model/2017_08_16/X_test.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MachineLearning/data_model/2017_08_16/X_train.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MachineLearning/data_model/2017_08_16/y_test.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MachineLearning/data_model/2017_08_16/y_train.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestScripts/Test_1.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestScripts/info" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestScripts/shelve_file" beforeDir="false" afterPath="$PROJECT_DIR$/MachineLearning/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DatasetTools/DownloadDataset/download_datasets.py" beforeDir="false" afterPath="$PROJECT_DIR$/DatasetTools/DownloadDataset/download_datasets.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DatasetTools/LabelDataset/MakeLabel.py" beforeDir="false" afterPath="$PROJECT_DIR$/DatasetTools/LabelDataset/MakeLabel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -63,14 +31,37 @@
         <entry file="file://$PROJECT_DIR$/config.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="30">
-              <caret line="2" column="40" lean-forward="true" selection-start-line="2" selection-start-column="40" selection-end-line="2" selection-end-column="40" />
+              <caret line="2" column="42" selection-start-line="2" selection-start-column="42" selection-end-line="2" selection-end-column="42" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="features.txt" pinned="false" current-in-tab="true">
+      <file leaf-file-name="features.txt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Models/features.txt">
-          <provider selected="true" editor-type-id="text-editor" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-10900" />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="download_datasets.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/DatasetTools/DownloadDataset/download_datasets.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="70" column="13" selection-start-line="70" selection-start-column="13" selection-end-line="70" selection-end-column="13" />
+              <folding>
+                <element signature="e#131#141#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MakeLabel.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/DatasetTools/LabelDataset/MakeLabel.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="294">
+              <caret line="88" column="35" selection-start-line="88" selection-start-column="24" selection-end-line="88" selection-end-column="35" />
+            </state>
+          </provider>
         </entry>
       </file>
       <file leaf-file-name="features_name.txt" pinned="false" current-in-tab="false">
@@ -128,7 +119,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>temp_list</find>
       <find>com</find>
       <find>ssl_with_SNI</find>
       <find>certificate_path</find>
@@ -158,6 +148,7 @@
       <find>BroExtraction</find>
       <find>malware_certificates</find>
       <find>features.txt</find>
+      <find>datasets_folder</find>
     </findStrings>
     <replaceStrings>
       <replace>label</replace>
@@ -171,7 +162,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/DatasetTools/DatasetStatistic/Conn4TupleInfo_numpy.py" />
         <option value="$PROJECT_DIR$/DatasetTools/DownloadDataset/DownloadDataset.py" />
         <option value="$PROJECT_DIR$/DatasetTools/DatasetStatistic/Conn4TupleInfo_2.py" />
         <option value="$PROJECT_DIR$/DatasetTools/LabelDataset/GetAllSrcIP.py" />
@@ -203,7 +193,6 @@
         <option value="$PROJECT_DIR$/TestScripts/Test_1.py" />
         <option value="$PROJECT_DIR$/FeatureExtraction/BroExtraction/Connection4tuple.py" />
         <option value="$PROJECT_DIR$/FeatureExtraction/BroExtraction/ConnectionFeatures.py" />
-        <option value="$PROJECT_DIR$/DatasetTools/LabelDataset/MakeLabel.py" />
         <option value="$PROJECT_DIR$/DatasetTools/DatasetStatistic/Conn4TupleInfo.py" />
         <option value="$PROJECT_DIR$/FeatureExtraction/BroExtraction/MainBro.py" />
         <option value="$PROJECT_DIR$/FeatureExtraction/BroExtraction/ExtractFeatures.py" />
@@ -220,8 +209,10 @@
         <option value="$PROJECT_DIR$/FeatureExtraction/MainBro.py" />
         <option value="$PROJECT_DIR$/example_config.py" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/config.py" />
         <option value="$PROJECT_DIR$/FeatureExtraction/ComputeFeatures.py" />
+        <option value="$PROJECT_DIR$/DatasetTools/LabelDataset/MakeLabel.py" />
+        <option value="$PROJECT_DIR$/config.py" />
+        <option value="$PROJECT_DIR$/DatasetTools/DownloadDataset/download_datasets.py" />
       </list>
     </option>
   </component>
@@ -247,6 +238,18 @@
               <item name="HTTPSDetector" type="b2602c69:ProjectViewProjectNode" />
               <item name="HTTPSDetector" type="462c0819:PsiDirectoryNode" />
               <item name="DatasetTools" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HTTPSDetector" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HTTPSDetector" type="462c0819:PsiDirectoryNode" />
+              <item name="DatasetTools" type="462c0819:PsiDirectoryNode" />
+              <item name="DownloadDataset" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HTTPSDetector" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HTTPSDetector" type="462c0819:PsiDirectoryNode" />
+              <item name="DatasetTools" type="462c0819:PsiDirectoryNode" />
+              <item name="LabelDataset" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="HTTPSDetector" type="b2602c69:ProjectViewProjectNode" />
@@ -330,7 +333,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.MainBro">
+  <component name="RunManager" selected="Python.download_datasets">
     <configuration name="AnalyzeConnResult" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="HTTPSDetector" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -345,24 +348,6 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/MachineLearning/PrepareData/AnalyzeConnResult.py" />
       <option name="PARAMETERS" value="$PROJECT_DIR$/FeatureExtraction/BroExtraction/conn_result_2018-07-14_10-23.txt" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-    </configuration>
-    <configuration name="Conn4TupleInfo" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="HTTPSDetector" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/DatasetTools/DatasetStatistic" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/DatasetTools/DatasetStatistic/Conn4TupleInfo.py" />
-      <option name="PARAMETERS" value="/Volumes/Data/datasets/CTU-13-Dataset/CTU-Malware-Capture-Botnet-54" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -403,6 +388,24 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
+    <configuration name="download_datasets" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="HTTPSDetector" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/DatasetTools/DownloadDataset" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/DatasetTools/DownloadDataset/download_datasets.py" />
+      <option name="PARAMETERS" value="https://mcfp.felk.cvut.cz/publicDatasets/" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
     <configuration name="train" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="HTTPSDetector" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -422,19 +425,19 @@
       <option name="MODULE_MODE" value="false" />
     </configuration>
     <list>
-      <item itemvalue="Python.Conn4TupleInfo" />
       <item itemvalue="Python.AnalyzeConnResult" />
       <item itemvalue="Python.DivideDataTogether" />
       <item itemvalue="Python.train" />
       <item itemvalue="Python.MainBro" />
+      <item itemvalue="Python.download_datasets" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.download_datasets" />
         <item itemvalue="Python.MainBro" />
         <item itemvalue="Python.DivideDataTogether" />
         <item itemvalue="Python.train" />
         <item itemvalue="Python.AnalyzeConnResult" />
-        <item itemvalue="Python.Conn4TupleInfo" />
       </list>
     </recent_temporary>
   </component>
@@ -540,7 +543,14 @@
       <option name="project" value="LOCAL" />
       <updated>1531564513126</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Project cleaned &amp; global config file added">
+      <created>1531653982387</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1531653982387</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TodoView">
@@ -556,13 +566,13 @@
     <frame x="0" y="22" width="1440" height="878" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17547569" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17547569" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49806523" weight="0.3290653" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50669485" side_tool="true" weight="0.3546735" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32522407" />
       <window_info anchor="bottom" id="Version Control" order="10" sideWeight="0.4883721" weight="0.3290653" />
       <window_info anchor="bottom" id="Python Console" order="8" sideWeight="0.49400985" weight="0.3290653" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3277849" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.28040972" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.24984066" />
       <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.49612403" weight="0.3290653" />
       <window_info id="Favorites" order="2" side_tool="true" />
@@ -616,7 +626,8 @@
     <MESSAGE value="Added example config file" />
     <MESSAGE value="Fixing paths" />
     <MESSAGE value="Configuration management improved &amp; ignore datasets folder beginning by '.'" />
-    <option name="LAST_COMMIT_MESSAGE" value="Configuration management improved &amp; ignore datasets folder beginning by '.'" />
+    <MESSAGE value="Project cleaned &amp; global config file added" />
+    <option name="LAST_COMMIT_MESSAGE" value="Project cleaned &amp; global config file added" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -676,12 +687,48 @@
           <line>32</line>
           <option name="timeStamp" value="25" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/DatasetTools/DownloadDataset/download_datasets.py</url>
+          <line>112</line>
+          <option name="timeStamp" value="26" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/DatasetTools/DownloadDataset/download_datasets.py</url>
+          <line>110</line>
+          <option name="timeStamp" value="28" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/DatasetTools/DownloadDataset/download_datasets.py</url>
+          <line>109</line>
+          <option name="timeStamp" value="29" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/DatasetTools/DownloadDataset/download_datasets.py</url>
+          <line>111</line>
+          <option name="timeStamp" value="30" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/DatasetTools/DownloadDataset/download_datasets.py</url>
+          <line>113</line>
+          <option name="timeStamp" value="31" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/DatasetTools/DownloadDataset/download_datasets.py</url>
+          <line>67</line>
+          <option name="timeStamp" value="32" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="26" />
+      <default-breakpoints>
+        <breakpoint type="python-exception">
+          <properties notifyOnTerminate="true" exception="BaseException">
+            <option name="notifyOnTerminate" value="true" />
+          </properties>
+        </breakpoint>
+      </default-breakpoints>
+      <option name="time" value="33" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/FeatureExtraction/BroExtraction/conn_result_2017-09-07_17-53.txt" />
     <entry file="file://$PROJECT_DIR$/FeatureExtraction/Connection4tuple.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
@@ -706,13 +753,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="855">
           <caret line="57" column="24" selection-start-line="57" selection-start-column="19" selection-end-line="57" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DatasetTools/LabelDataset/MakeLabel.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="645">
-          <caret line="44" column="28" lean-forward="true" selection-start-line="44" selection-start-column="28" selection-end-line="44" selection-end-column="28" />
         </state>
       </provider>
     </entry>
@@ -978,18 +1018,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="40" lean-forward="true" selection-start-line="2" selection-start-column="40" selection-end-line="2" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Models/features_name.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/Models/features.txt">
-      <provider selected="true" editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-10900" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DatasetTools/LabelDataset/MakeLabel.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="88" column="35" selection-start-line="88" selection-start-column="24" selection-end-line="88" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="42" selection-start-line="2" selection-start-column="42" selection-end-line="2" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DatasetTools/DownloadDataset/download_datasets.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="70" column="13" selection-start-line="70" selection-start-column="13" selection-end-line="70" selection-end-column="13" />
+          <folding>
+            <element signature="e#131#141#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
     </entry>
   </component>
 </project>

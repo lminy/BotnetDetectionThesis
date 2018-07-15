@@ -13,8 +13,9 @@ import urllib2
 import ssl
 import os
 import shutil
-
-datasets_folder = "/Volumes/Data/datasets/"
+import config as c
+import time
+import datetime
 
 files_to_download = ["ssl.log", "x509.log", "weird.log", "conn.log", "dns.log"]
 
@@ -65,8 +66,8 @@ def compute_datasets_size(url):
     dataset_names = find_files(url)
     file_sizes = 0
     for i in range(len(dataset_names)):
-        if dataset_names[i] in datasets_to_download:
-        #if 'CTU-Malware-Capture-Botnet-' in dataset_names[i] or 'CTU-Normal-' in dataset_names[i]:
+        #if dataset_names[i] in datasets_to_download:
+        if 'CTU-Malware-Capture-Botnet-' in dataset_names[i] or 'CTU-Normal-' in dataset_names[i]:
             #number_name = int(dataset_names[i].split('-')[4].replace('/', ''))
 
             #if number_name < 248:
@@ -94,18 +95,23 @@ def save_manager(url, dataset_name):
     bro_files = find_files(url + dataset_name + 'bro/')
 
     if 'ssl.log' in bro_files:
-        directory_name = datasets_folder + dataset_name
-        if os.path.exists(directory_name):
-            shutil.rmtree(directory_name)
-        os.makedirs(directory_name)
-        folder_bro = directory_name + "/bro/"
-        os.makedirs(folder_bro)
+        directory_name = c.datasets_folder + dataset_name
+        #if os.path.exists(directory_name):
+        #    shutil.rmtree(directory_name)
+
+        if not os.path.exists(directory_name):
+            os.makedirs(directory_name)
+
+
+        folder_bro = directory_name + "bro/"
+        if not os.path.exists(folder_bro):
+            os.makedirs(folder_bro)
 
         for bro_log in bro_files:
             if bro_log.endswith('.log') and bro_log in files_to_download:
-
-                print url + dataset_name
-                file_sizes += save_file(url + dataset_name, folder_bro + bro_log, bro_log)
+                if not os.path.exists(directory_name + "bro/" + bro_log): # If file does not exists on hdd
+                    print url + dataset_name
+                    file_sizes += save_file(url + dataset_name, folder_bro + bro_log, bro_log)
 
     return file_sizes
 
@@ -141,6 +147,7 @@ def save_file(dataset_url, file_name, bro_log):
 
 
 if __name__ == '__main__':
+    start_time = time.time()
     datasets_size = 0
     if len(sys.argv) == 2:
         url = sys.argv[1]
@@ -149,3 +156,5 @@ if __name__ == '__main__':
     else:
         print "Error: Please put argument."
     print "Complet Dataset size:", (datasets_size / (1024.0 * 1024.0)), "MB"
+    total_time = datetime.timedelta(seconds=time.time() - start_time)
+    print("Training time : " + str(total_time))  # .strftime('%H:%M:%S'))
