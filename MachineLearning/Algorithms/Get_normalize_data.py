@@ -8,34 +8,6 @@ import DetectionMethods
 from ast import literal_eval
 import numpy as np
 
-###################
-### Methof fot T-SNE array output
-####################
-def write_to_file(file_name, data_list):
-    index = 0
-    with open("Final_Experiment\\DividedData\\T-SNE_data_model\\" + file_name, 'w') as f:
-        for dataline in data_list:
-            try:
-                label = int(dataline)
-                f.write(str(label) + "\n")
-            except:
-                f.write(str(list(dataline)) + "\n")
-            index += 1
-    f.close()
-    print file_name,"written lines:", index
-
-
-
-
-
-def get_column(matrix, i):
-    return [row[i] for row in matrix]
-
-
-def set_column(matrix, i):
-    for row in range(3):
-        matrix[row * 3 + i - 1] = 0
-
 
 def normalize_data(data):
     for i in range(0, len(data[0])):
@@ -67,12 +39,13 @@ def read_res(path):
     with open(path) as f:
         for line in f:
             split = line.split('	')
+            label = split[-1]
             temp = []
             if index < threshold:
                 for i in range(1, len(split)-1):
                     temp.append(float(split[i]))
                 train_data.append(temp)
-                if 'MALWARE' in split[24]:
+                if 'MALWARE' in label:
                     train_labels.append(1)
                     malware_conn += 1
                 else:
@@ -82,7 +55,7 @@ def read_res(path):
                 for i in range(1, len(split)-1):
                     temp.append(float(split[i]))
                 test_data.append(temp)
-                if 'MALWARE' in split[24]:
+                if 'MALWARE' in label:
                     test_labels.append(1)
                     malware_conn += 1
                 else:
@@ -118,7 +91,7 @@ def read_res2(path, file_name):
         for line in f:
             split = line.split('	')
             temp = []
-            label = split[29]
+            label = split[-1]
             started_index = 2
             end_index = len(split) -1
             # started_index = 22

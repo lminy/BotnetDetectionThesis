@@ -52,7 +52,7 @@ with open(path_to_conn_result) as f:
         print line
 
         split = line.split('	')
-        label = split[29]
+        label = split[42]
 
 
         feature = int(split[18])

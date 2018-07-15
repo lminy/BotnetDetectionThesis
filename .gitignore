@@ -106,5 +106,6 @@ venv.bak/
 .mypy_cache/
 
 # Config file
-*.cfg
-!/FeatureExtraction/BroExtraction/_example_config.cfg
+config.py
+.DS_Store
+Models/*

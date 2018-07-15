@@ -22,17 +22,7 @@ def normalize_data(data):
 
 def write_to_file(file_name, data_list):
     index = 0
-    with open("/home/frenky/PycharmProjects/HTTPSDetector/MachineLearning/data_model/" + file_name, 'w') as f:
-        for dataline in data_list:
-            f.write(str(dataline) + "\n")
-            index += 1
-    f.close()
-    print file_name,"written lines:", index
-
-
-def write_to_file_2(file_name, data_list):
-    index = 0
-    with open("DividedData\\features_parts\\" + file_name, 'w') as f:
+    with open("../data_model/" + file_name, 'w') as f:
         for dataline in data_list:
             f.write(str(dataline) + "\n")
             index += 1
@@ -46,7 +36,7 @@ Beginning of code.
 # Load all file to array.
 all_tuples = []
 try:
-    with open("conn_result_2017_08_16_1.txt") as f:
+    with open("conn_result_2018-07-14_10-23.txt") as f:
     # with open("DividedData\\all_features_2\\malware_connections.txt") as f:
         for line in f:
             all_tuples.append(line)
@@ -62,7 +52,7 @@ malwares = 0
 normals = 0
 for line in all_tuples:
     split = line.split('	')
-    label = split[29] # connection data model
+    label = split[-1] # connection data model
     # label = split[7] # certificate data model
 
     # print label
@@ -93,6 +83,7 @@ print "Normals:", normals
 
 # split data by sklearn library
 X_train, X_test, y_train, y_test = train_test_split(norm_X, y, test_size=.2, random_state=35)
+
 
 # Write train data
 write_to_file('X_train.txt', X_train)
