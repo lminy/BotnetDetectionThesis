@@ -105,8 +105,10 @@ venv.bak/
 # mypy
 .mypy_cache/
 
+# PyCharm
+.idea
+
 # Config file
 config.py
 .DS_Store
 Models/*
-/config.py
