@@ -1,11 +1,7 @@
-"""
-!!! Dividing data for BALANCED data !!! (used for thesis dataset in 2017/04-05)
-Divide data from conn_result.txt to payload data (without conn_tuple) and save again.
-Dividing is together with Normal and Malware. It means that tarinning 80% is taken from common part and
-testing 20% is taken from common part too.
-"""
-from sklearn.model_selection import train_test_split
 
+from sklearn.model_selection import train_test_split
+import config as c
+import csv
 
 def normalize_data(data):
     for i in range(0, len(data[0])):
@@ -19,77 +15,71 @@ def normalize_data(data):
                     data[j][i] = data[j][i] / float(max)
     return data
 
-
-def write_to_file(file_name, data_list):
+def write_features(file_name, data_list):
     index = 0
-    with open("../data_model/" + file_name, 'w') as f:
+    import csv
+
+    with open(c.model_folder + file_name, 'wb') as csvfile:
+        writer = csv.writer(csvfile, lineterminator='\n', delimiter=',')  # fieldnames=features.keys(),
+        # writer.writeheader()
         for dataline in data_list:
-            f.write(str(dataline) + "\n")
+            writer.writerow(dataline)
             index += 1
-    f.close()
+
     print file_name,"written lines:", index
 
+def write_targets(file_name, data_list):
+    index = 0
+    import csv
 
-"""
-Beginning of code.
-"""
-# Load all file to array.
-all_tuples = []
-try:
-    with open("conn_result_2018-07-14_10-23.txt") as f:
-    # with open("DividedData\\all_features_2\\malware_connections.txt") as f:
-        for line in f:
-            all_tuples.append(line)
-    f.close()
-except:
-    print "No file."
+    with open(c.model_folder + file_name, 'wb') as csvfile:
+        writer = csv.writer(csvfile, lineterminator='\n', delimiter=',')  # fieldnames=features.keys(),
+        writer.writerow(data_list)
+        index += 1
 
+    print file_name, "written lines:", index
 
-X = []
-y = []
-
-malwares = 0
-normals = 0
-for line in all_tuples:
-    split = line.split('	')
-    label = split[-1] # connection data model
-    # label = split[7] # certificate data model
-
-    # print label
-    number_label = -1
-
+def transform_label(label):
+    label_number = -1
     if 'MALWARE' in label:
-        number_label = 1
-        malwares += 1
-    if "NORMAL" in label:
-        number_label = 0
-        normals += 1
-    if number_label == -1:
-        print "ERROR: label is -1."
-        break
+        label_number = 1
+    elif "NORMAL" in label:
+        label_number = 0
+    else:
+        print "The label is incorrect"
 
-    temp = []
-    for i in range(1, 29): # 29
-        temp.append(float(split[i]))
-    X.append(temp)
-    y.append(number_label)
+    return label_number
 
 
-# normalize X
-norm_X = normalize_data(X)
-print "velikost naseho krasneho celeho X je:", len(X)
-print "Malwares:", malwares
-print "Normals:", normals
+if __name__ == '__main__':
+    malwares = 0
 
-# split data by sklearn library
-X_train, X_test, y_train, y_test = train_test_split(norm_X, y, test_size=.2, random_state=35)
+    X = list()
+    y = list()
+
+    with open(c.model_folder + "features.csv", 'r') as csvfile:
+        csvreader = csv.reader(csvfile, lineterminator='\n', delimiter=',', quoting=csv.QUOTE_NONNUMERIC)
+        headers = csvreader.next()
+        for row in csvreader:
+            X.append(row[1:-1])  # exclude key (index 0) and label (index -1 = last index)
+            target = transform_label(row[-1])
+            malwares += target
+            y.append(target)
 
 
-# Write train data
-write_to_file('X_train.txt', X_train)
-write_to_file('y_train.txt', y_train)
+    # normalize X
+    norm_X = normalize_data(X)
+    print "Size of X:", len(X)
+    print "Malwares:", malwares
+    print "Normals:", len(X) - malwares
 
-# Write test data
-write_to_file('X_test.txt', X_test)
-write_to_file('y_test.txt', y_test)
+    # split data by sklearn library
+    X_train, X_test, y_train, y_test = train_test_split(norm_X, y, test_size=.2, random_state=35)
 
+    # Write train data
+    write_features('X_train.csv', X_train)
+    write_targets('y_train.csv', y_train)
+
+    # Write test data
+    write_features('X_test.csv', X_test)
+    write_targets('y_test.csv', y_test)

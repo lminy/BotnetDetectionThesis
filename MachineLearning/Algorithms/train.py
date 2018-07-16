@@ -10,16 +10,13 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.ensemble import AdaBoostClassifier
 from sklearn.linear_model import LogisticRegression
 
-
-
 import Get_normalize_data
 import time
 import datetime
 import numpy as np
+import config as c
 
-
-final_path = "/Users/lminy/PycharmProjects/HTTPSDetector/MachineLearning/data_model/2018_07_14/"
-X_train, X_test, y_train, y_test = Get_normalize_data.get_all_data(final_path)
+X_train, X_test, y_train, y_test = Get_normalize_data.get_all_data(c.model_folder)
 X = X_train
 y = y_train
 
