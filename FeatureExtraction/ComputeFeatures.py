@@ -32,69 +32,7 @@ class ComputeFeatures(ExtractFeatures):
                                 break
                         if break_v == 1:
                             break
-    """
-    def create_dataset(self):
-        print "----------------------------------------"
-        print "Creatind data ..."
-        useful_ssl_flows = 0
-        all_flows = 0
-        space = '	'
-        # with open("ExtractedData\\" + "conn_result.txt", 'w') as f:
-        with open("./conn_result_" + self.file_time_name +".txt", 'w') as f:
-            for key in self.connection_4_tuples.keys():
-                f.write(str(key) + space +
-                        str(self.connection_4_tuples[key].get_number_of_flows()) + space +
-                        str(self.connection_4_tuples[key].get_average_of_duration()) + space +
-                        str(self.connection_4_tuples[key].get_standard_deviation_duration()) + space +
-                        str(self.connection_4_tuples[key].get_percent_of_standard_deviation_duration()) + space +
-                        str(self.connection_4_tuples[key].get_total_size_of_flows_orig()) + space +
-                        str(self.connection_4_tuples[key].get_total_size_of_flows_resp()) + space +
-                        str(self.connection_4_tuples[key].get_ratio_of_sizes()) + space +
-                        str(self.connection_4_tuples[key].get_percent_of_established_states()) + space +
-                        str(self.connection_4_tuples[key].get_inbound_pckts()) + space +
-                        str(self.connection_4_tuples[key].get_outbound_pckts()) + space +
-                        str(self.connection_4_tuples[key].get_periodicity_average()) + space +
-                        str(self.connection_4_tuples[key].get_periodicity_standart_deviation()) + space +
-                        str(self.connection_4_tuples[key].get_ssl_ratio()) + space +
-                        str(self.connection_4_tuples[key].get_average_public_key()) + space +
-                        str(self.connection_4_tuples[key].get_tls_version_ratio()) + space +
-                        str(self.connection_4_tuples[key].get_average_of_certificate_length()) + space +
-                        str(self.connection_4_tuples[key].get_standart_deviation_cert_length()) + space +
-                        str(self.connection_4_tuples[key].is_valid_certificate_during_capture()) + space +
-                        str(self.connection_4_tuples[key].get_amount_diff_certificates()) + space +
-                        str(self.connection_4_tuples[key].get_number_of_domains_in_certificate()) + space +
-                        str(self.connection_4_tuples[key].get_certificate_ratio()) + space +
-                        str(self.connection_4_tuples[key].get_number_of_certificate_path()) + space +
-                        str(self.connection_4_tuples[key].x509_ssl_ratio()) + space +
-                        str(self.connection_4_tuples[key].SNI_ssl_ratio()) + space +
-                        str(self.connection_4_tuples[key].self_signed_ratio()) + space +
-                        str(self.connection_4_tuples[key].is_SNIs_in_SNA_dns()) + space +
-                        str(self.connection_4_tuples[key].get_SNI_equal_DstIP()) + space +
-                        str(self.connection_4_tuples[key].is_CNs_in_SNA_dns()) + space +
 
-                        # New features
-
-                        str(self.connection_4_tuples[key].ratio_of_differ_SNI_in_ssl_log()) + space +
-                        str(self.connection_4_tuples[key].ratio_of_differ_subject_in_ssl_log()) + space +
-                        str(self.connection_4_tuples[key].ratio_of_differ_issuer_in_ssl_log()) + space +
-                        str(self.connection_4_tuples[key].ratio_of_differ_subject_in_cert()) + space +
-                        str(self.connection_4_tuples[key].ratio_of_differ_issuer_in_cert()) + space +
-                        str(self.connection_4_tuples[key].ratio_of_differ_sandns_in_cert()) + space +
-                        str(self.connection_4_tuples[key].ratio_of_same_subjects()) + space +
-                        str(self.connection_4_tuples[key].ratio_of_same_issuer()) + space +
-                        str(self.connection_4_tuples[key].ratio_is_same_CN_and_SNI()) + space +
-                        str(self.connection_4_tuples[key].average_certificate_exponent()) + space +
-                        str(self.connection_4_tuples[key].is_SNI_in_top_level_domain()) + space +
-                        str(self.connection_4_tuples[key].ratio_certificate_path_error()) + space +
-                        str(self.connection_4_tuples[key].ratio_missing_cert_in_cert_path()) + space +
-
-                        self.connection_4_tuples[key].get_label_of_connection() +
-                        "\n")
-                useful_ssl_flows += self.connection_4_tuples[key].get_number_of_ssl_flows()
-                all_flows += self.connection_4_tuples[key].get_number_of_flows()
-
-        f.close()
-    """
 
     def create_dataset(self):
         import csv
@@ -158,108 +96,42 @@ class ComputeFeatures(ExtractFeatures):
                 writer.writerow(features)
                 line += 1
 
-    """
-    def create_dataset(self):
-        print "----------------------------------------"
-        print "Creating data ..."
+    def create_dataset_dns(self):
+        import csv
+        from collections import OrderedDict
 
-        space = '	'
+        with open(c.model_folder + 'dns_features.csv', 'wb') as csvfile:
+            line = 0
 
-        with open(c.model_folder + "/features.txt", 'w') as f:
-            for key in self.connection_4_tuples.keys():
-                fnames = "key" + "\n"
-                line = str(key) + space
-                fnames += "number_of_flows" + "\n"
-                line += str(self.connection_4_tuples[key].get_number_of_flows()) + space
-                fnames += "average_of_duration" + "\n"
-                line += str(self.connection_4_tuples[key].get_average_of_duration()) + space
-                fnames += "standard_deviation_duration" + "\n"
-                line += str(self.connection_4_tuples[key].get_standard_deviation_duration()) + space
-                fnames += "percent_of_standard_deviation_duration" + "\n"
-                line += str(self.connection_4_tuples[key].get_percent_of_standard_deviation_duration()) + space
-                fnames += "total_size_of_flows_orig" + "\n"
-                line += str(self.connection_4_tuples[key].get_total_size_of_flows_orig()) + space
-                fnames += "total_size_of_flows_resp" + "\n"
-                line += str(self.connection_4_tuples[key].get_total_size_of_flows_resp()) + space
-                fnames += "ratio_of_sizes" + "\n"
-                line += str(self.connection_4_tuples[key].get_ratio_of_sizes()) + space
-                fnames += "percent_of_established_states" + "\n"
-                line += str(self.connection_4_tuples[key].get_percent_of_established_states()) + space
-                fnames += "inbound_pckts" + "\n"
-                line += str(self.connection_4_tuples[key].get_inbound_pckts()) + space
-                fnames += "outbound_pckts" + "\n"
-                line += str(self.connection_4_tuples[key].get_outbound_pckts()) + space
-                fnames += "periodicity_average" + "\n"
-                line += str(self.connection_4_tuples[key].get_periodicity_average()) + space
-                fnames += "periodicity_standart_deviation" + "\n"
-                line += str(self.connection_4_tuples[key].get_periodicity_standart_deviation()) + space
-                fnames += "ssl_ratio" + "\n"
-                line += str(self.connection_4_tuples[key].get_ssl_ratio()) + space
-                fnames += "average_public_key" + "\n"
-                line += str(self.connection_4_tuples[key].get_average_public_key()) + space
-                fnames += "tls_version_ratio" + "\n"
-                line += str(self.connection_4_tuples[key].get_tls_version_ratio()) + space
-                fnames += "average_of_certificate_length" + "\n"
-                line += str(self.connection_4_tuples[key].get_average_of_certificate_length()) + space
-                fnames += "standart_deviation_cert_length" + "\n"
-                line += str(self.connection_4_tuples[key].get_standart_deviation_cert_length()) + space
-                fnames += "is_valid_certificate_during_capture" + "\n"
-                line += str(self.connection_4_tuples[key].is_valid_certificate_during_capture()) + space
-                fnames += "amount_diff_certificates" + "\n"
-                line += str(self.connection_4_tuples[key].get_amount_diff_certificates()) + space
-                fnames += "number_of_domains_in_certificate" + "\n"
-                line += str(self.connection_4_tuples[key].get_number_of_domains_in_certificate()) + space
-                fnames += "get_certificate_ratio" + "\n"
-                line += str(self.connection_4_tuples[key].get_certificate_ratio()) + space
-                fnames += "number_of_certificate_path" + "\n"
-                line += str(self.connection_4_tuples[key].get_number_of_certificate_path()) + space
-                fnames += "x509_ssl_ratio" + "\n"
-                line += str(self.connection_4_tuples[key].x509_ssl_ratio()) + space
-                fnames += "SNI_ssl_ratio" + "\n"
-                line += str(self.connection_4_tuples[key].SNI_ssl_ratio()) + space
-                fnames += "self_signed_ratio" + "\n"
-                line += str(self.connection_4_tuples[key].self_signed_ratio()) + space
-                fnames += "is_SNIs_in_SNA_dns" + "\n"
-                line += str(self.connection_4_tuples[key].is_SNIs_in_SNA_dns()) + space
-                fnames += "SNI_equal_DstIP" + "\n"
-                line += str(self.connection_4_tuples[key].get_SNI_equal_DstIP()) + space
-                fnames += "is_CNs_in_SNA_dns" + "\n"
-                line += str(self.connection_4_tuples[key].is_CNs_in_SNA_dns()) + space
+            for key, dns_conn in self.dns_connections.iteritems():
+                features = OrderedDict()
+                features["key"] = key
+                features.update(benchmark(dns_conn.compute_alexa_features))
+                features["FQDN_length"] = benchmark(dns_conn.get_FQDN_length)
+                features["domain_name_length"] = benchmark(dns_conn.get_domain_name_length)
+                features["number_of_numerical_chars"] = benchmark(dns_conn.get_number_of_numerical_chars)
+                features["number_of_non_alphanumeric_chars"] = benchmark(dns_conn.get_number_of_non_alphanumeric_chars)
+                features["number_unique_IP_addresses_in_response"] = benchmark(
+                    dns_conn.get_number_unique_IP_addresses_in_response)
+                features["number_of_subdomains"] = benchmark(dns_conn.get_number_of_subdomains)
+                features["average_ttls"] = benchmark(dns_conn.get_average_ttls)
+                features["min_ttls"] = benchmark(dns_conn.get_min_ttls)
+                features["max_ttls"] = benchmark(dns_conn.get_max_ttls)
+                features["number_of_hyphens_in_fqdn"] = benchmark(dns_conn.get_number_of_hyphens_in_fqdn)
+                features["length_of_longest_subdomain_name"] = benchmark(dns_conn.get_length_of_longest_subdomain_name)
+                features["number_of_voyels_in_fqdn"] = benchmark(dns_conn.get_number_of_voyels_in_fqdn)
+                features["number_of_different_chars_in_fqdn"] = benchmark(
+                    dns_conn.get_number_of_different_chars_in_fqdn)
+                features["number_of_consonants_in_fqdn"] = benchmark(dns_conn.get_number_of_consonants_in_fqdn)
+                features["shannon_entropy_2ld"] = benchmark(dns_conn.get_shannon_entropy_2ld)
+                features["shannon_entropy_3ld"] = benchmark(dns_conn.get_shannon_entropy_3ld)
 
-                # New features
-                fnames += "ratio_of_differ_SNI_in_ssl_log" + "\n"
-                line += str(self.connection_4_tuples[key].ratio_of_differ_SNI_in_ssl_log()) + space
-                fnames += "ratio_of_differ_subject_in_ssl_log" + "\n"
-                line += str(self.connection_4_tuples[key].ratio_of_differ_subject_in_ssl_log()) + space
-                fnames += "ratio_of_differ_issuer_in_ssl_log" + "\n"
-                line += str(self.connection_4_tuples[key].ratio_of_differ_issuer_in_ssl_log()) + space
-                fnames += "ratio_of_differ_subject_in_cert" + "\n"
-                line += str(self.connection_4_tuples[key].ratio_of_differ_subject_in_cert()) + space
-                fnames += "ratio_of_differ_issuer_in_cert" + "\n"
-                line += str(self.connection_4_tuples[key].ratio_of_differ_issuer_in_cert()) + space
-                fnames += "ratio_of_differ_sandns_in_cert" + "\n"
-                line += str(self.connection_4_tuples[key].ratio_of_differ_sandns_in_cert()) + space
-                fnames += "ratio_of_same_subjects" + "\n"
-                line += str(self.connection_4_tuples[key].ratio_of_same_subjects()) + space
-                fnames += "ratio_of_same_issuer" + "\n"
-                line += str(self.connection_4_tuples[key].ratio_of_same_issuer()) + space
-                fnames += "ratio_is_same_CN_and_SNI" + "\n"
-                line += str(self.connection_4_tuples[key].ratio_is_same_CN_and_SNI()) + space
-                fnames += "average_certificate_exponent" + "\n"
-                line += str(self.connection_4_tuples[key].average_certificate_exponent()) + space
-                fnames += "is_SNI_in_top_level_domain" + "\n"
-                line += str(self.connection_4_tuples[key].is_SNI_in_top_level_domain()) + space
-                fnames += "ratio_certificate_path_error" + "\n"
-                line += str(self.connection_4_tuples[key].ratio_certificate_path_error()) + space
-                fnames += "ratio_missing_cert_in_cert_path" + "\n"
-                line += str(self.connection_4_tuples[key].ratio_missing_cert_in_cert_path()) + space
-                fnames += "label" + "\n"
-                line += self.connection_4_tuples[key].get_label_of_connection()
-                f.write(line + "\n")
+                if line == 0:
+                    writer = csv.DictWriter(csvfile, fieldnames=features.keys(), lineterminator='\n', delimiter=',', quoting=csv.QUOTE_NONNUMERIC)
+                    writer.writeheader()
 
-        with open(c.model_folder + "/features_name.txt", 'w') as n:
-            n.write(fnames)
-    """
+                writer.writerow(features)
+                line += 1
 
     def save_dataset_information(self):
         print "----------------------------------------"
@@ -341,3 +213,12 @@ class ComputeFeatures(ExtractFeatures):
             for line in x509_lines:
                 f.write(line + "\n")
             f.close()
+
+def benchmark(func, *params):
+    #import datetime
+    #import time
+    #start_time = time.time()
+    return_value = func(*params) if params else func()
+    #total_time = datetime.timedelta(seconds=time.time() - start_time)
+    #print("Function " + func.__name__ + " - execution time : " + str(total_time))#.strftime('%H:%M:%S'))
+    return return_value

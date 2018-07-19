@@ -2,7 +2,7 @@ import os
 from ConnectionFeatures import ConnectionFeatures
 from DataetInformation import DatasetInformation
 from CertificateFeatures import CertificateFeatures
-
+from DNSFeatures import DNSFeatures
 
 class ExtractFeatures(object):
 
@@ -27,6 +27,9 @@ class ExtractFeatures(object):
 
         self.dataset_inforamtion_dict = dict()
 
+        self.dns_lines = 0
+        self.dns_connections = dict()
+
     def extraction_manager(self, dataset_path_to_logs):
         # Loads all conn logs in bro folder.
         self.conn_logs(dataset_path_to_logs)
@@ -36,6 +39,8 @@ class ExtractFeatures(object):
         self.ssl_logs(dataset_path_to_logs)
         # Find not ssl lines in conn.logs that belong to created conn 4 tuples.
         self.conn_logs_2(dataset_path_to_logs)
+        # Load all dns logs.
+        self.dns_logs(dataset_path_to_logs)
 
         print "SSL Lines:", self.ssl_lines
         print "Not founded x509 lines:", self.not_founded_x509_lines
@@ -275,6 +280,48 @@ class ExtractFeatures(object):
                     # Connections which are normal or botnet but they don't have ssl 4-tuple object.
                     pass
         f.close()
+
+    """
+        ---------------------- DNS logs. -------------------------
+        """
+
+    def dns_logs(self, dataset_path_to_logs):
+        print " << Read all dns logs:"
+        print "Reading dns logs:"
+        self.dns_lines = 0
+        all_dns_logs = get_such_logs(dataset_path_to_logs, ['dns'])
+        for dns_log in all_dns_logs:
+            self.read_dns_log(dataset_path_to_logs + dns_log)
+
+        print "     << Loaded dns logs: ", len(all_dns_logs)
+
+    def read_dns_log(self, dataset_path_to_dns):
+        try:
+            with open(dataset_path_to_dns) as f:
+                for line in f:
+                    split_dns_line = line.split('\t')
+                    if split_dns_line[0] == "#fields":
+                        headers = split_dns_line[1:]
+                        continue
+                    elif line[0] == '#':
+                        continue
+
+                    dns_record = dict(zip(headers, split_dns_line))
+
+                    unknown_domain_names = ["(empty)", "immutableset"]
+                    if (dns_record['qtype_name'] == 'A' or dns_record['qtype_name'] == 'AAAA') and \
+                            dns_record['query'] not in unknown_domain_names and '.' in dns_record['query']:
+                        dns_index = dns_record['query']
+                        if dns_index in self.dns_connections:
+                            self.dns_connections[dns_index].add_dns_record(dns_record)
+                        else:
+                            self.dns_connections[dns_index] = DNSFeatures(dns_index)
+
+                        self.dns_lines += 1
+
+            f.close()
+        except IOError:
+            print "Error: The dns file: " + dataset_path_to_dns + " does not exist."
 
     """
     ------------------------------------------------
