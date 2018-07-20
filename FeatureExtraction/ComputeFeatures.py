@@ -41,60 +41,89 @@ class ComputeFeatures(ExtractFeatures):
         with open(c.model_folder + 'features.csv', 'wb') as csvfile:
             line = 0
             for key, con4tuple in self.connection_4_tuples.iteritems():
-                features = OrderedDict()
-                features["key"] = " ".join(key)
-                features["number_of_flows"] = con4tuple.get_number_of_flows()
-                features["average_of_duration"] = con4tuple.get_average_of_duration()
-                features["standard_deviation_duration"] = con4tuple.get_standard_deviation_duration()
-                features["percent_of_standard_deviation_duration"] = con4tuple.get_percent_of_standard_deviation_duration()
-                features["total_size_of_flows_orig"] = con4tuple.get_total_size_of_flows_orig()
-                features["total_size_of_flows_resp"] = con4tuple.get_total_size_of_flows_resp()
-                features["ratio_of_sizes"] = con4tuple.get_ratio_of_sizes()
-                features["percent_of_established_states"] = con4tuple.get_percent_of_established_states()
-                features["inbound_pckts"] = con4tuple.get_inbound_pckts()
-                features["outbound_pckts"] = con4tuple.get_outbound_pckts()
-                features["periodicity_average"] = con4tuple.get_periodicity_average()
-                features["periodicity_standart_deviation"] = con4tuple.get_periodicity_standart_deviation()
-                features["ssl_ratio"] = con4tuple.get_ssl_ratio()
-                features["average_public_key"] = con4tuple.get_average_public_key()
-                features["tls_version_ratio"] = con4tuple.get_tls_version_ratio()
-                features["average_of_certificate_length"] = con4tuple.get_average_of_certificate_length()
-                features["standart_deviation_cert_length"] = con4tuple.get_standart_deviation_cert_length()
-                features["is_valid_certificate_during_capture"] = con4tuple.is_valid_certificate_during_capture()
-                features["amount_diff_certificates"] = con4tuple.get_amount_diff_certificates()
-                features["number_of_domains_in_certificate"] = con4tuple.get_number_of_domains_in_certificate()
-                features["get_certificate_ratio"] = con4tuple.get_certificate_ratio()
-                features["number_of_certificate_path"] = con4tuple.get_number_of_certificate_path()
-                features["x509_ssl_ratio"] = con4tuple.x509_ssl_ratio()
-                features["SNI_ssl_ratio"] = con4tuple.SNI_ssl_ratio()
-                features["self_signed_ratio"] = con4tuple.self_signed_ratio()
-                features["is_SNIs_in_SNA_dns"] = con4tuple.is_SNIs_in_SNA_dns()
-                features["SNI_equal_DstIP"] = con4tuple.get_SNI_equal_DstIP()
-                features["is_CNs_in_SNA_dns"] = con4tuple.is_CNs_in_SNA_dns()
+                dest_ip = key[1]
+                if dest_ip not in self.dns_connections_index:
+                    print dest_ip + "NOT FOUND IN DNS RECORDS..."
+                else:
+                    dns_conn = self.dns_connections_index[dest_ip]
 
-                # New features
-                features["ratio_of_differ_SNI_in_ssl_log"] = con4tuple.ratio_of_differ_SNI_in_ssl_log()
-                features["ratio_of_differ_subject_in_ssl_log"] = con4tuple.ratio_of_differ_subject_in_ssl_log()
-                features["ratio_of_differ_issuer_in_ssl_log"] = con4tuple.ratio_of_differ_issuer_in_ssl_log()
-                features["ratio_of_differ_subject_in_cert"] = con4tuple.ratio_of_differ_subject_in_cert()
-                features["ratio_of_differ_issuer_in_cert"] = con4tuple.ratio_of_differ_issuer_in_cert()
-                features["ratio_of_differ_sandns_in_cert"] = con4tuple.ratio_of_differ_sandns_in_cert()
-                features["ratio_of_same_subjects"] = con4tuple.ratio_of_same_subjects()
-                features["ratio_of_same_issuer"] = con4tuple.ratio_of_same_issuer()
-                features["ratio_is_same_CN_and_SNI"] = con4tuple.ratio_is_same_CN_and_SNI()
-                features["average_certificate_exponent"] = con4tuple.average_certificate_exponent()
-                features["is_SNI_in_top_level_domain"] = con4tuple.is_SNI_in_top_level_domain()
-                features["ratio_certificate_path_error"] = con4tuple.ratio_certificate_path_error()
-                features["ratio_missing_cert_in_cert_path"] = con4tuple.ratio_missing_cert_in_cert_path()
+                    features = OrderedDict()
+                    features["key"] = " ".join(key)
+                    features["number_of_flows"] = con4tuple.get_number_of_flows()
+                    features["average_of_duration"] = con4tuple.get_average_of_duration()
+                    features["standard_deviation_duration"] = con4tuple.get_standard_deviation_duration()
+                    features["percent_of_standard_deviation_duration"] = con4tuple.get_percent_of_standard_deviation_duration()
+                    features["total_size_of_flows_orig"] = con4tuple.get_total_size_of_flows_orig()
+                    features["total_size_of_flows_resp"] = con4tuple.get_total_size_of_flows_resp()
+                    features["ratio_of_sizes"] = con4tuple.get_ratio_of_sizes()
+                    features["percent_of_established_states"] = con4tuple.get_percent_of_established_states()
+                    features["inbound_pckts"] = con4tuple.get_inbound_pckts()
+                    features["outbound_pckts"] = con4tuple.get_outbound_pckts()
+                    features["periodicity_average"] = con4tuple.get_periodicity_average()
+                    features["periodicity_standart_deviation"] = con4tuple.get_periodicity_standart_deviation()
+                    features["ssl_ratio"] = con4tuple.get_ssl_ratio()
+                    features["average_public_key"] = con4tuple.get_average_public_key()
+                    features["tls_version_ratio"] = con4tuple.get_tls_version_ratio()
+                    features["average_of_certificate_length"] = con4tuple.get_average_of_certificate_length()
+                    features["standart_deviation_cert_length"] = con4tuple.get_standart_deviation_cert_length()
+                    features["is_valid_certificate_during_capture"] = con4tuple.is_valid_certificate_during_capture()
+                    features["amount_diff_certificates"] = con4tuple.get_amount_diff_certificates()
+                    features["number_of_domains_in_certificate"] = con4tuple.get_number_of_domains_in_certificate()
+                    features["get_certificate_ratio"] = con4tuple.get_certificate_ratio()
+                    features["number_of_certificate_path"] = con4tuple.get_number_of_certificate_path()
+                    features["x509_ssl_ratio"] = con4tuple.x509_ssl_ratio()
+                    features["SNI_ssl_ratio"] = con4tuple.SNI_ssl_ratio()
+                    features["self_signed_ratio"] = con4tuple.self_signed_ratio()
+                    features["is_SNIs_in_SNA_dns"] = con4tuple.is_SNIs_in_SNA_dns()
+                    features["SNI_equal_DstIP"] = con4tuple.get_SNI_equal_DstIP()
+                    features["is_CNs_in_SNA_dns"] = con4tuple.is_CNs_in_SNA_dns()
 
-                features["label"] = con4tuple.get_label_of_connection()
+                    # New features
+                    features["ratio_of_differ_SNI_in_ssl_log"] = con4tuple.ratio_of_differ_SNI_in_ssl_log()
+                    features["ratio_of_differ_subject_in_ssl_log"] = con4tuple.ratio_of_differ_subject_in_ssl_log()
+                    features["ratio_of_differ_issuer_in_ssl_log"] = con4tuple.ratio_of_differ_issuer_in_ssl_log()
+                    features["ratio_of_differ_subject_in_cert"] = con4tuple.ratio_of_differ_subject_in_cert()
+                    features["ratio_of_differ_issuer_in_cert"] = con4tuple.ratio_of_differ_issuer_in_cert()
+                    features["ratio_of_differ_sandns_in_cert"] = con4tuple.ratio_of_differ_sandns_in_cert()
+                    features["ratio_of_same_subjects"] = con4tuple.ratio_of_same_subjects()
+                    features["ratio_of_same_issuer"] = con4tuple.ratio_of_same_issuer()
+                    features["ratio_is_same_CN_and_SNI"] = con4tuple.ratio_is_same_CN_and_SNI()
+                    features["average_certificate_exponent"] = con4tuple.average_certificate_exponent()
+                    features["is_SNI_in_top_level_domain"] = con4tuple.is_SNI_in_top_level_domain()
+                    features["ratio_certificate_path_error"] = con4tuple.ratio_certificate_path_error()
+                    features["ratio_missing_cert_in_cert_path"] = con4tuple.ratio_missing_cert_in_cert_path()
 
-                if line == 0:
-                    writer = csv.DictWriter(csvfile, fieldnames=features.keys(), lineterminator='\n', delimiter=',', quoting=csv.QUOTE_NONNUMERIC)
-                    writer.writeheader()
+                    # DNS Features
+                    features.update(benchmark(dns_conn.compute_alexa_features))
+                    features["FQDN_length"] = benchmark(dns_conn.get_FQDN_length)
+                    features["domain_name_length"] = benchmark(dns_conn.get_domain_name_length)
+                    features["number_of_numerical_chars"] = benchmark(dns_conn.get_number_of_numerical_chars)
+                    features["number_of_non_alphanumeric_chars"] = benchmark(
+                        dns_conn.get_number_of_non_alphanumeric_chars)
+                    features["number_unique_IP_addresses_in_response"] = benchmark(
+                        dns_conn.get_number_unique_IP_addresses_in_response)
+                    features["number_of_subdomains"] = benchmark(dns_conn.get_number_of_subdomains)
+                    features["average_ttls"] = benchmark(dns_conn.get_average_ttls)
+                    features["min_ttls"] = benchmark(dns_conn.get_min_ttls)
+                    features["max_ttls"] = benchmark(dns_conn.get_max_ttls)
+                    features["number_of_hyphens_in_fqdn"] = benchmark(dns_conn.get_number_of_hyphens_in_fqdn)
+                    features["length_of_longest_subdomain_name"] = benchmark(
+                        dns_conn.get_length_of_longest_subdomain_name)
+                    features["number_of_voyels_in_fqdn"] = benchmark(dns_conn.get_number_of_voyels_in_fqdn)
+                    features["number_of_different_chars_in_fqdn"] = benchmark(
+                        dns_conn.get_number_of_different_chars_in_fqdn)
+                    features["number_of_consonants_in_fqdn"] = benchmark(dns_conn.get_number_of_consonants_in_fqdn)
+                    features["shannon_entropy_2ld"] = benchmark(dns_conn.get_shannon_entropy_2ld)
+                    features["shannon_entropy_3ld"] = benchmark(dns_conn.get_shannon_entropy_3ld)
 
-                writer.writerow(features)
-                line += 1
+                    features["label"] = con4tuple.get_label_of_connection()
+
+                    if line == 0:
+                        writer = csv.DictWriter(csvfile, fieldnames=features.keys(), lineterminator='\n', delimiter=',', quoting=csv.QUOTE_NONNUMERIC)
+                        writer.writeheader()
+
+                    writer.writerow(features)
+                    line += 1
 
     def create_dataset_dns(self):
         import csv

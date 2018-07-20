@@ -29,6 +29,7 @@ class ExtractFeatures(object):
 
         self.dns_lines = 0
         self.dns_connections = dict()
+        self.dns_connections_index = dict() # keys = IPs, values = dns_connections    Note : multiple keys can refer to the same dns_connection
 
     def extraction_manager(self, dataset_path_to_logs):
         # Loads all conn logs in bro folder.
@@ -314,8 +315,13 @@ class ExtractFeatures(object):
                         dns_index = dns_record['query']
                         if dns_index in self.dns_connections:
                             self.dns_connections[dns_index].add_dns_record(dns_record)
+                            for ip in self.dns_connections[dns_index].answers:
+                                self.dns_connections_index[ip] = self.dns_connections[dns_index]
                         else:
                             self.dns_connections[dns_index] = DNSFeatures(dns_index)
+                            self.dns_connections[dns_index].add_dns_record(dns_record)
+                            for ip in self.dns_connections[dns_index].answers:
+                                self.dns_connections_index[ip] = self.dns_connections[dns_index]
 
                         self.dns_lines += 1
 

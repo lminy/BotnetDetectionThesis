@@ -3,8 +3,8 @@ import string
 import csv
 from collections import OrderedDict
 
-class DNSFeatures(DNSConnection):
 
+class DNSFeatures(DNSConnection):
     alexa_top100 = list()
     alexa_top1k = list()
     alexa_top10k = list()
@@ -37,7 +37,7 @@ class DNSFeatures(DNSConnection):
     def compute_classic_features(self, dns_record):
 
         if dns_record["answers"] != '-':
-            self.answers.update(dns_record["answers"].split(','))
+            self.answers.update(filter(is_ipv4, dns_record["answers"].split(',')))
         if dns_record["TTLs"] != '-':
             self.ttls += (map(float, dns_record["TTLs"].split(',')))
 
@@ -210,3 +210,15 @@ def entropy(str):
     entropy = - sum([p * math.log(p) / math.log(2.0) for p in prob])
 
     return entropy
+
+def is_ipv4(str):
+    l = str.split('.')
+    if len(l) != 4:
+        return False
+    try:
+        ip = map(int, l)
+    except ValueError:
+        return False
+    if len(filter(lambda x: 0 <= x <= 255, ip)) == 4:
+        return True
+    return False

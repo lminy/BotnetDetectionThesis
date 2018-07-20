@@ -29,7 +29,7 @@ def train(classifier, name, param_grid=None) :
         classifier.fit(X_train, y_train)
         results[name] = dict(model=classifier)
     else :
-        grid = GridSearchCV(classifier, param_grid, cv=10, scoring='accuracy', n_jobs=2) # Do a 10-fold cross validation
+        grid = GridSearchCV(classifier, param_grid, cv=10, scoring='accuracy', n_jobs=1) # Do a 10-fold cross validation
         grid.fit(X, y) # fit the grid with data
         results[name] = dict(grid=grid, model=classifier)
     #total_time = datetime.datetime.fromtimestamp(time.time() - start_time)

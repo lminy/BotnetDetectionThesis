@@ -32,8 +32,8 @@ def main():
     extract_features.add_cert_to_non_cert_conn()
 
     # Compute features and save them.
-    #extract_features.create_dataset()
-    extract_features.create_dataset_dns()
+    #extract_features.create_dataset_dns()
+    extract_features.create_dataset()
 
     # Print final statistic
     extract_features.print_statistic()
