@@ -13,9 +13,11 @@ import urllib2
 import ssl
 import os
 import shutil
-import config as c
+#import config as c
 import time
 import datetime
+
+datasets_folder = "/Volumes/Data/datasets/"
 
 files_to_download = ["ssl.log", "x509.log", "weird.log", "conn.log", "dns.log"]
 
@@ -95,12 +97,20 @@ def save_manager(url, dataset_name):
     bro_files = find_files(url + dataset_name + 'bro/')
 
     if 'ssl.log' in bro_files:
-        directory_name = c.datasets_folder + dataset_name
+        directory_name = datasets_folder + dataset_name
         #if os.path.exists(directory_name):
         #    shutil.rmtree(directory_name)
 
         if not os.path.exists(directory_name):
             os.makedirs(directory_name)
+
+        # Download Readme file
+        url_dataset = url + dataset_name
+        for filename in find_files(url_dataset):
+            if "README" in filename:
+                save_file(url_dataset + filename, directory_name + filename)
+        #url_file = url + dataset_name + "README.html"
+        #file_name = directory_name + "README.html"
 
 
         folder_bro = directory_name + "bro/"
@@ -111,18 +121,19 @@ def save_manager(url, dataset_name):
             if bro_log.endswith('.log') and bro_log in files_to_download:
                 if not os.path.exists(directory_name + "bro/" + bro_log): # If file does not exists on hdd
                     print url + dataset_name
-                    file_sizes += save_file(url + dataset_name, folder_bro + bro_log, bro_log)
+                    url_file = url + dataset_name + 'bro/' + bro_log
+                    file_sizes += save_file(url_file, folder_bro + bro_log)
 
     return file_sizes
 
 
-def save_file(dataset_url, file_name, bro_log):
-    print bro_log, "is downloading..."
+def save_file(url_file, file_name):
+    print url_file, "is downloading..."
     file_size = 0
     # https://stackoverflow.com/a/28052583
     req = urllib2.Request(url, headers={ 'X-Mashape-Key': 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX' })
     gcontext = ssl.SSLContext(ssl.PROTOCOL_TLSv1)
-    u = urllib2.urlopen(dataset_url + 'bro/' + bro_log, context=gcontext)
+    u = urllib2.urlopen(url_file, context=gcontext)
     meta = u.info()
     file_size += int(meta.getheaders("Content-Length")[0])
 
@@ -157,4 +168,4 @@ if __name__ == '__main__':
         print "Error: Please put argument."
     print "Complet Dataset size:", (datasets_size / (1024.0 * 1024.0)), "MB"
     total_time = datetime.timedelta(seconds=time.time() - start_time)
-    print("Training time : " + str(total_time))  # .strftime('%H:%M:%S'))
+    print("Time : " + str(total_time))  # .strftime('%H:%M:%S'))

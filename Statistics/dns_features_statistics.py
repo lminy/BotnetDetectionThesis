@@ -199,10 +199,12 @@ def plot_barchar(features_name):
     ax.legend((rects1[0], rects2[0]), ('Normal', 'Malware'))
     fig.savefig(graphs_folder + "features_alexa" + '.png')
 
-
-
 #plot_all_stat_continue()
-plot_alexa2()
+#plot_alexa2()
 #plot_barchar("number_unique_IP_addresses_in_response")
 
-
+nb_conn_tuples_normal = len(df.loc[df['label'] == 'NORMAL'])
+nb_conn_tuples_malware = len(df.loc[df['label'] == 'MALWARE'])
+print "Number of conn4tuples Normal : " + str(nb_conn_tuples_normal)
+print "Number of conn4tuples Malware : " + str(nb_conn_tuples_malware)
+print "Total : " + str(nb_conn_tuples_normal + nb_conn_tuples_malware)
