@@ -104,7 +104,7 @@ class Model(object):
         headers = ['Model', 'Best score']
         headers += self.metrics.keys()
         values = reduce(lambda x, y: str(x) + "\t" + str(y), [self.name, self.score] + [round(float(m), 3) for m in self.metrics.values()], "")
-        return headers + "\n" + values
+        return "\t".join(headers) + "\n" + values
 
 
 
@@ -135,5 +135,5 @@ class Model(object):
 
             values += reduce(lambda x, y: str(x) + "\t" + str(y),
                 [model.name, model.score] + [round(float(m), 3) for m in model.metrics.values()], "") + "\n"
-        return headers + "\n" + values
+        return "\t".join(headers) + "\n" + values
 
