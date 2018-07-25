@@ -119,6 +119,14 @@ class DNSFeatures(DNSConnection):
             return -1
 
     # ------------------------------------------------------------------
+    # 00. ---------- std TTLs --------------------
+    def get_std_ttls(self):
+        if len(self.ttls) > 2:
+            return main_tools.std(self.ttls)
+        else:
+            return -1
+
+    # ------------------------------------------------------------------
     # 00. ---------- min TTLs --------------------
     def get_min_ttls(self):
         return min(self.ttls) if len(self.ttls) > 0 else -1
