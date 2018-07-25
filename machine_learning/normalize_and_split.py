@@ -1,3 +1,7 @@
+import os
+import sys
+sys.path.insert(0, os.environ['HOME'] + '/BotnetDetectionThesis/')
+
 
 from sklearn.model_selection import train_test_split
 import config as c

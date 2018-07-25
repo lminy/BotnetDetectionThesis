@@ -1,3 +1,8 @@
+import os
+import sys
+sys.path.insert(0, os.environ['HOME'] + '/BotnetDetectionThesis/')
+
+
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.naive_bayes import BernoulliNB
