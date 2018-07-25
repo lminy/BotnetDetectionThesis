@@ -3,7 +3,7 @@ import string
 import csv
 from collections import OrderedDict
 import config as c
-import tools
+import main_tools
 
 
 class DNSFeatures(DNSConnection):

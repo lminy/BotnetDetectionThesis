@@ -1,6 +1,6 @@
 from collections import OrderedDict
 from sklearn.model_selection import GridSearchCV
-import tools
+import main_tools
 import math
 
 from logger import get_logger
@@ -28,7 +28,7 @@ class Model(object):
             self.classifier = GridSearchCV(self.classifier, self.param_grid, cv=10, scoring='accuracy', n_jobs=1)  # Do a 10-fold cross validation
 
         logger.info('Training classifier {}'.format(self.name))
-        tools.benchmark(self.classifier.fit, X_train, y_train) # fit the classifier with data
+        main_tools.benchmark(self.classifier.fit, X_train, y_train) # fit the classifier with data
         logger.info('Trained classifier {}'.format(self.name))
         self.training_error = self.classifier.score(X_train, y_train)
 
