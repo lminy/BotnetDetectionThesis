@@ -1,4 +1,9 @@
 # Only absolute paths
-dataset_folder = "path/to/my/datasets/folder"
-model_folder = "path/to/my/models/folder"
-logs_folder = "logs"
+# /!\ Don't forget "/" at the end
+datasets_folder_general = "/Volumes/Data/datasets_general/folder/"
+datasets_folder = "path/to/my/datasets/folder/"
+datasets_discarded_folder = "path/to/my/discarded_datasets/folder/"
+
+model_folder = "path/to/my/model/folder/"
+logs_folder = "path/to/my/logs/folder/"
+graphs_folder = "path/to/my/graphs/folder/"
