@@ -7,3 +7,5 @@ datasets_discarded_folder = "path/to/my/discarded_datasets/folder/"
 model_folder = "path/to/my/model/folder/"
 logs_folder = "path/to/my/logs/folder/"
 graphs_folder = "path/to/my/graphs/folder/"
+
+alexa_folder = "path/to/my/alexa/folder/"

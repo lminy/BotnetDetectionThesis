@@ -2,6 +2,7 @@ from DNSConnection import DNSConnection
 import string
 import csv
 from collections import OrderedDict
+import config as c
 
 
 class DNSFeatures(DNSConnection):
@@ -22,11 +23,11 @@ class DNSFeatures(DNSConnection):
 
     @staticmethod
     def load_all_top_alexa():
-        DNSFeatures.alexa_top100 = DNSFeatures.get_alexa("./alexa/alexa_top100.csv")
-        DNSFeatures.alexa_top1k = DNSFeatures.get_alexa("./alexa/alexa_top1k.csv")
-        DNSFeatures.alexa_top10k = DNSFeatures.get_alexa("./alexa/alexa_top10k.csv")
-        DNSFeatures.alexa_top100k = DNSFeatures.get_alexa("./alexa/alexa_top100k.csv")
-        DNSFeatures.alexa_top1m = DNSFeatures.get_alexa("./alexa/alexa_top1m.csv")
+        DNSFeatures.alexa_top100 = DNSFeatures.get_alexa(c.alexa_folder + "alexa_top100.csv")
+        DNSFeatures.alexa_top1k = DNSFeatures.get_alexa(c.alexa_folder + "alexa_top1k.csv")
+        DNSFeatures.alexa_top10k = DNSFeatures.get_alexa(c.alexa_folder + "alexa_top10k.csv")
+        DNSFeatures.alexa_top100k = DNSFeatures.get_alexa(c.alexa_folder + "alexa_top100k.csv")
+        DNSFeatures.alexa_top1m = DNSFeatures.get_alexa(c.alexa_folder + "alexa_top1m.csv")
 
 
 
