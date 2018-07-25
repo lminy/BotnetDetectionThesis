@@ -48,9 +48,9 @@ class ExtractFeatures(object):
         self.dns_logs(dataset_path_to_logs)
 
         logger.info("SSL Lines: {}".format(self.ssl_lines))
-        logger.info("Not founded x509 lines:".format(self.not_founded_x509_lines))
-        logger.info("Not '-' x509 lines:".format(self.err_not_added_x509))
-        logger.info("Founded x509 lines:".format(self.founded_x509_lines))
+        logger.info("Not founded x509 lines: {}".format(self.not_founded_x509_lines))
+        logger.info("Not '-' x509 lines: {}".format(self.err_not_added_x509))
+        logger.info("Founded x509 lines: {}".format(self.founded_x509_lines))
 
         dataset_info = DatasetInformation(self.ssl_lines, self.not_founded_x509_lines, self.err_not_added_x509, self.founded_x509_lines)
         self.dataset_information_dict[dataset_path_to_logs] = dataset_info
