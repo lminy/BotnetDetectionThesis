@@ -1,5 +1,7 @@
-import shutil
 import os
+import sys
+sys.path.insert(0, os.environ['HOME'] + '/BotnetDetectionThesis/')
+import shutil
 import config as c
 import time
 from logger import get_logger
