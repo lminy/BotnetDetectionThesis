@@ -1,6 +1,0 @@
-________ Dataset 2 ___________
-- LABELING
-    - Unpack the gz files from origin.
-    - Rename the sub folders.
-    - In each sub folder create 'bro' folder and move there all logs.
-    - put IPs to NormalIPs.txt and label the dataset2 by 'LabelDataset2.py'
