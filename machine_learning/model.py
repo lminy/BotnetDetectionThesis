@@ -103,7 +103,7 @@ class Model(object):
 
         headers = ['Model', 'Best score']
         headers += self.metrics.keys()
-        values = reduce(lambda x, y: x + "\t" + y, [self.name, self.score] + [str(round(float(m), 3)) for m in self.metrics.values()], "")
+        values = reduce(lambda x, y: str(x) + "\t" + str(y), [self.name, self.score] + [round(float(m), 3) for m in self.metrics.values()], "")
         return headers + "\n" + values
 
 
@@ -133,7 +133,7 @@ class Model(object):
             if len(model.metrics) == 0:
                 raise Exception('No metrics found for model "{}", please run compute_metrics()'.format(model.name))
 
-            values += reduce(lambda x, y: x + "\t" + y,
-                [model.name, model.score] + [str(round(float(m), 3)) for m in model.metrics.values()], "") + "\n"
+            values += reduce(lambda x, y: str(x) + "\t" + str(y),
+                [model.name, model.score] + [round(float(m), 3) for m in model.metrics.values()], "") + "\n"
         return headers + "\n" + values
 
