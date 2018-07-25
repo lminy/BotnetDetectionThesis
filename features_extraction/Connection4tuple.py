@@ -6,6 +6,7 @@ Also it computes features.
 """
 import numpy
 import socket
+import config as c
 
 
 class Connection4tuple(object):
@@ -80,7 +81,7 @@ class Connection4tuple(object):
         self.read_top_level_domain_file()
 
     def read_top_level_domain_file(self):
-        with open('./top_level_domain') as file:
+        with open(c.top_level_domain_file) as file:
             for line in file:
                 if line[0] == '#':
                     continue
