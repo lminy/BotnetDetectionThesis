@@ -31,7 +31,7 @@ class ConnectionFeatures(Connection4tuple):
         # EX2 = self.average_duration_power / float(self.flow_which_has_duration_number) # E(X^2)
         # DX = EX2 - EX*EX
         # return pow(DX, 0.5)
-        if len(self.duration_list) != 0:
+        if len(self.duration_list) != 0 and len(self.duration_list) > 2:
             return main_tools.std(self.duration_list)
         return -1
 
@@ -134,7 +134,7 @@ class ConnectionFeatures(Connection4tuple):
     # 14
     def get_periodicity_standart_deviation(self):
         per_list = self.get_periodicity_list()
-        if len(per_list) != 0:
+        if len(per_list) != 0 and len(per_list) > 2:
             # sum = 0
             # for i in range(len(per_list)):
             #     sum += pow(per_list[i], 2)
