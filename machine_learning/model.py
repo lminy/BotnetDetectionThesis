@@ -86,6 +86,7 @@ class Model(object):
         if len(self.metrics) == 0:
             raise Exception('No metrics found, please run compute_metrics()')
 
+        """
         from prettytable import PrettyTable
         import operator
 
@@ -98,14 +99,23 @@ class Model(object):
         table.add_row(content)
 
         return table.get_string(sort_key=operator.itemgetter(2, 1), sortby="Best score", reversesort=True)
+        """
+
+        headers = ['Model', 'Best score']
+        headers += self.metrics.keys()
+        values = reduce(lambda x, y: x + "\t" + y, [str(round(float(m), 3)) for m in [self.name, self.score] + self.metrics.values()], "")
+        return headers + "\n" + values
+
+
 
     @staticmethod
     def models_metric_summary(models):
-        from prettytable import PrettyTable
-        import operator
+        #from prettytable import PrettyTable
+        #import operator
 
         headers = ['Model', 'Best score']
         headers += models[0].metrics.keys()
+        """
         table = PrettyTable(headers)
 
         for model in models:
@@ -116,4 +126,14 @@ class Model(object):
             table.add_row(content)
 
         return table.get_string(sort_key=operator.itemgetter(2, 1), sortby="Best score", reversesort=True)
+        """
+
+        values = ""
+        for model in models:
+            if len(model.metrics) == 0:
+                raise Exception('No metrics found for model "{}", please run compute_metrics()'.format(model.name))
+
+            values += reduce(lambda x, y: x + "\t" + y,
+                   [str(round(float(m), 3)) for m in [model.name, model.score] + model.metrics.values()], "") + "\n"
+        return headers + "\n" + values
 
