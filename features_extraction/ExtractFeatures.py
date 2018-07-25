@@ -1,8 +1,12 @@
 import os
 from ConnectionFeatures import ConnectionFeatures
-from DataetInformation import DatasetInformation
+from DatasetInformation import DatasetInformation
 from CertificateFeatures import CertificateFeatures
 from DNSFeatures import DNSFeatures
+
+from logger import get_logger
+logger = get_logger('debug')
+
 
 class ExtractFeatures(object):
 
@@ -25,7 +29,7 @@ class ExtractFeatures(object):
 
         self.certificate_dict = dict()
 
-        self.dataset_inforamtion_dict = dict()
+        self.dataset_information_dict = dict()
 
         self.dns_lines = 0
         self.dns_connections = dict()
@@ -43,13 +47,13 @@ class ExtractFeatures(object):
         # Load all dns logs.
         self.dns_logs(dataset_path_to_logs)
 
-        print "SSL Lines:", self.ssl_lines
-        print "Not founded x509 lines:", self.not_founded_x509_lines
-        print "Not '-' x509 lines:",   self.err_not_added_x509
-        print "Founded x509 lines:", self.founded_x509_lines
+        logger.info("SSL Lines: {}".format(self.ssl_lines))
+        logger.info("Not founded x509 lines:".format(self.not_founded_x509_lines))
+        logger.info("Not '-' x509 lines:".format(self.err_not_added_x509))
+        logger.info("Founded x509 lines:".format(self.founded_x509_lines))
 
         dataset_info = DatasetInformation(self.ssl_lines, self.not_founded_x509_lines, self.err_not_added_x509, self.founded_x509_lines)
-        self.dataset_inforamtion_dict[dataset_path_to_logs] = dataset_info
+        self.dataset_information_dict[dataset_path_to_logs] = dataset_info
 
         self.ssl_lines = 0
         self.not_founded_x509_lines = 0
@@ -60,6 +64,7 @@ class ExtractFeatures(object):
     ---------------------- Conn logs. -------------------------
     """
     def conn_logs(self, dataset_path_to_logs):
+        logger.info("loading conn logs...")
         print " << Read all conn logs:"
         print "Reading conn logs:"
         self.number_conn_lines = 0
@@ -74,8 +79,12 @@ class ExtractFeatures(object):
                 for line in f:
                     if line[0] == '#':
                         continue
-                    split_conn_line = line.split('	')
+                    split_conn_line = line.split('\t')
                     conn_uid = split_conn_line[1]
+
+                    if len(split_conn_line) < 22:
+                        continue
+
                     label = split_conn_line[21]
 
                     if 'Background' in label or 'No_Label' in label:
@@ -92,12 +101,13 @@ class ExtractFeatures(object):
 
             f.close()
         except IOError:
-            print "Error: The conn file: " + dataset_path_to_conn + " does not exist."
+            logger.error("Error: The conn file: {} does not exist.".format(dataset_path_to_conn))
 
     """
     --------------------- X509 logs. ------------------------
     """
     def x509_logs(self, dataset_path_to_logs):
+        logger.info("loading x509 logs...")
         print "<< Read all x509 logs:"
         # Clear x509_dict()
         self.x509_dict = dict()
@@ -150,7 +160,7 @@ class ExtractFeatures(object):
                         self.x509_dict[x509_uid] = new_line
             f.close()
         except IOError:
-            print "Error: The x509 file: " + dataset_path_to_logs + x509_log + " does not exist."
+            logger.error("Error: The x509 file: " + dataset_path_to_logs + x509_log + " does not exist.")
 
     """
     --------------------- SSL logs. ------------------------
@@ -184,9 +194,7 @@ class ExtractFeatures(object):
                             for i in range(0, len(old_ssl_split)):
                                 if i <= 20:
                                     if old_ssl_split[i] != new_ssl_split[i]:
-                                        print "SSL Error - ssl lines with same uid are not same !!!"
-                                        print "     < Path:", path_to_ssl_log
-                                        print "     < ssl uid:", ssl_uid
+                                        logger.erro("SSL Error - ssl lines with same uid are not same! Path: {} SSL uid: {}".format(path_to_ssl_log, ssl_uid))
                             continue
                 except:
                     self.control_ssl_uids_dict[ssl_uid] = ssl_line
@@ -206,14 +214,14 @@ class ExtractFeatures(object):
                 try:
                     label = conn_split[21]
                 except IndexError:
-                    print "Error: no label in conn line."
+                    logger.error("Error: no label in conn line. conn index: {}".format(connection_index))
 
                 if 'Background' in label or 'No_Label' in label:
-                    print "Error: Backgroung label."
+                    logger.error("Error: Backgroung label. conn index: {}".format(connection_index))
                     continue
 
                 if not ('Botnet' in label) and not ('Normal') in label:
-                    print "Error: Dear more, there are more states of labels !!!!"
+                    logger.error("Error: Dear more, there are more states of labels !!!! conn index: {}".format(connection_index))
 
                 try:
                     self.connection_4_tuples[connection_index].add_ssl_flow(conn_log, label)
@@ -290,6 +298,7 @@ class ExtractFeatures(object):
         """
 
     def dns_logs(self, dataset_path_to_logs):
+        logger.info("loading dns logs...")
         print " << Read all dns logs:"
         print "Reading dns logs:"
         self.dns_lines = 0
@@ -330,7 +339,7 @@ class ExtractFeatures(object):
 
             f.close()
         except IOError:
-            print "Error: The dns file: " + dataset_path_to_dns + " does not exist."
+            logger.error("Error: The dns file: {} does not exist.".format(dataset_path_to_dns))
 
     """
     ------------------------------------------------
@@ -383,7 +392,7 @@ class ExtractFeatures(object):
                     self.certificate_dict[cert_serial].add_server_name(server_name, label)
                     self.certificate_dict[cert_serial].add_x509_line(x509_line)
         except:
-            print "Error: [put_server_name] In ProcessLogs.py x509 does not have this x509uid:", uid_x509
+            logger.error("Error: [put_server_name] In ProcessLogs.py x509 does not have this x509uid: {}".format(uid_x509))
 
 
 def get_such_logs(path_to_logs, part_name_list):

@@ -183,12 +183,12 @@ class ComputeFeatures(ExtractFeatures):
         space = '	'
         # with open("ExtractedData\\" + "conn_result.txt", 'w') as f:
         with open(c.model_folder + "/dataset_info.txt", 'w') as f:
-            for key in self.dataset_inforamtion_dict.keys():
+            for key in self.dataset_information_dict.keys():
                 f.write(str(key) + space +
-                        str(self.dataset_inforamtion_dict[key].ssl_lines) + space +
-                        str(self.dataset_inforamtion_dict[key].not_founded_x509_lines) + space +
-                        str(self.dataset_inforamtion_dict[key].founded_x509_lines) + space +
-                        str(self.dataset_inforamtion_dict[key].err_not_added_x509) +
+                        str(self.dataset_information_dict[key].ssl_lines) + space +
+                        str(self.dataset_information_dict[key].not_founded_x509_lines) + space +
+                        str(self.dataset_information_dict[key].founded_x509_lines) + space +
+                        str(self.dataset_information_dict[key].err_not_added_x509) +
                         "\n")
         f.close()
 
@@ -234,17 +234,17 @@ class ComputeFeatures(ExtractFeatures):
                 flows_normal += conn_tuple.get_number_of_ssl_flows()
                 cert_normal += len(conn_tuple.get_certificate_serial_dict().keys())
 
-        logger.info("\nConnection 4-tuples:")
+        logger.info("Connection 4-tuples:")
         logger.info("All 4_tuples: {}".format(len(self.connection_4_tuples.keys())))
         logger.info("Normal 4-tuples: {}".format(normal_tuples))
         logger.info("Malware 4-tuples: {}".format(malware_tuples))
 
-        logger.info("\nFlows")
+        logger.info("Flows")
         logger.info("All gathered flows: {}".format(flows_together))
         logger.info("Normal flows: {}".format(flows_normal))
         logger.info("Malware flows: {}".format(flows_malware))
 
-        logger.info("\nCertificates")
+        logger.info("Certificates")
         logger.info("All gathered certificates: {}".format(cert_together))
         logger.info("Normal certificates: {}".format(cert_normal))
         logger.info("Malware certificates: {}".format(cert_malware))

@@ -4,7 +4,9 @@ from ComputeFeatures import ComputeFeatures
 import config as c
 import os
 from DNSFeatures import DNSFeatures
+from logger import get_logger
 
+logger = get_logger('debug')
 
 def main():
     # Start to count the time.
@@ -22,9 +24,10 @@ def main():
     for sub_set in os.listdir(c.datasets_folder):
         if sub_set.startswith("."):
             continue
-        print "--------------------------------------------------------"
-        print "-------- #" + str(index) + " " + sub_set
-        print "--------------------------------------------------------"
+        logger.info("--------------------------------------------------------")
+        logger.info("-------- #{} {} extraction".format(index, sub_set))
+        logger.info("--------------------------------------------------------")
+
         extract_features.extraction_manager(c.datasets_folder + sub_set + '/bro/')
         index += 1
 
