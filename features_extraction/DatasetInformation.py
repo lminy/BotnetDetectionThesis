@@ -7,6 +7,3 @@ class DatasetInformation:
         self.not_founded_x509_lines = not_founded_x509_lines
         self.founded_x509_lines = founded_x509_lines
         self.err_not_added_x509 = err_not_added_x509
-
-
-    def add_
