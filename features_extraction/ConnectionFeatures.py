@@ -32,7 +32,7 @@ class ConnectionFeatures(Connection4tuple):
         # DX = EX2 - EX*EX
         # return pow(DX, 0.5)
         if len(self.duration_list) != 0:
-            return main_tools.stddev(self.duration_list)
+            return main_tools.std(self.duration_list)
         return -1
 
     # 04. Percent of flows which are bigger or less than standard deviation with average

@@ -28,7 +28,7 @@ def _ss(data):
     return ss
 
 
-def stddev(data, ddof=0):
+def std(data, ddof=0):
     """Calculates the population standard deviation
     by default; specify ddof=1 to compute the sample
     standard deviation."""
