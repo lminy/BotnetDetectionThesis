@@ -4,7 +4,6 @@
 This class stores all information for one "connection 4-tuple" object.
 Also it computes features.
 """
-import numpy
 import socket
 import config as c
 
