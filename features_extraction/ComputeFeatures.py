@@ -1,5 +1,4 @@
 from datetime import datetime
-import pytz
 from ExtractFeatures import ExtractFeatures
 import config as c
 
@@ -10,7 +9,7 @@ class ComputeFeatures(ExtractFeatures):
 
     def __init__(self):
         super(ComputeFeatures, self).__init__()
-        self.file_time_name = str(datetime.strftime(datetime.now(pytz.utc), "%Y-%m-%d_%H-%M"))
+        self.file_time_name = str(datetime.strftime(datetime.utcnow(), "%Y-%m-%d_%H-%M"))
 
     def add_cert_to_non_cert_conn(self):
         for key in self.connection_4_tuples.keys():
