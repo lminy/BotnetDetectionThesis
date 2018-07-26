@@ -1,4 +1,4 @@
-import main_tools
+import numpy as np
 from Connection4tuple import Connection4tuple
 
 
@@ -32,7 +32,7 @@ class ConnectionFeatures(Connection4tuple):
         # DX = EX2 - EX*EX
         # return pow(DX, 0.5)
         if len(self.duration_list) != 0 and len(self.duration_list) > 2:
-            return main_tools.std(self.duration_list)
+            return np.std(self.duration_list)
         return -1
 
     # 04. Percent of flows which are bigger or less than standard deviation with average
@@ -141,7 +141,7 @@ class ConnectionFeatures(Connection4tuple):
             # EX2 = sum / float(len(per_list))
             # DX = EX2 - EX * EX
             # return pow(DX, 0.5)
-            return main_tools.std(self.get_periodicity_list())
+            return np.std(self.get_periodicity_list())
         return -1
 
     # -----------------------------------------------------
@@ -186,7 +186,7 @@ class ConnectionFeatures(Connection4tuple):
     def get_average_of_certificate_length(self):
         # self.check_zero_dividing(self.certificate_valid_number, "certificate_valid_number is 0 !!!")
         if self.certificate_valid_number != 0:
-            if main_tools.mean(self.temp_list) != self.certificate_valid_length / float(self.certificate_valid_number):
+            if np.mean(self.temp_list) != self.certificate_valid_length / float(self.certificate_valid_number):
                 print "Error: numpy mean and mean by hand are not same."
             return self.certificate_valid_length / float(self.certificate_valid_number)
         return -1

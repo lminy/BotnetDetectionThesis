@@ -3,7 +3,7 @@ import string
 import csv
 from collections import OrderedDict
 import config as c
-import main_tools
+import numpy as np
 
 
 class DNSFeatures(DNSConnection):
@@ -122,7 +122,7 @@ class DNSFeatures(DNSConnection):
     # 00. ---------- std TTLs --------------------
     def get_std_ttls(self):
         if len(self.ttls) > 2:
-            return main_tools.std(self.ttls)
+            return np.std(self.ttls)
         else:
             return -1
 

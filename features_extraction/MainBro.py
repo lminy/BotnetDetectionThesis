@@ -40,6 +40,7 @@ def main():
 
     # Compute features and save them.
     #extract_features.create_dataset_dns()
+    logger.info("computing features...")
     extract_features.create_balanced_dataset()
 
     # Print final statistic
