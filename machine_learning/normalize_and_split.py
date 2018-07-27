@@ -3,7 +3,8 @@ import sys
 sys.path.insert(0, os.environ['HOME'] + '/BotnetDetectionThesis/')
 
 
-from sklearn.model_selection import train_test_split
+#from sklearn.model_selection import train_test_split
+import sklearn
 import config as c
 import csv
 
@@ -88,7 +89,7 @@ if __name__ == '__main__':
     print "Normals:", len(X) - malwares
 
     # split data by sklearn library
-    X_train, X_test, y_train, y_test = train_test_split(norm_X, y, test_size=.2, random_state=35)
+    X_train, X_test, y_train, y_test = sklearn.model_selection.train_test_split(norm_X, y, test_size=.2, random_state=35)
 
     # Write train data
     write_features('X_train.csv', X_train)
