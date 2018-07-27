@@ -64,7 +64,7 @@ if __name__ == '__main__':
     X = list()
     y = list()
 
-    LIMIT = 500 # total nb_lines, -1 = NO LIMIT
+    LIMIT = -1 # total nb_lines, -1 = NO LIMIT
 
     with open(c.model_folder + "features.csv", 'r') as csvfile:
         csvreader = csv.reader(csvfile, lineterminator='\n', delimiter=',', quoting=csv.QUOTE_NONNUMERIC)
