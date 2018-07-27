@@ -271,6 +271,9 @@ class ExtractFeatures(object):
                     continue
                 conn_split = line.split('	')
                 # 2-srcIpAddress, 4-dstIpAddress, 5-dstPort, 6-Protocol
+                if len(conn_split) < 7:
+                    continue
+
                 connection_index = conn_split[2], conn_split[4], conn_split[5], conn_split[6]
                 try:
                     label = conn_split[21]
