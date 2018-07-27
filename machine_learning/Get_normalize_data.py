@@ -2,6 +2,7 @@
 import csv
 import config as c
 
+
 def read_features(filename):
     X = list()
     with open(filename, 'r') as csvfile:
@@ -10,11 +11,13 @@ def read_features(filename):
             X.append(row)
     return X
 
+
 def read_labels(filename):
     with open(filename, 'r') as csvfile:
         csvreader = csv.reader(csvfile, lineterminator='\n', delimiter=',', quoting=csv.QUOTE_NONNUMERIC)
         y = csvreader.next()
     return y
+
 
 def get_all_data(models_folder):
     X_train = read_features(models_folder + "X_train.csv")

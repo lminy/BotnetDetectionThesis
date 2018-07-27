@@ -7,6 +7,7 @@ from sklearn.model_selection import train_test_split
 import config as c
 import csv
 
+
 def normalize_data(data):
     for i in range(0, len(data[0])):
         max = 0
@@ -32,6 +33,7 @@ def write_features(file_name, data_list):
 
     print file_name,"written lines:", index
 
+
 def write_targets(file_name, data_list):
     index = 0
     import csv
@@ -42,6 +44,7 @@ def write_targets(file_name, data_list):
         index += 1
 
     print file_name, "written lines:", index
+
 
 def transform_label(label):
     label_number = -1
@@ -61,14 +64,21 @@ if __name__ == '__main__':
     X = list()
     y = list()
 
+    LIMIT = 500 # total nb_lines, -1 = NO LIMIT
+
     with open(c.model_folder + "features.csv", 'r') as csvfile:
         csvreader = csv.reader(csvfile, lineterminator='\n', delimiter=',', quoting=csv.QUOTE_NONNUMERIC)
         headers = csvreader.next()
+        line_nb = 0
         for row in csvreader:
+            if LIMIT != -1 and line_nb > LIMIT:
+                break
+
             X.append(row[1:-1])  # exclude key (index 0) and label (index -1 = last index)
             target = transform_label(row[-1])
             malwares += target
             y.append(target)
+            line_nb += 1
 
 
     # normalize X
