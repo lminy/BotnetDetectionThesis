@@ -25,7 +25,7 @@ class Model(object):
 
     def train(self, X_train, y_train):
         if self.param_grid is not None:
-            self.classifier = GridSearchCV(self.classifier, self.param_grid, cv=10, scoring='accuracy', n_jobs=1)  # Do a 10-fold cross validation
+            self.classifier = GridSearchCV(self.classifier, self.param_grid, cv=10, scoring='accuracy', n_jobs=4)  # Do a 10-fold cross validation
 
         logger.info('Training classifier {}'.format(self.name))
         main_tools.benchmark(self.classifier.fit, X_train, y_train) # fit the classifier with data

@@ -60,23 +60,32 @@ def transform_label(label):
 
 if __name__ == '__main__':
     malwares = 0
+    normals = 0
 
     X = list()
     y = list()
 
-    LIMIT = -1 # total nb_lines, -1 = NO LIMIT
+    LIMIT = 1000 # total nb_lines, -1 = NO LIMIT
 
     with open(c.model_folder + "features.csv", 'r') as csvfile:
         csvreader = csv.reader(csvfile, lineterminator='\n', delimiter=',', quoting=csv.QUOTE_NONNUMERIC)
         headers = csvreader.next()
         line_nb = 0
+
         for row in csvreader:
-            if LIMIT != -1 and line_nb > LIMIT:
-                break
+            target = transform_label(row[-1])
+            if LIMIT != -1:
+                if target == 1 and malwares < LIMIT / 2:
+                    malwares += 1
+                elif target == 0 and normals < LIMIT / 2:
+                    normals += 1
+                else:
+                    continue
+            else:
+                malwares += target
+                normals += 1 if target == 0 else 0
 
             X.append(row[1:-1])  # exclude key (index 0) and label (index -1 = last index)
-            target = transform_label(row[-1])
-            malwares += target
             y.append(target)
             line_nb += 1
 
