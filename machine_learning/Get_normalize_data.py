@@ -8,7 +8,7 @@ def read_features(filename):
     with open(filename, 'r') as csvfile:
         csvreader = csv.reader(csvfile, lineterminator='\n', delimiter=',', quoting=csv.QUOTE_NONNUMERIC)
         for row in csvreader:
-            X.append(row[0:41]) # Only read HTTPS features
+            X.append(row)#[0:41]) # Only read HTTPS features
     return X
 
 

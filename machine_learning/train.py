@@ -114,8 +114,7 @@ if __name__ == '__main__':
     models.append(Model(name, classifier))
 
     #all_models = models.keys()
-    models_to_train = ['AdaBoost', 'Log. Regression', 'Neural net', 'SVM - SVC']
-    #'k-NN', 'Decision tree', 'Random forest', 'NB - Gaussian',
+    models_to_train = ['k-NN', 'Decision tree', 'Random forest', 'NB - Gaussian','AdaBoost', 'Log. Regression', 'Neural net'] #, 'SVM - SVC']
 
     final_train(select_models(models, models_to_train))
 
