@@ -43,7 +43,7 @@ if __name__ == '__main__':
 
     #k-NN Classifier
     name = "k-NN"
-    classifier = KNeighborsClassifier(weights='uniform')
+    classifier = KNeighborsClassifier(weights='uniform', n_jobs=-1)
     k_range = list(range(1, 31)) # list of parameter values to test
     param_grid = dict(n_neighbors=k_range)
     models.append(Model(name, classifier, param_grid))
@@ -58,7 +58,7 @@ if __name__ == '__main__':
 
     #Random Forest
     name = "Random forest"
-    classifier = RandomForestClassifier()
+    classifier = RandomForestClassifier(n_jobs=-1)
     d_range = list(range(1, 31)) # list of parameter values to test
     #s_range = list(range(2, 10))
     param_grid = dict(max_depth=d_range)#, min_samples_split=s_range)
@@ -87,7 +87,7 @@ if __name__ == '__main__':
 
     #Logistic Regression
     name = "Log. Regression"
-    classifier = LogisticRegression()
+    classifier = LogisticRegression(n_jobs=-1)
     models.append(Model(name, classifier))
 
     #Neural networks
@@ -96,7 +96,6 @@ if __name__ == '__main__':
     #classifier = MLPClassifier(alpha=1)
     classifier = MLPClassifier(solver='lbfgs', alpha=1e-5, hidden_layer_sizes=(5, 2), random_state=1)
     models.append(Model(name, classifier))
-
 
     name = "SVM - Linear"
     classifier = svm.LinearSVC()

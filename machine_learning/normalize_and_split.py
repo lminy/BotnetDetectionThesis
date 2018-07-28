@@ -70,6 +70,7 @@ if __name__ == '__main__':
     with open(c.model_folder + "features.csv", 'r') as csvfile:
         csvreader = csv.reader(csvfile, lineterminator='\n', delimiter=',', quoting=csv.QUOTE_NONNUMERIC)
         headers = csvreader.next()
+        print(headers)
         line_nb = 0
 
         for row in csvreader:
