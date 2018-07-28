@@ -104,7 +104,7 @@ class Model(object):
 
         headers = ['Exec time', 'Model', 'Best score']
         headers += self.metrics.keys()
-        values = [time.strftime("%Y-%m-%d_%H-%M-%S")] + reduce(lambda x, y: str(x) + "\t" + str(y), [self.name, self.score] + [round(float(m), 3) for m in self.metrics.values()], "")
+        values = time.strftime("%Y-%m-%d_%H-%M-%S") + "\t" + reduce(lambda x, y: str(x) + "\t" + str(y), [self.name, self.score] + [round(float(m), 3) for m in self.metrics.values()], "")
         return "\t".join(headers) + "\n" + values
 
 
