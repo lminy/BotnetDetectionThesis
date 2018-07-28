@@ -2,6 +2,7 @@ from collections import OrderedDict
 from sklearn.model_selection import GridSearchCV
 import main_tools
 import math
+import time
 
 from logger import get_logger
 logger = get_logger("debug")
@@ -101,9 +102,9 @@ class Model(object):
         return table.get_string(sort_key=operator.itemgetter(2, 1), sortby="Best score", reversesort=True)
         """
 
-        headers = ['Model', 'Best score']
+        headers = ['Exec time', 'Model', 'Best score']
         headers += self.metrics.keys()
-        values = reduce(lambda x, y: str(x) + "\t" + str(y), [self.name, self.score] + [round(float(m), 3) for m in self.metrics.values()], "")
+        values = [time.strftime("%Y-%m-%d_%H-%M-%S")] + reduce(lambda x, y: str(x) + "\t" + str(y), [self.name, self.score] + [round(float(m), 3) for m in self.metrics.values()], "")
         return "\t".join(headers) + "\n" + values
 
 

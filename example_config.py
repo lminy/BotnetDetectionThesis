@@ -12,3 +12,5 @@ graphs_folder = results_folder + "relative_path/to/my/graphs/folder/"
 
 alexa_folder = "path/to/my/alexa/folder/"
 top_level_domain_file = "path/to/my/top_level_domain/file"
+
+training_output_file = model_folder + "training_output_file.txt"

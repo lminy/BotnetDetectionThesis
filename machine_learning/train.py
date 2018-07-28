@@ -30,6 +30,8 @@ def final_train(models):
         model.predict(X_test, y_test)
         model.compute_metrics(y_test)
         logger.debug(model.get_printable_metrics())
+        with open(c.training_output_file, 'a') as f:
+            f.write(model.get_printable_metrics() + "\n")
 
     logger.info(Model.models_metric_summary(models))
 
