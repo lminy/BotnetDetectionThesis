@@ -69,17 +69,6 @@ if __name__ == '__main__':
     classifier = GaussianNB()
     models.append(Model(name, classifier))
 
-
-    #SVM - Support Vector Machine
-    name = "SVM - SVC"
-    classifier = svm.SVC()
-    C_range = np.logspace(-2, 10, 13)
-    #print(C_range)
-    gamma_range = np.logspace(-9, 3, 13)
-    #print(gamma_range)
-    param_grid = dict(gamma=gamma_range, C=C_range)
-    models.append(Model(name, classifier, param_grid))
-
     #AdaBoost
     name = "AdaBoost"
     classifier = AdaBoostClassifier(n_estimators=100)
@@ -97,10 +86,20 @@ if __name__ == '__main__':
     classifier = MLPClassifier(solver='lbfgs', alpha=1e-5, hidden_layer_sizes=(5, 2), random_state=1)
     models.append(Model(name, classifier))
 
+    # SVM - Support Vector Machine
+    name = "SVM - SVC"
+    classifier = svm.SVC()
+    C_range = np.logspace(-2, 10, 13)
+    # print(C_range)
+    gamma_range = np.logspace(-9, 3, 13)
+    # print(gamma_range)
+    param_grid = dict(gamma=gamma_range, C=C_range)
+    models.append(Model(name, classifier, param_grid))
+
     name = "SVM - Linear"
     classifier = svm.LinearSVC()
-    C_range = range(170,230,5)
-    C_range = range(1,200,10)
+    #C_range = range(1,200,50)
+    C_range = range(1,200,50)
     param_grid = dict(C=C_range)
     models.append(Model(name, classifier, param_grid))
     
@@ -113,8 +112,8 @@ if __name__ == '__main__':
     models.append(Model(name, classifier))
 
     #all_models = models.keys()
-    models_to_train = ['k-NN', 'Decision tree', 'Random forest', 'NB - Gaussian', 'SVM - SVC',
-                       'AdaBoost', 'Log. Regression', 'Neural net']
+    models_to_train = ['AdaBoost', 'Log. Regression', 'Neural net', 'SVM - SVC']
+    #'k-NN', 'Decision tree', 'Random forest', 'NB - Gaussian',
 
     final_train(select_models(models, models_to_train))
 
