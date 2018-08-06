@@ -1,8 +1,9 @@
 from collections import OrderedDict
-from sklearn.model_selection import GridSearchCV
+from sklearn.model_selection import RandomizedSearchCV, GridSearchCV
 import main_tools
 import math
 import time
+import pickle
 
 from logger import get_logger
 logger = get_logger("debug")
@@ -24,9 +25,13 @@ class Model(object):
         self.score = None
         self.y_pred = None
 
-    def train(self, X_train, y_train):
-        if self.param_grid is not None:
-            self.classifier = GridSearchCV(self.classifier, self.param_grid, cv=10, scoring='accuracy', n_jobs=-1)  # Do a 10-fold cross validation
+    def train(self, X_train, y_train, random=False):
+        if self.param_grid is not None and random is False:
+            self.classifier = GridSearchCV(self.classifier, self.param_grid, cv=10, scoring='precision', n_jobs=-1)  # Do a 10-fold cross validation
+        elif self.param_grid is not None and random is True:
+            self.classifier = RandomizedSearchCV(self.classifier, param_distributions=self.param_grid,
+                                                 n_iter=10, scoring='precision',
+                                                 n_jobs=-1, cv=10, verbose=3, random_state=1001)
 
         logger.info('Training classifier {}'.format(self.name))
         main_tools.benchmark(self.classifier.fit, X_train, y_train) # fit the classifier with data
@@ -43,7 +48,8 @@ class Model(object):
             raise Exception('Model not trained, please run train()')
 
         self.score = self.classifier.score(X_test, y_test)
-        self.y_pred = self.classifier.predict(X_test)	# Call predict on the estimator (with the best found parameters if Grid search).
+        self.y_pred = [round(value) for value in self.classifier.predict(X_test)]	# Call predict on the estimator (with the best found parameters if Grid search).
+        # Round is there is we have probabilities (like with XGBoost)
 
     def compute_metrics(self, y_test):
         if self.y_pred is None:
@@ -56,13 +62,16 @@ class Model(object):
         logger.debug("tn={}, fp={}, fn={}, tp={}".format(tn, fp, fn, tp))
 
         tpr = -1 if tp <= 0 else float(tp) / (tp + fn)
-        self.metrics["TPR"] = tpr # True Positive Rate
+        self.metrics["TPR"] = tpr  # True Positive Rate
 
         tnr = -1 if tn <= 0 else float(tn) / (fp + tn)
         self.metrics["TNR"] = tnr  # True Negative Rate
 
         fpr = -1 if tn <= 0 else float(fp) / (fp + tn)
-        self.metrics["FPR"] = fpr # False Positive Rate
+        self.metrics["FPR"] = fpr  # False Positive Rate
+
+        fdr = -1 if tp <= 0 else float(fp) / (fp + tp)
+        self.metrics["FDR"] = fdr  # False Discovery Rate
 
         accuracy = -1 if tp <= 0 or tn <= 0 else float(tp + tn) / (tp + tn + fp + fn)
         self.metrics["Acc"] = accuracy
@@ -104,7 +113,7 @@ class Model(object):
 
         headers = ['Exec time', 'Model', 'Best score']
         headers += self.metrics.keys()
-        values = time.strftime("%Y-%m-%d_%H-%M-%S") + "\t" + reduce(lambda x, y: str(x) + "\t" + str(y), [self.name, self.score] + [round(float(m), 3) for m in self.metrics.values()], "")
+        values = time.strftime("%Y-%m-%d_%H-%M-%S") + "\t" + "\t".join([self.name, str(self.score)] + [str(round(float(m), 3)) for m in self.metrics.values()])
         return "\t".join(headers) + "\n" + values
 
 
@@ -134,7 +143,16 @@ class Model(object):
             if len(model.metrics) == 0:
                 raise Exception('No metrics found for model "{}", please run compute_metrics()'.format(model.name))
 
-            values += reduce(lambda x, y: str(x) + "\t" + str(y),
-                [model.name, model.score] + [round(float(m), 3) for m in model.metrics.values()], "") + "\n"
+            values += "\t".join([model.name, str(model.score)] + [str(round(float(m), 3)) for m in model.metrics.values()], "") + "\n"
         return "\t".join(headers) + "\n" + values
+
+    def save(self, filename):
+        logger.info("Saving model to {}...".format(filename))
+        pickle.dump(self.classifier, open(filename, "wb"))
+        logger.info("Model saved to {}!".format(filename))
+
+    def load(self, filename):
+        logger.info("Loading model from {}...".format(filename))
+        self.classifier = pickle.load(open(filename, "rb"))
+        logger.info("Model loaded from {}!".format(filename))
 

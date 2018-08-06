@@ -20,6 +20,7 @@ def normalize_data(data):
                     data[j][i] = data[j][i] / float(max)
     return data
 
+
 def write_features(file_name, data_list):
     index = 0
     import csv

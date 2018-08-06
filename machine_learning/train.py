@@ -10,6 +10,7 @@ from sklearn.naive_bayes import GaussianNB
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.ensemble import AdaBoostClassifier
 from sklearn.linear_model import LogisticRegression
+from xgboost import XGBClassifier
 from sklearn import svm
 from sklearn import tree
 
@@ -31,15 +32,23 @@ def final_train(models):
         model.compute_metrics(y_test)
         logger.debug(model.get_printable_metrics())
         with open(c.training_output_file, 'a') as f:
-            f.write(model.get_printable_metrics() + "\n")
+            f.write(("HTTPS ONLY " if only_https else "") + model.get_printable_metrics() + "\n")
 
-    logger.info(Model.models_metric_summary(models))
+    logger.info(("HTTPS ONLY\n" if only_https else "") + Model.models_metric_summary(models))
+
+
+def train(model, random=False):
+    model.train(X_train, y_train, random)
+    model.predict(X_test, y_test)
+    model.compute_metrics(y_test)
+    logger.debug(model.get_printable_metrics())
+    model.save(c.model_folder + model.name + ".model")
+    with open(c.training_output_file, 'a') as f:
+        f.write(("HTTPS ONLY " if only_https else "") + model.get_printable_metrics() + "\n")
 
 
 if __name__ == '__main__':
-    logger = get_logger("debug")
-
-    X_train, X_test, y_train, y_test = Get_normalize_data.get_all_data(c.model_folder)
+    logger = get_logger("debug", append=True)
 
     models = list()
 
@@ -69,12 +78,14 @@ if __name__ == '__main__':
     #Naive Bayes
     name = "NB - Gaussian"
     classifier = GaussianNB()
-    models.append(Model(name, classifier))
+    gnb = Model(name, classifier)
+    models.append(gnb)
 
     #AdaBoost
     name = "AdaBoost"
     classifier = AdaBoostClassifier(n_estimators=100)
-    models.append(Model(name, classifier))
+    adaboost = Model(name, classifier)
+    models.append(adaboost)
 
     #Logistic Regression
     name = "Log. Regression"
@@ -85,8 +96,10 @@ if __name__ == '__main__':
     from sklearn.neural_network import MLPClassifier
     name = "Neural net"
     #classifier = MLPClassifier(alpha=1)
-    classifier = MLPClassifier(solver='lbfgs', alpha=1e-5, hidden_layer_sizes=(5, 2), random_state=1)
-    models.append(Model(name, classifier))
+    #classifier = MLPClassifier(solver='lbfgs', alpha=1e-5, hidden_layer_sizes=(5, 2), random_state=1)
+    classifier = MLPClassifier(solver='adam', alpha=1e-5, random_state=1) # from Strasak thesis
+    nn = Model(name, classifier)
+    models.append(nn)
 
     # SVM - Support Vector Machine
     name = "SVM - SVC"
@@ -113,9 +126,100 @@ if __name__ == '__main__':
     classifier = BernoulliNB()
     models.append(Model(name, classifier))
 
+    name = "XGBoost 1"
+    classifier = XGBClassifier(
+        learning_rate =0.1,
+        n_estimators=1000,
+        max_depth=10,
+        min_child_weight=1,
+        gamma=0,
+        subsample=0.8,
+        colsample_bytree=0.8,
+        objective= 'binary:logistic',
+        nthread=4,
+        scale_pos_weight=1,
+        seed=3)
+    models.append(Model(name,classifier))
+
+    name = "XGBoost 2"
+    classifier = XGBClassifier(
+        learning_rate=0.1,
+        n_estimators=1000,
+        max_depth=3,
+        min_child_weight=5,
+        gamma=0.1,
+        subsample=0.8,
+        colsample_bytree=0.8,
+        objective='binary:logistic',
+        nthread=4,
+        scale_pos_weight=1,
+        seed=27)
+    models.append(Model(name, classifier))
+
+    name = "XGBoost"
+    classifier = XGBClassifier(
+        learning_rate=0.1,
+        n_estimators=1000,
+        objective='binary:logistic',
+        nthread=4,
+        scale_pos_weight=1,
+        seed=27)
+    param_grid = {
+        'min_child_weight': [1, 5, 10],
+        'gamma': [0.5, 1, 1.5, 2, 5],
+        'subsample': [0.6, 0.8, 1.0],
+        'colsample_bytree': [0.6, 0.8, 1.0],
+        'max_depth': [3, 4, 5]
+    }
+
+    xgboost = Model(name, classifier, param_grid)
+    models.append(xgboost)
+
     #all_models = models.keys()
     models_to_train = ['k-NN', 'Decision tree', 'Random forest', 'NB - Gaussian','AdaBoost', 'Log. Regression', 'Neural net'] #, 'SVM - SVC']
 
-    final_train(select_models(models, models_to_train))
+    models_to_train = ["XGBoost 1", "XGBoost 2"]
 
+    only_https = False
+
+    X_train, X_test, y_train, y_test = Get_normalize_data.get_all_data(c.model_folder, only_https)
+
+    #final_train(select_models(models, models_to_train))
+
+    #train(xgboost, random=True)
+
+    #train(adaboost)
+
+    #train(xgboost, False)
+
+    #train(gnb)
+
+
+    """
+    import matplotlib
+    from collections import Counter
+
+    matplotlib.use('TkAgg')
+    import matplotlib.pyplot as plt
+    import xgboost as xgb
+    import pickle
+
+    clf = pickle.load(open(c.model_folder + xgboost.name + '.model', "rb"))
+
+    # plot feature importance
+    fig, ax = plt.subplots(figsize=(5, 10))
+    ax = xgb.plot_importance(clf, ax=ax)
+    #fig = ax.figure
+    #fig.set_size_inches(18.5, 10.5) # h, w
+
+
+    # example of how to zoomout by a factor of 0.1
+    # ylim = ax.get_ylim()
+    #factor = 0.1
+    #new_ylim = (ylim[0] * factor + ylim[1] * factor)
+    #ax.set_ylim(new_ylim)
+
+    plt.savefig("./features_importance_xgboost.png")
+    plt.show()
+    """
 
