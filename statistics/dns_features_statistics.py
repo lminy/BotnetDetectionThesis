@@ -44,9 +44,10 @@ import matplotlib.pyplot as plt
 
 
 def compute_stat_continue(feature_name, data):
+    labels = ["Normal", "Botnet"]
     fig, ax = plt.subplots()
     ax.set_title('Feature ' + feature_name)
-    ax.boxplot(data)
+    ax.boxplot(data, labels=labels)
 
     fig.savefig(c.graphs_folder + feature_name + '.png')
 
@@ -56,6 +57,7 @@ features_continue = ["FQDN_length","domain_name_length","number_of_numerical_cha
          "max_ttls","number_of_hyphens_in_fqdn","length_of_longest_subdomain_name","number_of_voyels_in_fqdn",
          "number_of_different_chars_in_fqdn","number_of_consonants_in_fqdn",
          "shannon_entropy_2ld","shannon_entropy_3ld"]
+
 
 def plot_all_stat_continue():
     for feature_name in features_continue:
@@ -106,7 +108,7 @@ def plot_alexa():
     ax.set_xticks(ind + width / 2)
     ax.set_xticklabels(features_names_siplified)
 
-    ax.legend((rects1[0], rects2[0]), ('Normal', 'Malware'))
+    ax.legend((rects1[0], rects2[0]), ('Normal', 'Botnet'))
     fig.savefig(c.graphs_folder + "features_alexa" + '.png')
 
 def plot_alexa2():
@@ -140,7 +142,7 @@ def plot_alexa2():
     ax.set_xticks(ind + width / 2)
     ax.set_xticklabels(features_names_simplified)
 
-    ax.legend((rects1[0], rects2[0]), ('Normal', 'Malware'))
+    ax.legend((rects1[0], rects2[0]), ('Normal', 'Botnet'))
     fig.savefig(c.graphs_folder + "features_alexa2" + '.png')
 
 
@@ -194,11 +196,11 @@ def plot_barchar(features_name):
     ax.set_xticks(ind + width / 2)
     ax.set_xticklabels(features_names_simplified)
 
-    ax.legend((rects1[0], rects2[0]), ('Normal', 'Malware'))
+    ax.legend((rects1[0], rects2[0]), ('Normal', 'Botnet'))
     fig.savefig(c.graphs_folder + "features_alexa" + '.png')
 
 #plot_all_stat_continue()
-#plot_alexa2()
+plot_alexa2()
 #plot_barchar("number_unique_IP_addresses_in_response")
 
 nb_conn_tuples_normal = len(df.loc[df['label'] == 'NORMAL'])
