@@ -70,8 +70,8 @@ class Model(object):
         fpr = -1 if tn <= 0 else float(fp) / (fp + tn)
         self.metrics["FPR"] = fpr  # False Positive Rate
 
-        fdr = -1 if tp <= 0 else float(fp) / (fp + tp)
-        self.metrics["FDR"] = fdr  # False Discovery Rate
+        #fdr = -1 if tp <= 0 else float(fp) / (fp + tp)
+        #self.metrics["FDR"] = fdr  # False Discovery Rate
 
         accuracy = -1 if tp <= 0 or tn <= 0 else float(tp + tn) / (tp + tn + fp + fn)
         self.metrics["Acc"] = accuracy

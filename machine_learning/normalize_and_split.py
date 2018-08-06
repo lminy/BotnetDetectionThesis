@@ -2,10 +2,10 @@ import os
 import sys
 sys.path.insert(0, os.environ['HOME'] + '/BotnetDetectionThesis/')
 
-
 from sklearn.model_selection import train_test_split
 import config as c
 import csv
+import pandas as pd
 
 
 def normalize_data(data):
@@ -21,18 +21,9 @@ def normalize_data(data):
     return data
 
 
-def write_features(file_name, data_list):
-    index = 0
-    import csv
-
-    with open(c.model_folder + file_name, 'wb') as csvfile:
-        writer = csv.writer(csvfile, lineterminator='\n', delimiter=',')  # fieldnames=features.keys(),
-        # writer.writeheader()
-        for dataline in data_list:
-            writer.writerow(dataline)
-            index += 1
-
-    print file_name,"written lines:", index
+def write_features(filename, data, features_name):
+    df = pd.DataFrame(data, columns=features_name)
+    df.to_csv(c.model_folder + filename, sep=',', encoding='utf-8', index=False)
 
 
 def write_targets(file_name, data_list):
@@ -57,7 +48,6 @@ def transform_label(label):
         print "The label is incorrect"
 
     return label_number
-
 
 if __name__ == '__main__':
     malwares = 0
@@ -91,6 +81,7 @@ if __name__ == '__main__':
             y.append(target)
             line_nb += 1
 
+    features_name = headers[1:-1]
 
     # normalize X
     norm_X = normalize_data(X)
@@ -102,9 +93,9 @@ if __name__ == '__main__':
     X_train, X_test, y_train, y_test = train_test_split(norm_X, y, test_size=.2, random_state=35)
 
     # Write train data
-    write_features('X_train.csv', X_train)
+    write_features('X_train.csv', X_train, features_name)
     write_targets('y_train.csv', y_train)
 
     # Write test data
-    write_features('X_test.csv', X_test)
+    write_features('X_test.csv', X_test, features_name)
     write_targets('y_test.csv', y_test)
