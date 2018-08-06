@@ -114,13 +114,20 @@ def save_manager(url, dataset_name):
         if not os.path.exists(directory_name):
             os.makedirs(directory_name)
 
-        # Download Readme file
+
         url_dataset = url + dataset_name
         for filename in find_files(url_dataset):
-            if "README" in filename:
+            # Download Readme file
+            if "README" in filename and not os.path.exists(directory_name + filename):
+                save_file(url_dataset + filename, directory_name + filename)
+            # Download pcap file
+            if "pcap" in filename and not os.path.exists(directory_name + filename):
                 save_file(url_dataset + filename, directory_name + filename)
         #url_file = url + dataset_name + "README.html"
         #file_name = directory_name + "README.html"
+
+
+
 
 
         folder_bro = directory_name + "bro/"
