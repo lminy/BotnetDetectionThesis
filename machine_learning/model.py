@@ -115,7 +115,7 @@ class Model(object):
 
         headers = ['Exec time', 'Model', 'Best score']
         headers += self.metrics.keys()
-        values = time.strftime("%Y-%m-%d_%H-%M-%S") + "\t" + "\t".join([self.name, str(self.score)] + self.metrics.values())
+        values = time.strftime("%Y-%m-%d_%H-%M-%S") + "\t" + "\t".join([self.name, str(self.score)] + map(str, self.metrics.values()))
         return "\t".join(headers) + "\n" + values
 
 
@@ -145,7 +145,7 @@ class Model(object):
             if len(model.metrics) == 0:
                 raise Exception('No metrics found for model "{}", please run compute_metrics()'.format(model.name))
 
-            values += "\t".join([model.name, str(model.score)] + model.metrics.values()) + "\n"
+            values += "\t".join([model.name, str(model.score)] + map(str,model.metrics.values())) + "\n"
         return "\t".join(headers) + "\n" + values
 
     def save(self, filename):
