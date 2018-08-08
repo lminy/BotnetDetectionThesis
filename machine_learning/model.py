@@ -143,7 +143,7 @@ class Model(object):
             if len(model.metrics) == 0:
                 raise Exception('No metrics found for model "{}", please run compute_metrics()'.format(model.name))
 
-            values += "\t".join([model.name, str(model.score)] + [str(round(float(m), 3)) for m in model.metrics.values()], "") + "\n"
+            values += "\t".join([model.name, str(model.score)] + [str(round(float(m), 3)) for m in model.metrics.values()]) + "\n"
         return "\t".join(headers) + "\n" + values
 
     def save(self, filename):
