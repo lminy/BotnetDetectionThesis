@@ -6,7 +6,7 @@ import time
 import pickle
 
 from logger import get_logger
-logger = get_logger("debug")
+logger = get_logger("debug", True)
 
 
 class Model(object):
@@ -41,6 +41,8 @@ class Model(object):
         if self.param_grid is not None:
             logger.debug("Grid search best score = {}".format(self.classifier.best_score_))
             logger.debug("Grid search best estimator = {}".format(self.classifier.best_estimator_))
+        else:
+            logger.debug("Model parameters = {}".format(self.classifier.get_params()))
         self.is_trained = True
 
     def predict(self, X_test, y_test):
@@ -113,7 +115,7 @@ class Model(object):
 
         headers = ['Exec time', 'Model', 'Best score']
         headers += self.metrics.keys()
-        values = time.strftime("%Y-%m-%d_%H-%M-%S") + "\t" + "\t".join([self.name, str(self.score)] + [str(round(float(m), 3)) for m in self.metrics.values()])
+        values = time.strftime("%Y-%m-%d_%H-%M-%S") + "\t" + "\t".join([self.name, str(self.score)] + self.metrics.values())
         return "\t".join(headers) + "\n" + values
 
 
@@ -143,7 +145,7 @@ class Model(object):
             if len(model.metrics) == 0:
                 raise Exception('No metrics found for model "{}", please run compute_metrics()'.format(model.name))
 
-            values += "\t".join([model.name, str(model.score)] + [str(round(float(m), 3)) for m in model.metrics.values()]) + "\n"
+            values += "\t".join([model.name, str(model.score)] + model.metrics.values()) + "\n"
         return "\t".join(headers) + "\n" + values
 
     def save(self, filename):
