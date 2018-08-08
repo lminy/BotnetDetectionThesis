@@ -10,7 +10,7 @@ from sklearn.naive_bayes import GaussianNB
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.ensemble import AdaBoostClassifier
 from sklearn.linear_model import LogisticRegression
-from xgboost import XGBClassifier
+#from xgboost import XGBClassifier
 from sklearn import svm
 from sklearn import tree
 
@@ -132,6 +132,7 @@ if __name__ == '__main__':
     classifier = BernoulliNB()
     models.append(Model(name, classifier))
 
+    """
     name = "XGBoost 1"
     classifier = XGBClassifier(
         learning_rate =0.1,
@@ -179,6 +180,7 @@ if __name__ == '__main__':
     }
     xgboost = Model(name, classifier, param_grid)
     models.append(xgboost)
+    
 
     name = "XGBoostBest"
     classifier = XGBClassifier(base_score=0.5, booster='gbtree', colsample_bylevel=1,
@@ -188,10 +190,10 @@ if __name__ == '__main__':
                           random_state=0, reg_alpha=0, reg_lambda=1, scale_pos_weight=1,
                           seed=27, silent=True, subsample=0.8)
     xgboost_best = Model(name, classifier)
-
+    """
 
     #all_models = models.keys()
-    models_to_train = ['XGBoost', 'k-NN', 'Decision tree', 'Random forest', 'NB - Gaussian','AdaBoost', 'Log. Regression', 'Neural net'] #, 'SVM - SVC']
+    models_to_train = ['k-NN', 'Decision tree', 'Random forest', 'NB - Gaussian','AdaBoost', 'Log. Regression', 'Neural net'] #, 'SVM - SVC']
 
     # set_name can be: all, dns, https, reduced, reduced_30, reduced_40, enhanced_30
     set_name = "enhanced_30"
