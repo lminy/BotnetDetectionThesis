@@ -199,7 +199,7 @@ if __name__ == '__main__':
     set_name = "enhanced_30"
     X_train, X_test, y_train, y_test = Get_normalize_data.get_all_data(c.model_folder, set_name)
 
-    final_train(select_models(models, set_name, models_to_train))
+    final_train(select_models(models, models_to_train), set_name)
 
     #train(xgboost, set_name, random=True)
 
