@@ -121,7 +121,7 @@ def save_manager(url, dataset_name):
             if "README" in filename and not os.path.exists(directory_name + filename):
                 save_file(url_dataset + filename, directory_name + filename)
             # Download pcap file
-            if "pcap" in filename and not os.path.exists(directory_name + filename):
+            if filename.endswith(".pcap") and not os.path.exists(directory_name + filename):
                 save_file(url_dataset + filename, directory_name + filename)
         #url_file = url + dataset_name + "README.html"
         #file_name = directory_name + "README.html"

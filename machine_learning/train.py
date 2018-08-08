@@ -195,8 +195,8 @@ if __name__ == '__main__':
 
     models_to_train = ["XGBoost 1", "XGBoost 2"]
 
-    # set_name can be: all, dns, https, reduced, reduced_30, reduced_40
-    set_name = "reduced_30"
+    # set_name can be: all, dns, https, reduced, reduced_30, reduced_40, enhanced_30
+    set_name = "enhanced_30"
     X_train, X_test, y_train, y_test = Get_normalize_data.get_all_data(c.model_folder, set_name)
 
     #final_train(select_models(models, set_name, models_to_train))

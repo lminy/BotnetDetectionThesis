@@ -2,7 +2,7 @@
 import csv
 import config as c
 import numpy as np
-
+"""
 featuresname_all = [
     "number_of_flows",
     "average_of_duration",
@@ -68,6 +68,7 @@ featuresname_all = [
     "number_of_consonants_in_fqdn",
     "shannon_entropy_2ld",
     "shannon_entropy_3ld"]
+"""
 
 less_important_features = [
     "SNI_equal_DstIP",
@@ -115,20 +116,10 @@ less_important_features = [
     "number_of_certificate_path"
 ]
 
-features_set = {
-    "all": featuresname_all,
-    "dns": featuresname_all[41:],
-    "https": featuresname_all[:41],
-    "reduced": filter(lambda f: f not in less_important_features[:20], featuresname_all),
-    "reduced_30": filter(lambda f: f not in less_important_features[:30], featuresname_all),
-    "reduced_40": filter(lambda f: f not in less_important_features[:40], featuresname_all)
-}
-
-
-def read_features(filename, set_name):
+def read_features(filename, features_name):
     import pandas as pd
     X = pd.read_csv(filename)
-    return X[features_set[set_name]]
+    return X[features_name]
 
 
 def read_labels(filename):
@@ -138,9 +129,27 @@ def read_labels(filename):
     return y
 
 
+def get_features_name():
+    with open(c.model_folder + "features.csv", 'r') as csvfile:
+        csvreader = csv.reader(csvfile, lineterminator='\n', delimiter=',', quoting=csv.QUOTE_NONNUMERIC)
+        headers = csvreader.next()
+    return headers[1:-1]
+
+
 def get_all_data(models_folder, set_name="all"):
-    X_train = read_features(models_folder + "X_train.csv", set_name)
-    X_test = read_features(models_folder + "X_test.csv", set_name)
+    featuresname_all = get_features_name()
+    features_set = {
+        "all": featuresname_all[:63+1],
+        "https": featuresname_all[:41],
+        "dns": featuresname_all[41:63+1],
+        "reduced": filter(lambda f: f not in less_important_features[:20], featuresname_all[:63+1]),
+        "reduced_30": filter(lambda f: f not in less_important_features[:30], featuresname_all[:63+1]),
+        "reduced_40": filter(lambda f: f not in less_important_features[:40], featuresname_all[:63+1]),
+        "enhanced_30": filter(lambda f: f not in less_important_features[:30], featuresname_all)
+    }
+
+    X_train = read_features(models_folder + "X_train.csv", features_set[set_name])
+    X_test = read_features(models_folder + "X_test.csv", features_set[set_name])
     y_train = read_labels(models_folder + "y_train.csv")
     y_test = read_labels(models_folder + "y_test.csv")
     #return np.array(X_train), np.array(X_test), np.array(y_train), np.array(y_test)
