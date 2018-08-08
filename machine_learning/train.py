@@ -191,17 +191,15 @@ if __name__ == '__main__':
 
 
     #all_models = models.keys()
-    models_to_train = ['k-NN', 'Decision tree', 'Random forest', 'NB - Gaussian','AdaBoost', 'Log. Regression', 'Neural net'] #, 'SVM - SVC']
-
-    models_to_train = ["XGBoost 1", "XGBoost 2"]
+    models_to_train = ['XGBoost', 'k-NN', 'Decision tree', 'Random forest', 'NB - Gaussian','AdaBoost', 'Log. Regression', 'Neural net'] #, 'SVM - SVC']
 
     # set_name can be: all, dns, https, reduced, reduced_30, reduced_40, enhanced_30
     set_name = "enhanced_30"
     X_train, X_test, y_train, y_test = Get_normalize_data.get_all_data(c.model_folder, set_name)
 
-    #final_train(select_models(models, set_name, models_to_train))
+    final_train(select_models(models, set_name, models_to_train))
 
-    train(xgboost, set_name, random=True)
+    #train(xgboost, set_name, random=True)
 
     #train(xgboost_best, set_name)
 
@@ -209,32 +207,4 @@ if __name__ == '__main__':
 
     #train(gnb, set_name)
 
-
-    """
-    import matplotlib
-    from collections import Counter
-
-    matplotlib.use('TkAgg')
-    import matplotlib.pyplot as plt
-    import xgboost as xgb
-    import pickle
-
-    clf = pickle.load(open(c.model_folder + xgboost.name + '.model', "rb"))
-
-    # plot feature importance
-    fig, ax = plt.subplots(figsize=(5, 10))
-    ax = xgb.plot_importance(clf, ax=ax)
-    #fig = ax.figure
-    #fig.set_size_inches(18.5, 10.5) # h, w
-
-
-    # example of how to zoomout by a factor of 0.1
-    # ylim = ax.get_ylim()
-    #factor = 0.1
-    #new_ylim = (ylim[0] * factor + ylim[1] * factor)
-    #ax.set_ylim(new_ylim)
-
-    plt.savefig("./features_importance_xgboost.png")
-    plt.show()
-    """
 
