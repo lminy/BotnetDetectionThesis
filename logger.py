@@ -6,7 +6,7 @@ import config as c
 logger = None
 
 
-def get_logger(loglevel, append=False):
+def get_logger(loglevel, append=True):
     global logger
     if logger is not None:
         return logger
@@ -22,7 +22,7 @@ def get_logger(loglevel, append=False):
     logger = logging.getLogger(module_name)
     logger.setLevel(numeric_level)
     # create file handler which logs even debug messages
-    fh = logging.FileHandler(c.logs_folder + module_name + '.log', mode='a' if append else 'w')
+    fh = logging.FileHandler(c.logs_folder + module_name + '.log', mode=('a' if append else 'w'))
     fh.setLevel(logging.DEBUG)
     # create console handler with a higher log level
     ch = logging.StreamHandler()
