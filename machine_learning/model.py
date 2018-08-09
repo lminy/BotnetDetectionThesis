@@ -41,6 +41,7 @@ class Model(object):
         if self.param_grid is not None:
             logger.debug("Grid search best score = {}".format(self.classifier.best_score_))
             logger.debug("Grid search best estimator = {}".format(self.classifier.best_estimator_))
+            logger.debug("Grid search cv results = {}".format(self.classifier.cv_results_))
         else:
             logger.debug("Model parameters = {}".format(self.classifier.get_params()))
         self.is_trained = True

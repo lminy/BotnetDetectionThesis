@@ -10,7 +10,7 @@ from sklearn.naive_bayes import GaussianNB
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.ensemble import AdaBoostClassifier
 from sklearn.linear_model import LogisticRegression
-#from xgboost import XGBClassifier
+from xgboost import XGBClassifier
 from sklearn import svm
 from sklearn import tree
 
@@ -95,8 +95,17 @@ if __name__ == '__main__':
 
     #Logistic Regression
     name = "Log. Regression"
-    classifier = LogisticRegression(n_jobs=-1)
-    models.append(Model(name, classifier))
+    classifier = LogisticRegression()
+    param_grid = dict(C=[0.00001, 0.0001, 0.001, 0.01, 0.1, 1, 10, 100, 1000])
+    log_reg = Model(name, classifier, param_grid)
+    models.append(log_reg)
+
+    name = "Log. Reg l1"
+    classifier = LogisticRegression(penalty='l1')
+    param_grid = dict(C=[0.00001, 0.0001, 0.001, 0.01, 0.1, 1, 10, 100, 1000])
+    log_reg_l1 = Model(name, classifier, param_grid)
+    models.append(log_reg_l1)
+
 
     #Neural networks
     from sklearn.neural_network import MLPClassifier
@@ -132,7 +141,7 @@ if __name__ == '__main__':
     classifier = BernoulliNB()
     models.append(Model(name, classifier))
 
-    """
+
     name = "XGBoost 1"
     classifier = XGBClassifier(
         learning_rate =0.1,
@@ -180,6 +189,25 @@ if __name__ == '__main__':
     }
     xgboost = Model(name, classifier, param_grid)
     models.append(xgboost)
+
+    name = "Tuned XGBoost"
+    classifier = XGBClassifier(
+        learning_rate=0.1,
+        n_estimators=1000,
+        objective='binary:logistic',
+        nthread=4,
+        scale_pos_weight=1,
+        seed=27)
+    param_grid = {
+        'max_depth':range(3,10,2),
+        'min_child_weight':range(1,6,2),
+        'gamma': [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 1, 1.5, 2, 5],
+        'subsample': [i/10.0 for i in range(5,11)],
+        'colsample_bytree': [i/10.0 for i in range(5,11)],
+        'reg_alpha': [1e-5, 1e-2, 0.1, 1, 100]
+    }
+    tuned_xgboost = Model(name, classifier, param_grid)
+    models.append(tuned_xgboost)
     
 
     name = "XGBoostBest"
@@ -190,18 +218,22 @@ if __name__ == '__main__':
                           random_state=0, reg_alpha=0, reg_lambda=1, scale_pos_weight=1,
                           seed=27, silent=True, subsample=0.8)
     xgboost_best = Model(name, classifier)
-    """
+
 
     #all_models = models.keys()
-    models_to_train = ['k-NN', 'Decision tree', 'Random forest', 'NB - Gaussian','AdaBoost', 'Log. Regression', 'Neural net'] #, 'SVM - SVC']
+    models_to_train = ['XGBoost', 'k-NN', 'Decision tree', 'Random forest', 'NB - Gaussian','AdaBoost', 'Log. Regression', 'Neural net'] #, 'SVM - SVC']
 
     # set_name can be: all, dns, https, reduced, reduced_30, reduced_40, enhanced_30
     set_name = "enhanced_30"
     X_train, X_test, y_train, y_test = Get_normalize_data.get_all_data(c.model_folder, set_name)
 
-    final_train(select_models(models, models_to_train), set_name)
+    #final_train(select_models(models, models_to_train), set_name)
 
-    #train(xgboost, set_name, random=True)
+    train(tuned_xgboost, set_name, random=False)
+
+    #train(log_reg_l1, set_name)
+
+    #train(log_reg, set_name)
 
     #train(xgboost_best, set_name)
 
