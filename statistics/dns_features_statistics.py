@@ -137,8 +137,8 @@ def plot_alexa2():
     rects2 = ax.bar(ind + width, malware_percentage, width, color='r')
 
     # add some text for labels, title and axes ticks
-    ax.set_ylabel('Percentage of connection 4 tuples')
-    ax.set_title('Connection 4 tuples in Top alexa')
+    ax.set_ylabel('Percentage of flows')
+    ax.set_title('Flows in Top alexa')
     ax.set_xticks(ind + width / 2)
     ax.set_xticklabels(features_names_simplified)
 
@@ -199,12 +199,12 @@ def plot_barchar(features_name):
     ax.legend((rects1[0], rects2[0]), ('Normal', 'Botnet'))
     fig.savefig(c.graphs_folder + "features_alexa" + '.png')
 
-#plot_all_stat_continue()
+plot_all_stat_continue()
 plot_alexa2()
-#plot_barchar("number_unique_IP_addresses_in_response")
+plot_barchar("number_unique_IP_addresses_in_response")
 
-nb_conn_tuples_normal = len(df.loc[df['label'] == 'NORMAL'])
-nb_conn_tuples_malware = len(df.loc[df['label'] == 'MALWARE'])
-print "Number of conn4tuples Normal : " + str(nb_conn_tuples_normal)
-print "Number of conn4tuples Malware : " + str(nb_conn_tuples_malware)
-print "Total : " + str(nb_conn_tuples_normal + nb_conn_tuples_malware)
+nb_flows_normal = len(df.loc[df['label'] == 'NORMAL'])
+nb_flows_malware = len(df.loc[df['label'] == 'MALWARE'])
+print "Number of flows Normal : " + str(nb_flows_normal)
+print "Number of flows Malware : " + str(nb_flows_malware)
+print "Total : " + str(nb_flows_normal + nb_flows_malware)

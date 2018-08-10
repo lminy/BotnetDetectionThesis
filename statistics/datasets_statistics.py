@@ -20,7 +20,7 @@ def sizeof_fmt(num, suffix='B'):
         num /= 1024.0
     return "%.1f%s%s" % (num, 'Yi', suffix)
 
-def compute_malware_normal_flows(path_conn_label):
+def compute_malware_normal_packets(path_conn_label):
     normals = 0
     malwares = 0
     with open(path_conn_label) as f:
@@ -46,13 +46,13 @@ size_normal_dataset = 0
 size_ctu13_malware_dataset = 0
 size_other_malware_dataset = 0
 
-normal_dataset_normal_flows = 0
-ctu13_malware_dataset_normal_flows = 0
-other_malware_dataset_normal_flows = 0
+normal_dataset_normal_packets = 0
+ctu13_malware_dataset_normal_packets = 0
+other_malware_dataset_normal_packets = 0
 
-normal_dataset_malware_flows = 0
-ctu13_malware_dataset_malware_flows = 0
-other_malware_dataset_malware_flows = 0
+normal_dataset_malware_packets = 0
+ctu13_malware_dataset_malware_packets = 0
+other_malware_dataset_malware_packets = 0
 
 
 index = 0
@@ -69,43 +69,43 @@ for sub_set in os.listdir(c.datasets_folder):
     print "Size of dataset : " + str(sizeof_fmt(dataset_size))
     index += 1
 
-    normals, malwares = compute_malware_normal_flows(dataset_bro_folder + 'conn_label.log')
+    normals, malwares = compute_malware_normal_packets(dataset_bro_folder + 'conn_label.log')
 
     if sub_set.startswith("CTU-Normal-"):
         size_normal_dataset += dataset_size
-        normal_dataset_normal_flows += normals
-        normal_dataset_malware_flows += malwares
+        normal_dataset_normal_packets += normals
+        normal_dataset_malware_packets += malwares
     elif sub_set.startswith("CTU-Malware-Capture-Botnet-") and 42 <= int(sub_set.split('-')[4]) <= 54:
         size_ctu13_malware_dataset += dataset_size
-        ctu13_malware_dataset_normal_flows += normals
-        ctu13_malware_dataset_malware_flows += malwares
+        ctu13_malware_dataset_normal_packets += normals
+        ctu13_malware_dataset_malware_packets += malwares
     elif sub_set.startswith("CTU-Malware-Capture-Botnet-"):
         size_other_malware_dataset += dataset_size
-        other_malware_dataset_normal_flows += normals
-        other_malware_dataset_malware_flows +=malwares
+        other_malware_dataset_normal_packets += normals
+        other_malware_dataset_malware_packets +=malwares
 
 
-    print "Normal flows: " + str(normals)
-    print "Malware flows : " + str(malwares)
+    print "Normal packets: " + str(normals)
+    print "Malware packets : " + str(malwares)
 
 
 
 print "\n\n============================"
 print "Size normal datasets : " + str(sizeof_fmt(size_normal_dataset))
-print "\t>>> Normal flows : " + str(normal_dataset_normal_flows)
-print "\t>>> Malware flows : " + str(normal_dataset_malware_flows)
+print "\t>>> Normal packets : " + str(normal_dataset_normal_packets)
+print "\t>>> Malware packets : " + str(normal_dataset_malware_packets)
 print "Size CTU-13 malware datasets : " + str(sizeof_fmt(size_ctu13_malware_dataset))
-print "\t>>> Normal flows : " + str(ctu13_malware_dataset_normal_flows)
-print "\t>>> Malware flows : " + str(ctu13_malware_dataset_malware_flows)
+print "\t>>> Normal packets : " + str(ctu13_malware_dataset_normal_packets)
+print "\t>>> Malware packets : " + str(ctu13_malware_dataset_malware_packets)
 print "Size other malware datasets : " + str(sizeof_fmt(size_other_malware_dataset))
-print "\t>>> Normal flows : " + str(other_malware_dataset_normal_flows)
-print "\t>>> Malware flows : " + str(other_malware_dataset_malware_flows)
+print "\t>>> Normal packets : " + str(other_malware_dataset_normal_packets)
+print "\t>>> Malware packets : " + str(other_malware_dataset_malware_packets)
 print "\n------------------"
 print "  TOTAL Datasets"
 print "------------------"
 print "Total Size : " + str(sizeof_fmt(size_normal_dataset + size_ctu13_malware_dataset + size_other_malware_dataset))
-print "Total normal flows : " + str(normal_dataset_normal_flows + ctu13_malware_dataset_normal_flows + other_malware_dataset_normal_flows)
-print "Total malwares flows : " + str(normal_dataset_malware_flows + ctu13_malware_dataset_malware_flows + other_malware_dataset_malware_flows)
+print "Total normal packets : " + str(normal_dataset_normal_packets + ctu13_malware_dataset_normal_packets + other_malware_dataset_normal_packets)
+print "Total malwares packets : " + str(normal_dataset_malware_packets + ctu13_malware_dataset_malware_packets + other_malware_dataset_malware_packets)
 
 
 

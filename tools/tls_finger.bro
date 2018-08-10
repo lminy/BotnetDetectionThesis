@@ -1,5 +1,7 @@
 module TlsFingerprint;
 
+## This script comes from https://www.securityartwork.es/2017/02/02/tls-client-fingerprinting-with-bro/
+
 export {
     redef enum Log::ID += { LOG };
 

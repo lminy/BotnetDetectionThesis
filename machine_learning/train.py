@@ -199,8 +199,8 @@ if __name__ == '__main__':
         scale_pos_weight=1,
         seed=27)
     param_grid = {
-        'max_depth':range(3,10,2),
-        'min_child_weight':range(1,6,2),
+        'max_depth': range(3,10,2),
+        'min_child_weight': range(1,6,2),
         'gamma': [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 1, 1.5, 2, 5],
         'subsample': [i/10.0 for i in range(5,11)],
         'colsample_bytree': [i/10.0 for i in range(5,11)],
