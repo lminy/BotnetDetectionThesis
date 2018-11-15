@@ -3,6 +3,8 @@
 This implementation was realized for my master thesis on "Botnet detection in encrypted traffic - a machine learning approach" 
 
 ## Configuration
+The configuration has to be done in config.py file. A template is provided in example_config.py
+
 
 ## Run
 
