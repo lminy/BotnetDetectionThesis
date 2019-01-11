@@ -149,7 +149,7 @@ class DNSFeatures(DNSConnection):
     # ------------------------------------------------------------------
     # 00. ---------- number of voyels --------------------
     def get_number_of_voyels_in_fqdn(self):
-        voyels = "aeioue"
+        voyels = "aeiou"
         return len(filter(lambda c: c in voyels, self.FQDN))
 
     # ------------------------------------------------------------------
